@@ -6,10 +6,10 @@ RUN apt-get update \
 
 WORKDIR /app/adminpanel
 
-COPY adminpanel/package.json adminpanel/package-lock.json ./
+COPY src/frontend/adminpanel/package.json src/frontend/adminpanel/package-lock.json ./
 RUN npm ci
 
-COPY adminpanel/ ./
+COPY src/frontend/adminpanel/ ./
 
 RUN npm run build && \
     find .next/standalone -name 'server.js' -not -path '*/node_modules/*' | head -1 | xargs dirname | xargs -I{} ln -sfn /app/adminpanel/public {}/public

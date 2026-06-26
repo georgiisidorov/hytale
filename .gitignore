@@ -6,14 +6,20 @@ __pycache__/
 *.pyo
 
 # JDK
-jdk-*/
 .jdk*/
+.jdks/
+
+# Node.js
+src/frontend/adminpanel/node_modules/
+src/frontend/adminpanel/.next/
+src/frontend/adminpanel/.env
+src/frontend/adminpanel/.env.local
 
 # Java build artifacts
 mods/*/build/
-mods/*/gradle/
 mods/*/libs/
 mods/*/tools/
+mods/*/gradle/
 
 # Maven/Gradle dependency cache (extracted into mods/)
 mods/com/
@@ -27,6 +33,8 @@ mods/io/
 mods/javax/
 mods/joptsimple/
 mods/linux/
+mods/org/
+mods/META-INF/
 mods/manifests.json
 
 # Native libs
@@ -34,28 +42,20 @@ mods/*.so
 mods/*.jnilib
 mods/*.dll
 
-# Game server binary / large files
-HytaleServer.jar
-server.jar
-no-interaction-mod-*.jar
-roulette-atomic-*.jar
+# Large files (>100MB GitHub limit)
 OpenJDK25.tar.gz
 mods/MazeSlots/maze.prefab.json
 
-# Node.js
-adminpanel/node_modules/
-adminpanel/.next/
-adminpanel/.env
-adminpanel/.env.local
-
 # Secrets
-.env
-!.env.example
+infra/.env
 !infra/.env.example
+**/.env
+!**/.env.example
 *.session
 
 # Misc
 .DS_Store
 *.log
-images/
-archive/
+.claude/
+.vscode/
+.dockerignore

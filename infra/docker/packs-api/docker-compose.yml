@@ -1,0 +1,20 @@
+services:
+  hytale-packs-api:
+    build:
+      context: ../../..
+      dockerfile: infra/docker/packs-api/Dockerfile
+    container_name: hytale-packs-api
+    restart: unless-stopped
+    env_file: ../../.env
+    environment:
+      SERVICE_NAME: hytale-packs-api
+      LOG_LEVEL: INFO
+    ports:
+      - "8766:8766"
+    networks:
+      - hytale-network
+
+networks:
+  hytale-network:
+    external: true
+    name: hytale-network
