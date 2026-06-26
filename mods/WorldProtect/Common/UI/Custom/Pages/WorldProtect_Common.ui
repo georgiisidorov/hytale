@@ -1,0 +1,76 @@
+// WorldProtect Common Styles
+
+// === Color Palette ===
+@WpGold = #FFD700;
+@WpGreen = #32CD32;
+@WpRed = #FF4444;
+@WpTextWhite = #ffffff;
+@WpTextGray = #888888;
+
+// === Button Label Styles ===
+@WpButtonLabelStyle = LabelStyle(
+  FontSize: 12,
+  TextColor: @WpTextWhite,
+  RenderBold: true,
+  RenderUppercase: false,
+  HorizontalAlignment: Center,
+  VerticalAlignment: Center
+);
+
+@WpButtonLabelMutedStyle = LabelStyle(
+  FontSize: 12,
+  TextColor: #a8b0bf,
+  RenderBold: true,
+  RenderUppercase: false,
+  HorizontalAlignment: Center,
+  VerticalAlignment: Center
+);
+
+// === Button Styles ===
+@WpButtonStyle = TextButtonStyle(
+  Default:  (Background: (Color: #2b3f66), LabelStyle: @WpButtonLabelStyle),
+  Hovered:  (Background: (Color: #35507f), LabelStyle: @WpButtonLabelStyle),
+  Pressed:  (Background: (Color: #233553), LabelStyle: @WpButtonLabelStyle),
+  Disabled: (Background: (Color: #333333), LabelStyle: @WpButtonLabelStyle)
+);
+
+@WpButtonRedStyle = TextButtonStyle(
+  Default:  (Background: (Color: #7a2b2b), LabelStyle: @WpButtonLabelStyle),
+  Hovered:  (Background: (Color: #933737), LabelStyle: @WpButtonLabelStyle),
+  Pressed:  (Background: (Color: #662424), LabelStyle: @WpButtonLabelStyle),
+  Disabled: (Background: (Color: #333333), LabelStyle: @WpButtonLabelStyle)
+);
+
+// === Filter Buttons (used by /rg menu) ===
+// Inactive buttons are intentionally darker + slightly muted text.
+@WpButtonMutedStyle = TextButtonStyle(
+  Default:  (Background: (Color: #0e1525), LabelStyle: @WpButtonLabelMutedStyle),
+  Hovered:  (Background: (Color: #16203a), LabelStyle: @WpButtonLabelStyle),
+  Pressed:  (Background: (Color: #0a101d), LabelStyle: @WpButtonLabelStyle),
+  Disabled: (Background: (Color: #333333), LabelStyle: @WpButtonLabelMutedStyle)
+);
+
+// Active buttons are brighter.
+@WpButtonActiveStyle = TextButtonStyle(
+  Default:  (Background: (Color: #4b78ff), LabelStyle: @WpButtonLabelStyle),
+  Hovered:  (Background: (Color: #5c87ff), LabelStyle: @WpButtonLabelStyle),
+  Pressed:  (Background: (Color: #355dd6), LabelStyle: @WpButtonLabelStyle),
+  Disabled: (Background: (Color: #333333), LabelStyle: @WpButtonLabelStyle)
+);
+
+// === Toggle Buttons (selected/unselected) ===
+// Unselected uses a darker shade (same tone as the original Pressed color).
+@WpButtonUnselectedStyle = TextButtonStyle(
+  Default:  (Background: (Color: #233553), LabelStyle: @WpButtonLabelMutedStyle),
+  Hovered:  (Background: (Color: #2b3f66), LabelStyle: @WpButtonLabelStyle),
+  Pressed:  (Background: (Color: #1e2d47), LabelStyle: @WpButtonLabelStyle),
+  Disabled: (Background: (Color: #333333), LabelStyle: @WpButtonLabelMutedStyle)
+);
+
+// Selected is slightly brighter than default.
+@WpButtonSelectedStyle = TextButtonStyle(
+  Default:  (Background: (Color: #35507f), LabelStyle: @WpButtonLabelStyle),
+  Hovered:  (Background: (Color: #3f5f94), LabelStyle: @WpButtonLabelStyle),
+  Pressed:  (Background: (Color: #2b3f66), LabelStyle: @WpButtonLabelStyle),
+  Disabled: (Background: (Color: #333333), LabelStyle: @WpButtonLabelStyle)
+);

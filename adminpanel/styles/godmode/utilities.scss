@@ -1,0 +1,400 @@
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .godmode-content {
+    flex-direction: column;
+  }
+
+  .godmode-sidebar {
+    width: 100%;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .device-list,
+  .command-history {
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .godmode-sidebar {
+    flex-direction: column;
+  }
+
+  .header-center {
+    display: none;
+  }
+
+  .system-indicators {
+    display: none;
+  }
+
+  .quick-access {
+    display: none;
+  }
+
+  .search-container.open {
+    width: 200px;
+  }
+
+  .search-input {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .godmode-header {
+    padding: 0 10px;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .user-btn .user-name {
+    display: none;
+  }
+
+  .user-btn .user-arrow {
+    display: none;
+  }
+
+  .notifications-popup {
+    width: 280px;
+    right: -50px;
+  }
+
+  .monitor-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stat {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .command-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Utility Classes */
+.godmode-error {
+  background: #442222;
+  border: 2px solid #ff4444;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.godmode-error span {
+  color: #ff4444;
+  font-weight: 500;
+}
+
+.godmode-error button {
+  background: #ff4444;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000E0F;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #116971;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #159AAB;
+}
+
+::-webkit-scrollbar-corner {
+  background: #000E0F;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Theme Variables */
+:root {
+  --godmode-bg-primary: #000E0F;
+  --godmode-bg-secondary: #050f10;
+  --godmode-bg-tertiary: #0a1f21;
+  --godmode-border: rgba(17, 105, 113, 0.45);
+  --godmode-border-hover: rgba(63, 217, 209, 0.70);
+  --godmode-text-primary: rgba(255, 255, 255, 0.95);
+  --godmode-text-secondary: rgba(255, 255, 255, 0.80);
+  --godmode-text-muted: rgba(255, 255, 255, 0.55);
+  --godmode-accent: #3FD9D1;
+  --godmode-success: #3FD9D1;
+  --godmode-warning: #ffcc44;
+  --godmode-error: #ff4444;
+  --godmode-info: #9FF3F3;
+}
+
+/* Dark Theme (default) */
+[data-theme='dark'] {
+  --godmode-bg-primary: #000E0F;
+  --godmode-bg-secondary: #050f10;
+  --godmode-bg-tertiary: #0a1f21;
+  --godmode-border: rgba(17, 105, 113, 0.45);
+  --godmode-border-hover: rgba(63, 217, 209, 0.70);
+  --godmode-text-primary: rgba(255, 255, 255, 0.95);
+  --godmode-text-secondary: rgba(255, 255, 255, 0.80);
+  --godmode-text-muted: rgba(255, 255, 255, 0.55);
+  --godmode-accent: #3FD9D1;
+  --godmode-success: #3FD9D1;
+}
+
+/* Light Theme */
+[data-theme='light'] {
+  --godmode-bg-primary: #e8fafa;
+  --godmode-bg-secondary: #f0fdfd;
+  --godmode-bg-tertiary: #d0f5f5;
+  --godmode-border: rgba(17, 105, 113, 0.50);
+  --godmode-text-primary: #000E0F;
+  --godmode-text-secondary: #116971;
+  --godmode-text-muted: #159AAB;
+  --godmode-accent: #116971;
+  --godmode-success: #116971;
+  --godmode-border-hover: rgba(63, 217, 209, 0.80);
+}
+
+/* High Contrast Theme */
+[data-theme='high-contrast'] {
+  --godmode-bg-primary: #000000;
+  --godmode-bg-secondary: #000E0F;
+  --godmode-bg-tertiary: #e8fafa;
+  --godmode-border: #3FD9D1;
+  --godmode-text-primary: #ffffff;
+  --godmode-text-secondary: #9FF3F3;
+  --godmode-text-muted: #3FD9D1;
+  --godmode-accent: #3FD9D1;
+  --godmode-success: #3FD9D1;
+  --godmode-border-hover: rgba(159, 243, 243, 0.90);
+}
+
+/* Terminal Theme */
+[data-theme='terminal'] {
+  --godmode-bg-primary: #000000;
+  --godmode-bg-secondary: #000E0F;
+  --godmode-bg-tertiary: #e8fafa;
+  --godmode-border: #116971;
+  --godmode-text-primary: #9FF3F3;
+  --godmode-text-secondary: #9FF3F3;
+  --godmode-text-muted: #3FD9D1;
+  --godmode-accent: #3FD9D1;
+  --godmode-success: #3FD9D1;
+  --godmode-border-hover: rgba(63, 217, 209, 0.90);
+}
+
+/* Applying theme variables */
+.godmode-layout {
+  background: var(--godmode-bg-primary);
+  color: var(--godmode-text-primary);
+}
+
+/* Стили сайдбара определены в sidebar.scss, не переопределяем здесь */
+
+.system-status {
+  background: var(--godmode-bg-secondary);
+  border-color: var(--godmode-border);
+}
+
+.status-header h3 {
+  color: var(--godmode-accent);
+}
+
+.metric {
+  background: var(--godmode-bg-tertiary);
+  border-color: var(--godmode-border);
+}
+
+.metric-value {
+  color: var(--godmode-accent);
+}
+
+.detail-label {
+  color: var(--godmode-text-muted);
+}
+
+.detail-value.enabled {
+  color: var(--godmode-success);
+}
+
+.detail-value.disabled {
+  color: var(--godmode-error);
+}
+
+/* Print Styles */
+@media print {
+  .godmode-header,
+  .sidebar,
+  .monitor-controls,
+  .event-actions,
+  .history-filters,
+  .device-actions {
+    display: none !important;
+  }
+
+  .godmode-layout {
+    display: block;
+    height: auto;
+    background: white;
+    color: black;
+  }
+
+  .godmode-main-content {
+    margin-left: 0 !important;
+  }
+
+  .system-status,
+  .device-list,
+  .command-panel,
+  .command-history,
+  .realtime-monitor {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Icon Colors */
+.icon-green svg,
+.icon-green img {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.icon-red svg,
+.icon-red img {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7471%) hue-rotate(350deg) brightness(100%) contrast(100%);
+}
+
+.icon-accent svg,
+.icon-accent img,
+.icon-wrapper.icon-accent svg,
+.icon-wrapper.icon-accent img {
+  filter: brightness(0) saturate(100%) invert(75%) sepia(47%) saturate(800%) hue-rotate(144deg) brightness(105%) contrast(105%);
+  fill: var(--godmode-accent) !important;
+  color: var(--godmode-accent) !important;
+}
+
+/* Focus Styles */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--godmode-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Loading States */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--godmode-bg-tertiary) 0%,
+    var(--godmode-bg-secondary) 50%,
+    var(--godmode-bg-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 1em;
+  border-radius: 3px;
+  margin-bottom: 0.5em;
+}
+
+.skeleton-circle {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+}
+
+/* CalendarJS вешается на body; на других вкладках не показываем остатки */
+body:not(.payments-page):not(.promocodes-page) .lm-calendar {
+  display: none !important;
+  pointer-events: none !important;
+}
+

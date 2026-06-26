@@ -1,0 +1,15 @@
+{
+  "Group": "Custom",
+  "Name": "YooKassaPayments",
+  "Version": "1.5.3",
+  "Authors": [
+    {
+      "Name": "HytaleProject",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Main": "com.github.hytale.yookassa.YooKassaPaymentsPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "YooKassa payment UI (/yookassa) for Hytale 0.5.5.",
+  "IncludesAssetPack": true
+}

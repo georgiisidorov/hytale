@@ -1,0 +1,95 @@
+Group #YooKassaRoot {
+  Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+  LayoutMode: Center;
+
+  Group #YooKassaCard {
+    Anchor: (Width: 1280, Height: 780);
+    Background: (Color: #081321ee);
+    LayoutMode: Top;
+
+    Group #MarketHeader {
+      Anchor: (Height: 56);
+      LayoutMode: Left;
+      Background: (Color: #10223a);
+      Padding: (Left: 14, Right: 14, Top: 10, Bottom: 10);
+
+      Label #Brand {
+        Text: "AETHER MARKET";
+        Style: (FontSize: 17, TextColor: #f1d27a, RenderBold: true);
+        Anchor: (Width: 160, Vertical: 0);
+      }
+
+      Group #Tabs {
+        LayoutMode: Left;
+        FlexWeight: 1;
+
+        TextButton #TabShop { Anchor: (Width: 78, Height: 36, Right: 4, Vertical: 0); Text: "Shop"; Background: #243855; }
+        TextButton #TabWheel { Anchor: (Width: 78, Height: 36, Right: 8, Vertical: 0); Text: "Wheel"; Background: #172a46; }
+      }
+
+      TextButton #TopUpCoinsPlus { Anchor: (Width: 64, Height: 64, Right: 2, Vertical: 0); Text: "+"; Background: #000000(0); }
+      Label #CoinsBalance { Text: "12,450 Coins"; Style: (FontSize: 13, TextColor: #f1d27a, RenderBold: true); Anchor: (Width: 140, Height: 64, Right: 6, Vertical: 0); }
+      TextButton #TopUpCrystalsPlus { Anchor: (Width: 64, Height: 64, Right: 2, Vertical: 0); Text: "+"; Background: #000000(0); }
+      Label #CrystalsBalance { Text: "840 Crystals"; Style: (FontSize: 13, TextColor: #8ec8ff, RenderBold: true); Anchor: (Width: 140, Height: 64, Right: 6, Vertical: 0); }
+
+      TextButton #CloseButton { Anchor: (Width: 64, Height: 64, Vertical: 0); Text: "X"; Background: #000000(0); }
+    }
+
+    Group #Content {
+      LayoutMode: Top;
+      Padding: (Top: 14, Left: 16, Right: 16, Bottom: 14);
+      FlexWeight: 1;
+
+      Group #ShopPage { Visible: true; LayoutMode: Top; FlexWeight: 1;
+        Group #ProductCard1 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard2 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard3 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard4 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard5 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard6 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard7 { Anchor: (Width: 1, Height: 1); }
+        Group #ProductCard8 { Anchor: (Width: 1, Height: 1); }
+
+        TextButton #BuyItemButton1 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton2 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton3 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton4 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton5 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton6 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton7 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+        TextButton #BuyItemButton8 { Anchor: (Width: 1, Height: 1); Text: ""; Background: #000000(0); }
+
+        Label #ShopDetailTitle { Text: ""; Anchor: (Height: 1); }
+        Label #ShopDetailRarity { Text: ""; Anchor: (Height: 1); }
+        Label #ShopDetailDesc { Text: ""; Anchor: (Height: 1); }
+        Label #ShopDetailStat1 { Text: ""; Anchor: (Height: 1); }
+        Label #ShopDetailStat2 { Text: ""; Anchor: (Height: 1); }
+        Label #ShopDetailStat3 { Text: ""; Anchor: (Height: 1); }
+        Label #ShopDetailPrice { Text: ""; Anchor: (Height: 1); }
+        TextButton #ShopConfirmButton { Text: ""; Anchor: (Height: 1); Background: #000000(0); }
+      }
+
+      Group #WalletPage { Visible: false; LayoutMode: Top; FlexWeight: 1;
+        Label #Hint { Text: ""; Anchor: (Height: 1); }
+        Label #SavedHint { Text: ""; Anchor: (Height: 1); }
+
+        Group #FormSection { Visible: true; LayoutMode: Top;
+          TextField #AmountField { Anchor: (Height: 1); }
+          TextButton #SaveToggleButton { Anchor: (Height: 1); Text: ""; Background: #000000(0); }
+          TextButton #PayCardButton { Anchor: (Height: 1); Text: ""; Background: #000000(0); }
+          TextButton #PaySbpButton { Anchor: (Height: 1); Text: ""; Background: #000000(0); }
+          TextButton #PayRepeatButton { Anchor: (Height: 1); Text: ""; Background: #000000(0); }
+        }
+
+        Group #WaitSection { Visible: false; LayoutMode: Top;
+          Label #WaitTitle { Text: ""; Anchor: (Height: 1); }
+          Label #WaitHint { Text: ""; Anchor: (Height: 1); }
+          TextButton #OpenPayLinkButton { Visible: false; Anchor: (Height: 1); Text: ""; Background: #000000(0); }
+        }
+      }
+
+      Group #WheelPage { Visible: false; Anchor: (Height: 1); }
+    }
+  }
+}
+

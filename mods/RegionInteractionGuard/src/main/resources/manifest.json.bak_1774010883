@@ -1,0 +1,17 @@
+{
+  "Group": "Custom",
+  "Name": "RegionInteractionGuard",
+  "Version": "1.0.22",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.regionguard.RegionInteractionGuardPlugin",
+  "ServerVersion": "2026.02.19-1a311a592",
+  "Description": "Blocks configured block interactions and item pickup inside selected WorldProtect regions.",
+  "IncludesAssetPack": false
+}
+

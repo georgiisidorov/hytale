@@ -1,0 +1,19 @@
+{
+  "Group": "Custom",
+  "Name": "TeleporterCrashFix",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.teleportercrashfix.TeleporterCrashFixPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Replaces the built-in teleporter chunk system with a safe variant that skips portal block updates during chunk load.",
+  "Dependencies": {
+    "Hytale:Teleporter": "*"
+  },
+  "IncludesAssetPack": false
+}

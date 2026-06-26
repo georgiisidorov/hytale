@@ -1,0 +1,180 @@
+/* Command Panel Component */
+.command-panel {
+  background: var(--godmode-bg-secondary);
+  border: 2px solid var(--godmode-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.command-panel-header {
+  padding: 15px 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.command-panel-header h3 {
+  margin: 0;
+  color: var(--godmode-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .icon-green svg,
+  .icon-green img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+}
+
+.command-panel .device-info {
+  color: var(--godmode-text-secondary);
+  font-size: 13px;
+}
+
+.command-panel-body {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.no-device-selected {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--godmode-text-muted);
+  font-style: italic;
+}
+
+.command-selection {
+  flex: 1;
+}
+
+.category-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.category-group {
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.category-group h4 {
+  margin: 0 0 10px 0;
+  color: var(--godmode-text-primary);
+  font-size: 14px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.command-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.command-btn {
+  background: rgba(21, 154, 171, 0.10);
+  border: 2px solid rgba(255, 255, 255, 0.10);
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: var(--godmode-text-primary);
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.command-btn:hover {
+  background: rgba(21, 154, 171, 0.13);
+  border-color: rgba(17, 105, 113, 0.50);
+}
+
+.command-btn.active {
+  background: rgba(21, 154, 171, 0.16);
+  border-color: rgba(21, 154, 171, 0.65);
+  color: var(--godmode-text-primary);
+}
+
+.command-execution {
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.10);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.command-info {
+  margin-bottom: 15px;
+}
+
+.command-info h4 {
+  margin: 0 0 5px 0;
+  color: var(--godmode-text-primary);
+  font-size: 16px;
+}
+
+.command-info p {
+  margin: 0;
+  color: var(--godmode-text-secondary);
+  font-size: 13px;
+}
+
+.command-params {
+  margin-bottom: 15px;
+}
+
+.command-params label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--godmode-text-secondary);
+  font-size: 13px;
+}
+
+.command-params input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: #fff;
+  width: 100%;
+  font-family: monospace;
+}
+
+.command-params input:focus {
+  outline: none;
+  border-color: rgba(63, 217, 209, 0.35);
+}
+
+.execute-btn {
+  background: var(--godmode-accent);
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  color: #0d1a0f;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.execute-btn:hover:not(:disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.execute-btn:disabled {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.65);
+  cursor: not-allowed;
+}
+

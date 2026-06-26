@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "MazeSlots",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.mazeslots.MazeSlotsPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Creates per-player prefab slots in the shared 'maze' world and teleports players to their slot.",
+  "IncludesAssetPack": false
+}

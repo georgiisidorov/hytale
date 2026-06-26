@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "PermBridge",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.permbridge.PermBridgePlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Re-adds HytalePermissionsProvider after LuckPerms removes it, enabling permissions.json rights to work alongside LP.",
+  "IncludesAssetPack": false
+}

@@ -1,0 +1,430 @@
+$W = "WorldProtect_Common.ui";
+$C = "../Common.ui";
+
+// Simple, clean slider style (same vibe as previous working version)
+@WpAutoClaimSliderStyle = SliderStyle(
+  Background: PatchStyle(Color: #0b1220),
+  Fill: PatchStyle(Color: #2b3f66),
+  Handle: PatchStyle(Color: #4b78ff),
+  HandleWidth: 10,
+  HandleHeight: 16
+);
+
+Group #AutoClaimRoot {
+  Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+  LayoutMode: Center;
+
+  Group #AutoClaimCard {
+    Anchor: (Width: 720, Height: 520);
+    Background: (Color: #1a1a2eee);
+    LayoutMode: Top;
+    OutlineColor: #3a4a6a;
+    OutlineSize: 1;
+
+    // === Header ===
+    Group #Header {
+      LayoutMode: Left;
+      Background: (Color: #0f1525);
+      Padding: (Top: 12, Bottom: 12, Left: 16, Right: 16);
+      Anchor: (Height: 48);
+
+      TextButton #BackButton {
+        Text: "<";
+        Style: $W.@WpButtonStyle;
+        Anchor: (Width: 28, Height: 28, Right: 8, Vertical: 0);
+      }
+
+      Label #Title {
+        Text: "Auto Claim";
+        Style: (FontSize: 18, TextColor: #FFD700, RenderBold: true);
+        Anchor: (Vertical: 0);
+        FlexWeight: 1;
+      }
+
+      TextButton #CloseButton {
+        Text: "X";
+        Style: $W.@WpButtonRedStyle;
+        Anchor: (Width: 28, Height: 28, Vertical: 0);
+      }
+    }
+
+    // === Body ===
+    Group #Body {
+      LayoutMode: Top;
+      Padding: (Top: 12, Left: 16, Right: 16, Bottom: 16);
+      FlexWeight: 1;
+
+      Label {
+        Text: "Region name (ID)";
+        Style: (FontSize: 11, TextColor: #aaaaaa);
+        Anchor: (Bottom: 4);
+      }
+
+      Group #NameBox {
+        LayoutMode: Left;
+        Background: (Color: #0f1525);
+        Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+        Anchor: (Height: 30, Bottom: 10);
+        OutlineColor: #3a4a6a;
+        OutlineSize: 1;
+
+        TextField #RegionName {
+          Style: (FontSize: 13, TextColor: #ffffff);
+          FlexWeight: 1;
+        }
+      }
+
+      Label #PosValue {
+        Text: "X: ?  Y: ?  Z: ?";
+        Style: (FontSize: 10, TextColor: #888888);
+        Anchor: (Bottom: 10);
+      }
+
+      // Sliders panel
+      Group #SlidersPanel {
+        LayoutMode: Top;
+        Background: (Color: #0e1525);
+        Padding: (Top: 8, Bottom: 8, Left: 10, Right: 10);
+        OutlineColor: #3a4a6a;
+        OutlineSize: 1;
+        Anchor: (Bottom: 12);
+        FlexWeight: 1;
+
+        // column hint row
+        Group #SliderHintRow {
+          LayoutMode: Left;
+          Anchor: (Height: 14, Bottom: 4);
+
+          Label { Anchor: (Width: 70, Vertical: 0, Right: 6); }
+
+          Label {
+            Text: "Drag";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Vertical: 0);
+            FlexWeight: 1;
+          }
+
+          Label {
+            Text: "Value (type)";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 88, Vertical: 0, Right: 6);
+          }
+
+          Label {
+            Text: "Max";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+
+        // === LEFT ===
+        Group #LeftRow {
+          LayoutMode: Left;
+          Anchor: (Height: 30, Bottom: 4);
+
+          Label {
+            Text: "Left";
+            Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+            Anchor: (Width: 70, Vertical: 0, Right: 6);
+          }
+
+          Slider #LeftSlider {
+            Min: 0;
+            Max: 0;
+            Step: 1;
+            Value: 0;
+            Style: @WpAutoClaimSliderStyle;
+            Anchor: (Height: 16, Vertical: 0, Right: 10);
+            FlexWeight: 1;
+            TooltipText: "Drag to change";
+          }
+
+          Group #LeftValueBox {
+            LayoutMode: Left;
+            Background: (Color: #0f1525);
+            Padding: (Left: 6, Right: 6, Top: 2, Bottom: 2);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Width: 88, Height: 20, Vertical: 0, Right: 6);
+
+            TextField #LeftValue {
+              Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+              FlexWeight: 1;
+              TooltipText: "Click to type";
+            }
+          }
+
+          Label #LeftMax {
+            Text: "/0";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+
+        // === RIGHT ===
+        Group #RightRow {
+          LayoutMode: Left;
+          Anchor: (Height: 30, Bottom: 4);
+
+          Label {
+            Text: "Right";
+            Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+            Anchor: (Width: 70, Vertical: 0, Right: 6);
+          }
+
+          Slider #RightSlider {
+            Min: 0;
+            Max: 0;
+            Step: 1;
+            Value: 0;
+            Style: @WpAutoClaimSliderStyle;
+            Anchor: (Height: 16, Vertical: 0, Right: 10);
+            FlexWeight: 1;
+            TooltipText: "Drag to change";
+          }
+
+          Group #RightValueBox {
+            LayoutMode: Left;
+            Background: (Color: #0f1525);
+            Padding: (Left: 6, Right: 6, Top: 2, Bottom: 2);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Width: 88, Height: 20, Vertical: 0, Right: 6);
+
+            TextField #RightValue {
+              Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+              FlexWeight: 1;
+              TooltipText: "Click to type";
+            }
+          }
+
+          Label #RightMax {
+            Text: "/0";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+
+        // === BACK ===
+        Group #BackRow {
+          LayoutMode: Left;
+          Anchor: (Height: 30, Bottom: 4);
+
+          Label {
+            Text: "Back";
+            Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+            Anchor: (Width: 70, Vertical: 0, Right: 6);
+          }
+
+          Slider #BackSlider {
+            Min: 0;
+            Max: 0;
+            Step: 1;
+            Value: 0;
+            Style: @WpAutoClaimSliderStyle;
+            Anchor: (Height: 16, Vertical: 0, Right: 10);
+            FlexWeight: 1;
+            TooltipText: "Drag to change";
+          }
+
+          Group #BackValueBox {
+            LayoutMode: Left;
+            Background: (Color: #0f1525);
+            Padding: (Left: 6, Right: 6, Top: 2, Bottom: 2);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Width: 88, Height: 20, Vertical: 0, Right: 6);
+
+            TextField #BackValue {
+              Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+              FlexWeight: 1;
+              TooltipText: "Click to type";
+            }
+          }
+
+          Label #BackMax {
+            Text: "/0";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+
+        // === FORWARD ===
+        Group #ForwardRow {
+          LayoutMode: Left;
+          Anchor: (Height: 30, Bottom: 4);
+
+          Label {
+            Text: "Forward";
+            Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+            Anchor: (Width: 70, Vertical: 0, Right: 6);
+          }
+
+          Slider #ForwardSlider {
+            Min: 0;
+            Max: 0;
+            Step: 1;
+            Value: 0;
+            Style: @WpAutoClaimSliderStyle;
+            Anchor: (Height: 16, Vertical: 0, Right: 10);
+            FlexWeight: 1;
+            TooltipText: "Drag to change";
+          }
+
+          Group #ForwardValueBox {
+            LayoutMode: Left;
+            Background: (Color: #0f1525);
+            Padding: (Left: 6, Right: 6, Top: 2, Bottom: 2);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Width: 88, Height: 20, Vertical: 0, Right: 6);
+
+            TextField #ForwardValue {
+              Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+              FlexWeight: 1;
+              TooltipText: "Click to type";
+            }
+          }
+
+          Label #ForwardMax {
+            Text: "/0";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+
+        // === DOWN ===
+        Group #DownRow {
+          LayoutMode: Left;
+          Anchor: (Height: 30, Bottom: 4);
+
+          Label {
+            Text: "Down";
+            Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+            Anchor: (Width: 70, Vertical: 0, Right: 6);
+          }
+
+          Slider #DownSlider {
+            Min: 0;
+            Max: 0;
+            Step: 1;
+            Value: 0;
+            Style: @WpAutoClaimSliderStyle;
+            Anchor: (Height: 16, Vertical: 0, Right: 10);
+            FlexWeight: 1;
+            TooltipText: "Drag to change";
+          }
+
+          Group #DownValueBox {
+            LayoutMode: Left;
+            Background: (Color: #0f1525);
+            Padding: (Left: 6, Right: 6, Top: 2, Bottom: 2);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Width: 88, Height: 20, Vertical: 0, Right: 6);
+
+            TextField #DownValue {
+              Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+              FlexWeight: 1;
+              TooltipText: "Click to type";
+            }
+          }
+
+          Label #DownMax {
+            Text: "/0";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+
+        // === UP ===
+        Group #UpRow {
+          LayoutMode: Left;
+          Anchor: (Height: 30);
+
+          Label {
+            Text: "Up";
+            Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+            Anchor: (Width: 70, Vertical: 0, Right: 6);
+          }
+
+          Slider #UpSlider {
+            Min: 0;
+            Max: 0;
+            Step: 1;
+            Value: 0;
+            Style: @WpAutoClaimSliderStyle;
+            Anchor: (Height: 16, Vertical: 0, Right: 10);
+            FlexWeight: 1;
+            TooltipText: "Drag to change";
+          }
+
+          Group #UpValueBox {
+            LayoutMode: Left;
+            Background: (Color: #0f1525);
+            Padding: (Left: 6, Right: 6, Top: 2, Bottom: 2);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Width: 88, Height: 20, Vertical: 0, Right: 6);
+
+            TextField #UpValue {
+              Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true);
+              FlexWeight: 1;
+              TooltipText: "Click to type";
+            }
+          }
+
+          Label #UpMax {
+            Text: "/0";
+            Style: (FontSize: 10, TextColor: #888888);
+            Anchor: (Width: 46, Vertical: 0);
+          }
+        }
+      }
+
+      // Stats
+      Group #StatsRow {
+        LayoutMode: Left;
+        Anchor: (Height: 22, Bottom: 8);
+
+        Label {
+          Text: "Size:";
+          Style: (FontSize: 11, TextColor: #aaaaaa);
+          Anchor: (Width: 44, Vertical: 0, Right: 6);
+        }
+
+        Label #SizeValue {
+          Text: "0 x 0 x 0";
+          Style: (FontSize: 11, TextColor: #ffffff);
+          Anchor: (Width: 180, Vertical: 0, Right: 14);
+        }
+
+        Label {
+          Text: "Volume:";
+          Style: (FontSize: 11, TextColor: #aaaaaa);
+          Anchor: (Width: 54, Vertical: 0, Right: 6);
+        }
+
+        Label #VolumeValue {
+          Text: "0 / 0";
+          Style: (FontSize: 11, TextColor: #ffffff);
+          Anchor: (Vertical: 0);
+        }
+
+        Label { FlexWeight: 1; }
+      }
+
+      TextButton #CreateButton {
+        Text: "Create claim";
+        Style: $W.@WpButtonActiveStyle;
+        Anchor: (Height: 32);
+      }
+
+      Label {
+        Text: "Tip: Drag the bar or click the number box to type.";
+        Style: (FontSize: 10, TextColor: #888888);
+        Anchor: (Top: 6);
+      }
+    }
+  }
+}

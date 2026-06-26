@@ -1,0 +1,21 @@
+services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.49.1
+    container_name: hytale-cadvisor
+    restart: unless-stopped
+    privileged: true
+    expose:
+      - '8080'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - default
+
+networks:
+  default:
+    name: hytale-network
+    external: true
+

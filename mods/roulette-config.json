@@ -1,0 +1,88 @@
+{
+  "rewards": [
+    {
+      "id": "Rock_Gem_Diamond",
+      "name": "Diamond",
+      "minQuantity": 1,
+      "maxQuantity": 3,
+      "weight": 10.0
+    },
+    {
+      "id": "Ingredient_Bar_Gold",
+      "name": "Gold Ingot",
+      "minQuantity": 2,
+      "maxQuantity": 6,
+      "weight": 25.0
+    },
+    {
+      "id": "Rock_Gem_Emerald",
+      "name": "Emerald",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 15.0
+    },
+    {
+      "id": "Rock_Gem_Ruby",
+      "name": "Ruby",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 10.0
+    },
+    {
+      "id": "Rock_Gem_Sapphire",
+      "name": "Sapphire",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 10.0
+    },
+    {
+      "id": "Rock_Gem_Topaz",
+      "name": "Topaz",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 10.0
+    },
+    {
+      "id": "Rock_Gem_Voidstone",
+      "name": "Voidstone",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 10.0
+    },
+    {
+      "id": "Rock_Gem_Zephyr",
+      "name": "Zephyr Gem",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 10.0
+    },
+    {
+      "id": "Plant_Fruit_Azure",
+      "name": "Azure Fruit",
+      "minQuantity": 1,
+      "maxQuantity": 4,
+      "weight": 15.0
+    },
+    {
+      "id": "Bandage_Crude",
+      "name": "Crude Bandage",
+      "minQuantity": 1,
+      "maxQuantity": 5,
+      "weight": 20.0
+    },
+    {
+      "id": "Potion_Health",
+      "name": "Health Potion",
+      "minQuantity": 1,
+      "maxQuantity": 3,
+      "weight": 18.0
+    },
+    {
+      "id": "Potion_Poison",
+      "name": "Poison Potion",
+      "minQuantity": 1,
+      "maxQuantity": 2,
+      "weight": 12.0
+    }
+  ]
+}

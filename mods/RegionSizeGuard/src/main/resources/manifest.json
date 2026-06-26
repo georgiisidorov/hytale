@@ -1,0 +1,19 @@
+{
+  "Group": "Custom",
+  "Name": "RegionSizeGuard",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.regionsizeguard.RegionSizeGuardPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Ограничение размера приватных регионов: каждое измерение не более 25 блоков.",
+  "Dependencies": {
+    "dev.worldprotect:WorldProtect": "*"
+  },
+  "IncludesAssetPack": false
+}

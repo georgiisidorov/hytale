@@ -1,0 +1,27 @@
+# Поднимать после сети hytale-network и контейнера hytale-adminpanel.
+# Порты 80/443 должны быть свободны на хосте.
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: hytale-caddy
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  default:
+    name: hytale-network
+    external: true
+
+volumes:
+  caddy_data:
+  caddy_config:
+

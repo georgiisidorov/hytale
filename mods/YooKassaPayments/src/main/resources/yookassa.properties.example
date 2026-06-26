@@ -1,0 +1,17 @@
+# Скопируй в yookassa.properties в папке данных плагина или задай через env.
+# API: https://yookassa.ru/developers/api#create_payment
+
+shop_id=
+secret_key=
+# Куда вернёт ЮKassa после оплаты (страница вашего сайта)
+return_url=https://yookassa.ru/
+
+# Ниже — опционально, для legacy embedded-виджета (основной flow — redirect):
+# widget_base_url=https://pay.example.com
+# widget_bind=0.0.0.0
+# widget_port=8765
+
+# Курсы пополнения (или env MARKET_COINS_PER_RUB / MARKET_CRYSTALS_PER_RUB на сервере):
+# coins_per_rub=100
+# crystals_per_rub=1
+# wheel_spin_crystals=150

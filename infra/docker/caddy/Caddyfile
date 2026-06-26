@@ -1,0 +1,9 @@
+# HTTPS и прокси на контейнер админки (после DNS A/AAAA на этот сервер).
+# Игровые хосты (hytale.botcalendary.ru, prod-поддомен) настраиваются только в DNS + UDP-портах docker-compose сервера, не здесь.
+adminpanel.botcalendary.ru {
+	encode zstd gzip
+
+	# Next.js adminpanel (внутри docker-сети hytale-network)
+	reverse_proxy hytale-adminpanel:3001
+}
+

@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Метрики железа/ОС хоста (CPU/RAM/Disk/load) — нужны для главной страницы админки.
+  - job_name: node_exporter
+    static_configs:
+      - targets: ['hytale-node-exporter:9100']
+
+  # Метрики контейнеров (опционально)
+  - job_name: cadvisor
+    static_configs:
+      - targets: ['hytale-cadvisor:8080']
+
+  # Онлайн игроков из Hytale (плагин HytaleMetricsExporter на dev → /metrics). Prod без модов — экспортера нет.
+  - job_name: hytale_server
+    static_configs:
+      - targets: ['hytale-server-dev:9105']
+

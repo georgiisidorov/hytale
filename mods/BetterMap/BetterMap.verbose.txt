@@ -1,0 +1,908 @@
+Classfile jar:file:///home/projects/Hytale/BetterMap/BetterMap-1.3.3.jar!/dev/ninesliced/BetterMap.class
+  Last modified 28 февр. 2026 г.; size 9764 bytes
+  SHA-256 checksum f639920836373a50e519bc1ce8bcef8838c0f8b7986db4b0ae5b37076ca83606
+  Compiled from "BetterMap.java"
+public class dev.ninesliced.BetterMap extends com.hypixel.hytale.server.core.plugin.JavaPlugin
+  minor version: 0
+  major version: 69
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // dev/ninesliced/BetterMap
+  super_class: #2                         // com/hypixel/hytale/server/core/plugin/JavaPlugin
+  interfaces: 0, fields: 4, methods: 7, attributes: 3
+Constant pool:
+    #1 = Methodref          #2.#3         // com/hypixel/hytale/server/core/plugin/JavaPlugin."<init>":(Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;)V
+    #2 = Class              #4            // com/hypixel/hytale/server/core/plugin/JavaPlugin
+    #3 = NameAndType        #5:#6         // "<init>":(Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;)V
+    #4 = Utf8               com/hypixel/hytale/server/core/plugin/JavaPlugin
+    #5 = Utf8               <init>
+    #6 = Utf8               (Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;)V
+    #7 = Fieldref           #8.#9         // dev/ninesliced/BetterMap.instance:Ldev/ninesliced/BetterMap;
+    #8 = Class              #10           // dev/ninesliced/BetterMap
+    #9 = NameAndType        #11:#12       // instance:Ldev/ninesliced/BetterMap;
+   #10 = Utf8               dev/ninesliced/BetterMap
+   #11 = Utf8               instance
+   #12 = Utf8               Ldev/ninesliced/BetterMap;
+   #13 = Fieldref           #8.#14        // dev/ninesliced/BetterMap.locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+   #14 = NameAndType        #15:#16       // locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+   #15 = Utf8               locationHudProvider
+   #16 = Utf8               Ldev/ninesliced/providers/LocationHudProvider;
+   #17 = Fieldref           #8.#18        // dev/ninesliced/BetterMap.explorationComponentType:Lcom/hypixel/hytale/component/ComponentType;
+   #18 = NameAndType        #19:#20       // explorationComponentType:Lcom/hypixel/hytale/component/ComponentType;
+   #19 = Utf8               explorationComponentType
+   #20 = Utf8               Lcom/hypixel/hytale/component/ComponentType;
+   #21 = Class              #22           // dev/ninesliced/hstats/HStats
+   #22 = Utf8               dev/ninesliced/hstats/HStats
+   #23 = String             #24           // 80d0e1dd-0f46-4c12-8f71-f9cae6e9f0f4
+   #24 = Utf8               80d0e1dd-0f46-4c12-8f71-f9cae6e9f0f4
+   #25 = String             #26           // 1.3.3
+   #26 = Utf8               1.3.3
+   #27 = Methodref          #21.#28       // dev/ninesliced/hstats/HStats."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+   #28 = NameAndType        #5:#29        // "<init>":(Ljava/lang/String;Ljava/lang/String;)V
+   #29 = Utf8               (Ljava/lang/String;Ljava/lang/String;)V
+   #30 = Fieldref           #8.#31        // dev/ninesliced/BetterMap.LOGGER:Ljava/util/logging/Logger;
+   #31 = NameAndType        #32:#33       // LOGGER:Ljava/util/logging/Logger;
+   #32 = Utf8               LOGGER
+   #33 = Utf8               Ljava/util/logging/Logger;
+   #34 = String             #35           // ========================================
+   #35 = Utf8               ========================================
+   #36 = Methodref          #37.#38       // java/util/logging/Logger.info:(Ljava/lang/String;)V
+   #37 = Class              #39           // java/util/logging/Logger
+   #38 = NameAndType        #40:#41       // info:(Ljava/lang/String;)V
+   #39 = Utf8               java/util/logging/Logger
+   #40 = Utf8               info
+   #41 = Utf8               (Ljava/lang/String;)V
+   #42 = String             #43           // Setting up Persistent Map Exploration Mod
+   #43 = Utf8               Setting up Persistent Map Exploration Mod
+   #44 = Methodref          #8.#45        // dev/ninesliced/BetterMap.getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+   #45 = NameAndType        #46:#47       // getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+   #46 = Utf8               getEntityStoreRegistry
+   #47 = Utf8               ()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+   #48 = Class              #49           // dev/ninesliced/components/ExplorationComponent
+   #49 = Utf8               dev/ninesliced/components/ExplorationComponent
+   #50 = String             #51           // ExplorationData
+   #51 = Utf8               ExplorationData
+   #52 = Fieldref           #48.#53       // dev/ninesliced/components/ExplorationComponent.CODEC:Lcom/hypixel/hytale/codec/builder/BuilderCodec;
+   #53 = NameAndType        #54:#55       // CODEC:Lcom/hypixel/hytale/codec/builder/BuilderCodec;
+   #54 = Utf8               CODEC
+   #55 = Utf8               Lcom/hypixel/hytale/codec/builder/BuilderCodec;
+   #56 = Methodref          #57.#58       // com/hypixel/hytale/component/ComponentRegistryProxy.registerComponent:(Ljava/lang/Class;Ljava/lang/String;Lcom/hypixel/hytale/codec/builder/BuilderCodec;)Lcom/hypixel/hytale/component/ComponentType;
+   #57 = Class              #59           // com/hypixel/hytale/component/ComponentRegistryProxy
+   #58 = NameAndType        #60:#61       // registerComponent:(Ljava/lang/Class;Ljava/lang/String;Lcom/hypixel/hytale/codec/builder/BuilderCodec;)Lcom/hypixel/hytale/component/ComponentType;
+   #59 = Utf8               com/hypixel/hytale/component/ComponentRegistryProxy
+   #60 = Utf8               registerComponent
+   #61 = Utf8               (Ljava/lang/Class;Ljava/lang/String;Lcom/hypixel/hytale/codec/builder/BuilderCodec;)Lcom/hypixel/hytale/component/ComponentType;
+   #62 = String             #63           // Exploration Component: REGISTERED
+   #63 = Utf8               Exploration Component: REGISTERED
+   #64 = Class              #65           // dev/ninesliced/exploration/ExplorationPlayerSetupSystem
+   #65 = Utf8               dev/ninesliced/exploration/ExplorationPlayerSetupSystem
+   #66 = Methodref          #64.#67       // dev/ninesliced/exploration/ExplorationPlayerSetupSystem."<init>":()V
+   #67 = NameAndType        #5:#68        // "<init>":()V
+   #68 = Utf8               ()V
+   #69 = Methodref          #57.#70       // com/hypixel/hytale/component/ComponentRegistryProxy.registerSystem:(Lcom/hypixel/hytale/component/system/ISystem;)V
+   #70 = NameAndType        #71:#72       // registerSystem:(Lcom/hypixel/hytale/component/system/ISystem;)V
+   #71 = Utf8               registerSystem
+   #72 = Utf8               (Lcom/hypixel/hytale/component/system/ISystem;)V
+   #73 = String             #74           // Exploration Setup System: REGISTERED
+   #74 = Utf8               Exploration Setup System: REGISTERED
+   #75 = String             #76           // .
+   #76 = Utf8               .
+   #77 = Class              #78           // java/lang/String
+   #78 = Utf8               java/lang/String
+   #79 = Methodref          #80.#81       // java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+   #80 = Class              #82           // java/nio/file/Paths
+   #81 = NameAndType        #83:#84       // get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+   #82 = Utf8               java/nio/file/Paths
+   #83 = Utf8               get
+   #84 = Utf8               (Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+   #85 = InterfaceMethodref #86.#87       // java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+   #86 = Class              #88           // java/nio/file/Path
+   #87 = NameAndType        #89:#90       // toAbsolutePath:()Ljava/nio/file/Path;
+   #88 = Utf8               java/nio/file/Path
+   #89 = Utf8               toAbsolutePath
+   #90 = Utf8               ()Ljava/nio/file/Path;
+   #91 = InterfaceMethodref #86.#92       // java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+   #92 = NameAndType        #93:#90       // normalize:()Ljava/nio/file/Path;
+   #93 = Utf8               normalize
+   #94 = Methodref          #95.#96       // dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+   #95 = Class              #97           // dev/ninesliced/configs/ModConfig
+   #96 = NameAndType        #98:#99       // getInstance:()Ldev/ninesliced/configs/ModConfig;
+   #97 = Utf8               dev/ninesliced/configs/ModConfig
+   #98 = Utf8               getInstance
+   #99 = Utf8               ()Ldev/ninesliced/configs/ModConfig;
+  #100 = Methodref          #95.#101      // dev/ninesliced/configs/ModConfig.initialize:(Ljava/nio/file/Path;)V
+  #101 = NameAndType        #102:#103     // initialize:(Ljava/nio/file/Path;)V
+  #102 = Utf8               initialize
+  #103 = Utf8               (Ljava/nio/file/Path;)V
+  #104 = Methodref          #95.#105      // dev/ninesliced/configs/ModConfig.getMaxPersonalMarkersPerPlayer:()I
+  #105 = NameAndType        #106:#107     // getMaxPersonalMarkersPerPlayer:()I
+  #106 = Utf8               getMaxPersonalMarkersPerPlayer
+  #107 = Utf8               ()I
+  #108 = Methodref          #95.#109      // dev/ninesliced/configs/ModConfig.getMaxSharedMarkersPerPlayer:()I
+  #109 = NameAndType        #110:#107     // getMaxSharedMarkersPerPlayer:()I
+  #110 = Utf8               getMaxSharedMarkersPerPlayer
+  #111 = Methodref          #112.#113     // dev/ninesliced/utils/WaypointLimitUtil.applyOverridesToAllWorlds:(II)V
+  #112 = Class              #114          // dev/ninesliced/utils/WaypointLimitUtil
+  #113 = NameAndType        #115:#116     // applyOverridesToAllWorlds:(II)V
+  #114 = Utf8               dev/ninesliced/utils/WaypointLimitUtil
+  #115 = Utf8               applyOverridesToAllWorlds
+  #116 = Utf8               (II)V
+  #117 = String             #118          // mods
+  #118 = Utf8               mods
+  #119 = InterfaceMethodref #86.#120      // java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+  #120 = NameAndType        #121:#122     // resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+  #121 = Utf8               resolve
+  #122 = Utf8               (Ljava/lang/String;)Ljava/nio/file/Path;
+  #123 = String             #124          // BetterMap
+  #124 = Utf8               BetterMap
+  #125 = Methodref          #126.#101     // dev/ninesliced/managers/PlayerConfigManager.initialize:(Ljava/nio/file/Path;)V
+  #126 = Class              #127          // dev/ninesliced/managers/PlayerConfigManager
+  #127 = Utf8               dev/ninesliced/managers/PlayerConfigManager
+  #128 = String             #129          // Player Config Manager: INITIALIZED
+  #129 = Utf8               Player Config Manager: INITIALIZED
+  #130 = Methodref          #131.#132     // dev/ninesliced/managers/MapPrivacyManager.getInstance:()Ldev/ninesliced/managers/MapPrivacyManager;
+  #131 = Class              #133          // dev/ninesliced/managers/MapPrivacyManager
+  #132 = NameAndType        #98:#134      // getInstance:()Ldev/ninesliced/managers/MapPrivacyManager;
+  #133 = Utf8               dev/ninesliced/managers/MapPrivacyManager
+  #134 = Utf8               ()Ldev/ninesliced/managers/MapPrivacyManager;
+  #135 = Methodref          #131.#136     // dev/ninesliced/managers/MapPrivacyManager.initialize:()V
+  #136 = NameAndType        #102:#68      // initialize:()V
+  #137 = String             #138          // MapPrivacyManager: INITIALIZED
+  #138 = Utf8               MapPrivacyManager: INITIALIZED
+  #139 = Methodref          #140.#141     // dev/ninesliced/managers/WarpPrivacyManager.getInstance:()Ldev/ninesliced/managers/WarpPrivacyManager;
+  #140 = Class              #142          // dev/ninesliced/managers/WarpPrivacyManager
+  #141 = NameAndType        #98:#143      // getInstance:()Ldev/ninesliced/managers/WarpPrivacyManager;
+  #142 = Utf8               dev/ninesliced/managers/WarpPrivacyManager
+  #143 = Utf8               ()Ldev/ninesliced/managers/WarpPrivacyManager;
+  #144 = Methodref          #140.#136     // dev/ninesliced/managers/WarpPrivacyManager.initialize:()V
+  #145 = String             #146          // WarpPrivacyManager: INITIALIZED
+  #146 = Utf8               WarpPrivacyManager: INITIALIZED
+  #147 = Methodref          #148.#149     // dev/ninesliced/managers/PoiPrivacyManager.getInstance:()Ldev/ninesliced/managers/PoiPrivacyManager;
+  #148 = Class              #150          // dev/ninesliced/managers/PoiPrivacyManager
+  #149 = NameAndType        #98:#151      // getInstance:()Ldev/ninesliced/managers/PoiPrivacyManager;
+  #150 = Utf8               dev/ninesliced/managers/PoiPrivacyManager
+  #151 = Utf8               ()Ldev/ninesliced/managers/PoiPrivacyManager;
+  #152 = Methodref          #148.#136     // dev/ninesliced/managers/PoiPrivacyManager.initialize:()V
+  #153 = String             #154          // PoiPrivacyManager: INITIALIZED
+  #154 = Utf8               PoiPrivacyManager: INITIALIZED
+  #155 = Methodref          #156.#157     // dev/ninesliced/managers/UserMarkerProviderManager.getInstance:()Ldev/ninesliced/managers/UserMarkerProviderManager;
+  #156 = Class              #158          // dev/ninesliced/managers/UserMarkerProviderManager
+  #157 = NameAndType        #98:#159      // getInstance:()Ldev/ninesliced/managers/UserMarkerProviderManager;
+  #158 = Utf8               dev/ninesliced/managers/UserMarkerProviderManager
+  #159 = Utf8               ()Ldev/ninesliced/managers/UserMarkerProviderManager;
+  #160 = Methodref          #156.#136     // dev/ninesliced/managers/UserMarkerProviderManager.initialize:()V
+  #161 = String             #162          // UserMarkerProviderManager: INITIALIZED
+  #162 = Utf8               UserMarkerProviderManager: INITIALIZED
+  #163 = Methodref          #95.#164      // dev/ninesliced/configs/ModConfig.getConfigDirectory:()Ljava/nio/file/Path;
+  #164 = NameAndType        #165:#90      // getConfigDirectory:()Ljava/nio/file/Path;
+  #165 = Utf8               getConfigDirectory
+  #166 = Methodref          #167.#101     // dev/ninesliced/managers/WaypointManager.initialize:(Ljava/nio/file/Path;)V
+  #167 = Class              #168          // dev/ninesliced/managers/WaypointManager
+  #168 = Utf8               dev/ninesliced/managers/WaypointManager
+  #169 = String             #170          // Waypoint Persistence: INITIALIZED
+  #170 = Utf8               Waypoint Persistence: INITIALIZED
+  #171 = Methodref          #172.#173     // dev/ninesliced/managers/ExplorationManager.config:()Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #172 = Class              #174          // dev/ninesliced/managers/ExplorationManager
+  #173 = NameAndType        #175:#176     // config:()Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #174 = Utf8               dev/ninesliced/managers/ExplorationManager
+  #175 = Utf8               config
+  #176 = Utf8               ()Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #177 = Float              0.5f
+  #178 = Methodref          #179.#180     // dev/ninesliced/managers/ExplorationManager$ConfigBuilder.updateRate:(F)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #179 = Class              #181          // dev/ninesliced/managers/ExplorationManager$ConfigBuilder
+  #180 = NameAndType        #182:#183     // updateRate:(F)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #181 = Utf8               dev/ninesliced/managers/ExplorationManager$ConfigBuilder
+  #182 = Utf8               updateRate
+  #183 = Utf8               (F)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #184 = String             #185          // exploration_data
+  #185 = Utf8               exploration_data
+  #186 = Methodref          #179.#187     // dev/ninesliced/managers/ExplorationManager$ConfigBuilder.enablePersistence:(Ljava/lang/String;)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #187 = NameAndType        #188:#189     // enablePersistence:(Ljava/lang/String;)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #188 = Utf8               enablePersistence
+  #189 = Utf8               (Ljava/lang/String;)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+  #190 = Methodref          #179.#191     // dev/ninesliced/managers/ExplorationManager$ConfigBuilder.build:()Ldev/ninesliced/managers/ExplorationManager;
+  #191 = NameAndType        #192:#193     // build:()Ldev/ninesliced/managers/ExplorationManager;
+  #192 = Utf8               build
+  #193 = Utf8               ()Ldev/ninesliced/managers/ExplorationManager;
+  #194 = String             #195          // Exploration Manager: INITIALIZED
+  #195 = Utf8               Exploration Manager: INITIALIZED
+  #196 = Methodref          #197.#198     // dev/ninesliced/exploration/ExplorationTicker.getInstance:()Ldev/ninesliced/exploration/ExplorationTicker;
+  #197 = Class              #199          // dev/ninesliced/exploration/ExplorationTicker
+  #198 = NameAndType        #98:#200      // getInstance:()Ldev/ninesliced/exploration/ExplorationTicker;
+  #199 = Utf8               dev/ninesliced/exploration/ExplorationTicker
+  #200 = Utf8               ()Ldev/ninesliced/exploration/ExplorationTicker;
+  #201 = Methodref          #197.#202     // dev/ninesliced/exploration/ExplorationTicker.start:()V
+  #202 = NameAndType        #203:#68      // start:()V
+  #203 = Utf8               start
+  #204 = String             #205          // Exploration Ticker: STARTED
+  #205 = Utf8               Exploration Ticker: STARTED
+  #206 = Methodref          #8.#207       // dev/ninesliced/BetterMap.getCommandRegistry:()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+  #207 = NameAndType        #208:#209     // getCommandRegistry:()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+  #208 = Utf8               getCommandRegistry
+  #209 = Utf8               ()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+  #210 = Class              #211          // dev/ninesliced/commands/bettermap/BetterMapCommand
+  #211 = Utf8               dev/ninesliced/commands/bettermap/BetterMapCommand
+  #212 = Methodref          #210.#67      // dev/ninesliced/commands/bettermap/BetterMapCommand."<init>":()V
+  #213 = Methodref          #214.#215     // com/hypixel/hytale/server/core/command/system/CommandRegistry.registerCommand:(Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+  #214 = Class              #216          // com/hypixel/hytale/server/core/command/system/CommandRegistry
+  #215 = NameAndType        #217:#218     // registerCommand:(Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+  #216 = Utf8               com/hypixel/hytale/server/core/command/system/CommandRegistry
+  #217 = Utf8               registerCommand
+  #218 = Utf8               (Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+  #219 = Class              #220          // dev/ninesliced/commands/waypoint/WaypointCommand
+  #220 = Utf8               dev/ninesliced/commands/waypoint/WaypointCommand
+  #221 = Methodref          #219.#67      // dev/ninesliced/commands/waypoint/WaypointCommand."<init>":()V
+  #222 = String             #223          // Mod Command: REGISTERED
+  #223 = Utf8               Mod Command: REGISTERED
+  #224 = Class              #225          // dev/ninesliced/providers/LocationHudProvider
+  #225 = Utf8               dev/ninesliced/providers/LocationHudProvider
+  #226 = Methodref          #224.#67      // dev/ninesliced/providers/LocationHudProvider."<init>":()V
+  #227 = Class              #228          // dev/ninesliced/systems/LocationSystem
+  #228 = Utf8               dev/ninesliced/systems/LocationSystem
+  #229 = Methodref          #227.#67      // dev/ninesliced/systems/LocationSystem."<init>":()V
+  #230 = String             #231          // Location Display: INITIALIZED
+  #231 = Utf8               Location Display: INITIALIZED
+  #232 = Methodref          #233.#234     // dev/ninesliced/managers/PlayerRadarManager.getInstance:()Ldev/ninesliced/managers/PlayerRadarManager;
+  #233 = Class              #235          // dev/ninesliced/managers/PlayerRadarManager
+  #234 = NameAndType        #98:#236      // getInstance:()Ldev/ninesliced/managers/PlayerRadarManager;
+  #235 = Utf8               dev/ninesliced/managers/PlayerRadarManager
+  #236 = Utf8               ()Ldev/ninesliced/managers/PlayerRadarManager;
+  #237 = String             #238          // Player Radar: INITIALIZED
+  #238 = Utf8               Player Radar: INITIALIZED
+  #239 = Methodref          #240.#241     // dev/ninesliced/managers/WorldBorderManager.getInstance:()Ldev/ninesliced/managers/WorldBorderManager;
+  #240 = Class              #242          // dev/ninesliced/managers/WorldBorderManager
+  #241 = NameAndType        #98:#243      // getInstance:()Ldev/ninesliced/managers/WorldBorderManager;
+  #242 = Utf8               dev/ninesliced/managers/WorldBorderManager
+  #243 = Utf8               ()Ldev/ninesliced/managers/WorldBorderManager;
+  #244 = String             #245          // World Border Manager: INITIALIZED
+  #245 = Utf8               World Border Manager: INITIALIZED
+  #246 = Methodref          #247.#248     // dev/ninesliced/managers/MapAnchorManager.getInstance:()Ldev/ninesliced/managers/MapAnchorManager;
+  #247 = Class              #249          // dev/ninesliced/managers/MapAnchorManager
+  #248 = NameAndType        #98:#250      // getInstance:()Ldev/ninesliced/managers/MapAnchorManager;
+  #249 = Utf8               dev/ninesliced/managers/MapAnchorManager
+  #250 = Utf8               ()Ldev/ninesliced/managers/MapAnchorManager;
+  #251 = Methodref          #247.#136     // dev/ninesliced/managers/MapAnchorManager.initialize:()V
+  #252 = String             #253          // Map Anchor Manager: INITIALIZED (Anchor UI on MapServerContent)
+  #253 = Utf8               Map Anchor Manager: INITIALIZED (Anchor UI on MapServerContent)
+  #254 = Methodref          #8.#255       // dev/ninesliced/BetterMap.getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+  #255 = NameAndType        #256:#257     // getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+  #256 = Utf8               getEventRegistry
+  #257 = Utf8               ()Lcom/hypixel/hytale/event/EventRegistry;
+  #258 = Class              #259          // com/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent
+  #259 = Utf8               com/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent
+  #260 = InvokeDynamic      #0:#261       // #0:accept:()Ljava/util/function/Consumer;
+  #261 = NameAndType        #262:#263     // accept:()Ljava/util/function/Consumer;
+  #262 = Utf8               accept
+  #263 = Utf8               ()Ljava/util/function/Consumer;
+  #264 = Methodref          #265.#266     // com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+  #265 = Class              #267          // com/hypixel/hytale/event/EventRegistry
+  #266 = NameAndType        #268:#269     // registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+  #267 = Utf8               com/hypixel/hytale/event/EventRegistry
+  #268 = Utf8               registerGlobal
+  #269 = Utf8               (Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+  #270 = Class              #271          // com/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent
+  #271 = Utf8               com/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent
+  #272 = InvokeDynamic      #1:#261       // #1:accept:()Ljava/util/function/Consumer;
+  #273 = Class              #274          // com/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent
+  #274 = Utf8               com/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent
+  #275 = InvokeDynamic      #2:#261       // #2:accept:()Ljava/util/function/Consumer;
+  #276 = Class              #277          // com/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent
+  #277 = Utf8               com/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent
+  #278 = InvokeDynamic      #3:#261       // #3:accept:()Ljava/util/function/Consumer;
+  #279 = String             #280          // Exploration Events: REGISTERED
+  #280 = Utf8               Exploration Events: REGISTERED
+  #281 = String             #282          // Plugin Setup Complete!
+  #282 = Utf8               Plugin Setup Complete!
+  #283 = String             #284          // Players will now have persistent
+  #284 = Utf8               Players will now have persistent
+  #285 = String             #286          // exploration tracking on the world map
+  #286 = Utf8               exploration tracking on the world map
+  #287 = Class              #288          // java/lang/Exception
+  #288 = Utf8               java/lang/Exception
+  #289 = Methodref          #287.#290     // java/lang/Exception.getMessage:()Ljava/lang/String;
+  #290 = NameAndType        #291:#292     // getMessage:()Ljava/lang/String;
+  #291 = Utf8               getMessage
+  #292 = Utf8               ()Ljava/lang/String;
+  #293 = InvokeDynamic      #4:#294       // #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #294 = NameAndType        #295:#296     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+  #295 = Utf8               makeConcatWithConstants
+  #296 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #297 = Methodref          #37.#298      // java/util/logging/Logger.severe:(Ljava/lang/String;)V
+  #298 = NameAndType        #299:#41      // severe:(Ljava/lang/String;)V
+  #299 = Utf8               severe
+  #300 = Methodref          #287.#301     // java/lang/Exception.printStackTrace:()V
+  #301 = NameAndType        #302:#68      // printStackTrace:()V
+  #302 = Utf8               printStackTrace
+  #303 = Class              #304          // java/lang/RuntimeException
+  #304 = Utf8               java/lang/RuntimeException
+  #305 = String             #306          // Plugin initialization failed
+  #306 = Utf8               Plugin initialization failed
+  #307 = Methodref          #303.#308     // java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #308 = NameAndType        #5:#309       // "<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+  #309 = Utf8               (Ljava/lang/String;Ljava/lang/Throwable;)V
+  #310 = String             #311          // Shutting down BetterMap plugin...
+  #311 = Utf8               Shutting down BetterMap plugin...
+  #312 = Methodref          #197.#313     // dev/ninesliced/exploration/ExplorationTicker.stop:()V
+  #313 = NameAndType        #314:#68      // stop:()V
+  #314 = Utf8               stop
+  #315 = Methodref          #172.#316     // dev/ninesliced/managers/ExplorationManager.getInstance:()Ldev/ninesliced/managers/ExplorationManager;
+  #316 = NameAndType        #98:#193      // getInstance:()Ldev/ninesliced/managers/ExplorationManager;
+  #317 = Methodref          #172.#318     // dev/ninesliced/managers/ExplorationManager.shutdown:()V
+  #318 = NameAndType        #319:#68      // shutdown:()V
+  #319 = Utf8               shutdown
+  #320 = Methodref          #224.#321     // dev/ninesliced/providers/LocationHudProvider.cleanup:()V
+  #321 = NameAndType        #322:#68      // cleanup:()V
+  #322 = Utf8               cleanup
+  #323 = Methodref          #233.#321     // dev/ninesliced/managers/PlayerRadarManager.cleanup:()V
+  #324 = Methodref          #240.#321     // dev/ninesliced/managers/WorldBorderManager.cleanup:()V
+  #325 = Methodref          #247.#321     // dev/ninesliced/managers/MapAnchorManager.cleanup:()V
+  #326 = Methodref          #327.#328     // dev/ninesliced/managers/ChunkStreamingManager.getInstance:()Ldev/ninesliced/managers/ChunkStreamingManager;
+  #327 = Class              #329          // dev/ninesliced/managers/ChunkStreamingManager
+  #328 = NameAndType        #98:#330      // getInstance:()Ldev/ninesliced/managers/ChunkStreamingManager;
+  #329 = Utf8               dev/ninesliced/managers/ChunkStreamingManager
+  #330 = Utf8               ()Ldev/ninesliced/managers/ChunkStreamingManager;
+  #331 = Methodref          #327.#321     // dev/ninesliced/managers/ChunkStreamingManager.cleanup:()V
+  #332 = String             #333          // BetterMap plugin shutdown complete.
+  #333 = Utf8               BetterMap plugin shutdown complete.
+  #334 = Methodref          #2.#318       // com/hypixel/hytale/server/core/plugin/JavaPlugin.shutdown:()V
+  #335 = Methodref          #336.#337     // java/lang/Class.getName:()Ljava/lang/String;
+  #336 = Class              #338          // java/lang/Class
+  #337 = NameAndType        #339:#292     // getName:()Ljava/lang/String;
+  #338 = Utf8               java/lang/Class
+  #339 = Utf8               getName
+  #340 = Methodref          #37.#341      // java/util/logging/Logger.getLogger:(Ljava/lang/String;)Ljava/util/logging/Logger;
+  #341 = NameAndType        #342:#343     // getLogger:(Ljava/lang/String;)Ljava/util/logging/Logger;
+  #342 = Utf8               getLogger
+  #343 = Utf8               (Ljava/lang/String;)Ljava/util/logging/Logger;
+  #344 = Utf8               Signature
+  #345 = Utf8               Lcom/hypixel/hytale/component/ComponentType<Lcom/hypixel/hytale/server/core/universe/world/storage/EntityStore;Ldev/ninesliced/components/ExplorationComponent;>;
+  #346 = Utf8               Code
+  #347 = Utf8               LineNumberTable
+  #348 = Utf8               LocalVariableTable
+  #349 = Utf8               this
+  #350 = Utf8               init
+  #351 = Utf8               Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;
+  #352 = Utf8               RuntimeVisibleParameterAnnotations
+  #353 = Utf8               Ljavax/annotation/Nonnull;
+  #354 = Utf8               ()Ldev/ninesliced/BetterMap;
+  #355 = Utf8               getLocationHudProvider
+  #356 = Utf8               ()Ldev/ninesliced/providers/LocationHudProvider;
+  #357 = Utf8               getExplorationComponentType
+  #358 = Utf8               ()Lcom/hypixel/hytale/component/ComponentType;
+  #359 = Utf8               ()Lcom/hypixel/hytale/component/ComponentType<Lcom/hypixel/hytale/server/core/universe/world/storage/EntityStore;Ldev/ninesliced/components/ExplorationComponent;>;
+  #360 = Utf8               setup
+  #361 = Utf8               serverRoot
+  #362 = Utf8               Ljava/nio/file/Path;
+  #363 = Utf8               configDir
+  #364 = Utf8               e
+  #365 = Utf8               Ljava/lang/Exception;
+  #366 = Utf8               StackMapTable
+  #367 = Utf8               <clinit>
+  #368 = Utf8               SourceFile
+  #369 = Utf8               BetterMap.java
+  #370 = Utf8               BootstrapMethods
+  #371 = MethodType         #372          //  (Ljava/lang/Object;)V
+  #372 = Utf8               (Ljava/lang/Object;)V
+  #373 = MethodHandle       6:#374        // REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerReady:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+  #374 = Methodref          #375.#376     // dev/ninesliced/listeners/ExplorationListener.onPlayerReady:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+  #375 = Class              #377          // dev/ninesliced/listeners/ExplorationListener
+  #376 = NameAndType        #378:#379     // onPlayerReady:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+  #377 = Utf8               dev/ninesliced/listeners/ExplorationListener
+  #378 = Utf8               onPlayerReady
+  #379 = Utf8               (Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+  #380 = MethodType         #379          //  (Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+  #381 = MethodHandle       6:#382        // REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerQuit:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+  #382 = Methodref          #375.#383     // dev/ninesliced/listeners/ExplorationListener.onPlayerQuit:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+  #383 = NameAndType        #384:#385     // onPlayerQuit:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+  #384 = Utf8               onPlayerQuit
+  #385 = Utf8               (Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+  #386 = MethodType         #385          //  (Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+  #387 = MethodHandle       6:#388        // REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerJoinWorld:(Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+  #388 = Methodref          #375.#389     // dev/ninesliced/listeners/ExplorationListener.onPlayerJoinWorld:(Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+  #389 = NameAndType        #390:#391     // onPlayerJoinWorld:(Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+  #390 = Utf8               onPlayerJoinWorld
+  #391 = Utf8               (Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+  #392 = MethodType         #391          //  (Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+  #393 = MethodHandle       6:#394        // REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerLeaveWorld:(Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+  #394 = Methodref          #375.#395     // dev/ninesliced/listeners/ExplorationListener.onPlayerLeaveWorld:(Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+  #395 = NameAndType        #396:#397     // onPlayerLeaveWorld:(Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+  #396 = Utf8               onPlayerLeaveWorld
+  #397 = Utf8               (Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+  #398 = MethodType         #397          //  (Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+  #399 = String             #400          // Failed to setup Exploration Plugin: \u0001
+  #400 = Utf8               Failed to setup Exploration Plugin: \u0001
+  #401 = MethodHandle       6:#402        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #402 = Methodref          #403.#404     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #403 = Class              #405          // java/lang/invoke/LambdaMetafactory
+  #404 = NameAndType        #406:#407     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #405 = Utf8               java/lang/invoke/LambdaMetafactory
+  #406 = Utf8               metafactory
+  #407 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #408 = MethodHandle       6:#409        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #409 = Methodref          #410.#411     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #410 = Class              #412          // java/lang/invoke/StringConcatFactory
+  #411 = NameAndType        #295:#413     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #412 = Utf8               java/lang/invoke/StringConcatFactory
+  #413 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #414 = Utf8               InnerClasses
+  #415 = Utf8               ConfigBuilder
+  #416 = Class              #417          // java/lang/invoke/MethodHandles$Lookup
+  #417 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #418 = Class              #419          // java/lang/invoke/MethodHandles
+  #419 = Utf8               java/lang/invoke/MethodHandles
+  #420 = Utf8               Lookup
+{
+  private static final java.util.logging.Logger LOGGER;
+    descriptor: Ljava/util/logging/Logger;
+    flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+
+  private static dev.ninesliced.BetterMap instance;
+    descriptor: Ldev/ninesliced/BetterMap;
+    flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+
+  private com.hypixel.hytale.component.ComponentType<com.hypixel.hytale.server.core.universe.world.storage.EntityStore, dev.ninesliced.components.ExplorationComponent> explorationComponentType;
+    descriptor: Lcom/hypixel/hytale/component/ComponentType;
+    flags: (0x0002) ACC_PRIVATE
+    Signature: #345                         // Lcom/hypixel/hytale/component/ComponentType<Lcom/hypixel/hytale/server/core/universe/world/storage/EntityStore;Ldev/ninesliced/components/ExplorationComponent;>;
+
+  private dev.ninesliced.providers.LocationHudProvider locationHudProvider;
+    descriptor: Ldev/ninesliced/providers/LocationHudProvider;
+    flags: (0x0002) ACC_PRIVATE
+
+  public dev.ninesliced.BetterMap(com.hypixel.hytale.server.core.plugin.JavaPluginInit);
+    descriptor: (Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method com/hypixel/hytale/server/core/plugin/JavaPlugin."<init>":(Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;)V
+         5: return
+      LineNumberTable:
+        line 55: 0
+        line 56: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Ldev/ninesliced/BetterMap;
+            0       6     1  init   Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;
+    RuntimeVisibleParameterAnnotations:
+      parameter 0:
+        0: #353()
+          javax.annotation.Nonnull
+
+  public static dev.ninesliced.BetterMap get();
+    descriptor: ()Ldev/ninesliced/BetterMap;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: getstatic     #7                  // Field instance:Ldev/ninesliced/BetterMap;
+         3: areturn
+      LineNumberTable:
+        line 64: 0
+
+  public dev.ninesliced.providers.LocationHudProvider getLocationHudProvider();
+    descriptor: ()Ldev/ninesliced/providers/LocationHudProvider;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+         4: areturn
+      LineNumberTable:
+        line 73: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ldev/ninesliced/BetterMap;
+
+  public com.hypixel.hytale.component.ComponentType<com.hypixel.hytale.server.core.universe.world.storage.EntityStore, dev.ninesliced.components.ExplorationComponent> getExplorationComponentType();
+    descriptor: ()Lcom/hypixel/hytale/component/ComponentType;
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #17                 // Field explorationComponentType:Lcom/hypixel/hytale/component/ComponentType;
+         4: areturn
+      LineNumberTable:
+        line 82: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Ldev/ninesliced/BetterMap;
+    Signature: #359                         // ()Lcom/hypixel/hytale/component/ComponentType<Lcom/hypixel/hytale/server/core/universe/world/storage/EntityStore;Ldev/ninesliced/components/ExplorationComponent;>;
+
+  protected void setup();
+    descriptor: ()V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=5, locals=3, args_size=1
+         0: aload_0
+         1: putstatic     #7                  // Field instance:Ldev/ninesliced/BetterMap;
+         4: new           #21                 // class dev/ninesliced/hstats/HStats
+         7: dup
+         8: ldc           #23                 // String 80d0e1dd-0f46-4c12-8f71-f9cae6e9f0f4
+        10: ldc           #25                 // String 1.3.3
+        12: invokespecial #27                 // Method dev/ninesliced/hstats/HStats."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        15: pop
+        16: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        19: ldc           #34                 // String ========================================
+        21: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        24: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        27: ldc           #42                 // String Setting up Persistent Map Exploration Mod
+        29: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        32: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        35: ldc           #34                 // String ========================================
+        37: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        40: aload_0
+        41: aload_0
+        42: invokevirtual #44                 // Method getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+        45: ldc           #48                 // class dev/ninesliced/components/ExplorationComponent
+        47: ldc           #50                 // String ExplorationData
+        49: getstatic     #52                 // Field dev/ninesliced/components/ExplorationComponent.CODEC:Lcom/hypixel/hytale/codec/builder/BuilderCodec;
+        52: invokevirtual #56                 // Method com/hypixel/hytale/component/ComponentRegistryProxy.registerComponent:(Ljava/lang/Class;Ljava/lang/String;Lcom/hypixel/hytale/codec/builder/BuilderCodec;)Lcom/hypixel/hytale/component/ComponentType;
+        55: putfield      #17                 // Field explorationComponentType:Lcom/hypixel/hytale/component/ComponentType;
+        58: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        61: ldc           #62                 // String Exploration Component: REGISTERED
+        63: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        66: aload_0
+        67: invokevirtual #44                 // Method getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+        70: new           #64                 // class dev/ninesliced/exploration/ExplorationPlayerSetupSystem
+        73: dup
+        74: invokespecial #66                 // Method dev/ninesliced/exploration/ExplorationPlayerSetupSystem."<init>":()V
+        77: invokevirtual #69                 // Method com/hypixel/hytale/component/ComponentRegistryProxy.registerSystem:(Lcom/hypixel/hytale/component/system/ISystem;)V
+        80: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        83: ldc           #73                 // String Exploration Setup System: REGISTERED
+        85: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        88: ldc           #75                 // String .
+        90: iconst_0
+        91: anewarray     #77                 // class java/lang/String
+        94: invokestatic  #79                 // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+        97: invokeinterface #85,  1           // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+       102: invokeinterface #91,  1           // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+       107: astore_1
+       108: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       111: aload_1
+       112: invokevirtual #100                // Method dev/ninesliced/configs/ModConfig.initialize:(Ljava/nio/file/Path;)V
+       115: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       118: invokevirtual #104                // Method dev/ninesliced/configs/ModConfig.getMaxPersonalMarkersPerPlayer:()I
+       121: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       124: invokevirtual #108                // Method dev/ninesliced/configs/ModConfig.getMaxSharedMarkersPerPlayer:()I
+       127: invokestatic  #111                // Method dev/ninesliced/utils/WaypointLimitUtil.applyOverridesToAllWorlds:(II)V
+       130: aload_1
+       131: ldc           #117                // String mods
+       133: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       138: ldc           #123                // String BetterMap
+       140: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       145: invokestatic  #125                // Method dev/ninesliced/managers/PlayerConfigManager.initialize:(Ljava/nio/file/Path;)V
+       148: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       151: ldc           #128                // String Player Config Manager: INITIALIZED
+       153: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       156: invokestatic  #130                // Method dev/ninesliced/managers/MapPrivacyManager.getInstance:()Ldev/ninesliced/managers/MapPrivacyManager;
+       159: invokevirtual #135                // Method dev/ninesliced/managers/MapPrivacyManager.initialize:()V
+       162: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       165: ldc           #137                // String MapPrivacyManager: INITIALIZED
+       167: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       170: invokestatic  #139                // Method dev/ninesliced/managers/WarpPrivacyManager.getInstance:()Ldev/ninesliced/managers/WarpPrivacyManager;
+       173: invokevirtual #144                // Method dev/ninesliced/managers/WarpPrivacyManager.initialize:()V
+       176: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       179: ldc           #145                // String WarpPrivacyManager: INITIALIZED
+       181: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       184: invokestatic  #147                // Method dev/ninesliced/managers/PoiPrivacyManager.getInstance:()Ldev/ninesliced/managers/PoiPrivacyManager;
+       187: invokevirtual #152                // Method dev/ninesliced/managers/PoiPrivacyManager.initialize:()V
+       190: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       193: ldc           #153                // String PoiPrivacyManager: INITIALIZED
+       195: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       198: invokestatic  #155                // Method dev/ninesliced/managers/UserMarkerProviderManager.getInstance:()Ldev/ninesliced/managers/UserMarkerProviderManager;
+       201: invokevirtual #160                // Method dev/ninesliced/managers/UserMarkerProviderManager.initialize:()V
+       204: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       207: ldc           #161                // String UserMarkerProviderManager: INITIALIZED
+       209: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       212: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       215: invokevirtual #163                // Method dev/ninesliced/configs/ModConfig.getConfigDirectory:()Ljava/nio/file/Path;
+       218: astore_2
+       219: aload_2
+       220: ifnonnull     239
+       223: aload_1
+       224: ldc           #117                // String mods
+       226: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       231: ldc           #123                // String BetterMap
+       233: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       238: astore_2
+       239: aload_2
+       240: invokestatic  #166                // Method dev/ninesliced/managers/WaypointManager.initialize:(Ljava/nio/file/Path;)V
+       243: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       246: ldc           #169                // String Waypoint Persistence: INITIALIZED
+       248: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       251: invokestatic  #171                // Method dev/ninesliced/managers/ExplorationManager.config:()Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+       254: ldc           #177                // float 0.5f
+       256: invokevirtual #178                // Method dev/ninesliced/managers/ExplorationManager$ConfigBuilder.updateRate:(F)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+       259: ldc           #184                // String exploration_data
+       261: invokevirtual #186                // Method dev/ninesliced/managers/ExplorationManager$ConfigBuilder.enablePersistence:(Ljava/lang/String;)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+       264: invokevirtual #190                // Method dev/ninesliced/managers/ExplorationManager$ConfigBuilder.build:()Ldev/ninesliced/managers/ExplorationManager;
+       267: pop
+       268: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       271: ldc           #194                // String Exploration Manager: INITIALIZED
+       273: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       276: invokestatic  #196                // Method dev/ninesliced/exploration/ExplorationTicker.getInstance:()Ldev/ninesliced/exploration/ExplorationTicker;
+       279: invokevirtual #201                // Method dev/ninesliced/exploration/ExplorationTicker.start:()V
+       282: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       285: ldc           #204                // String Exploration Ticker: STARTED
+       287: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       290: aload_0
+       291: invokevirtual #206                // Method getCommandRegistry:()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+       294: new           #210                // class dev/ninesliced/commands/bettermap/BetterMapCommand
+       297: dup
+       298: invokespecial #212                // Method dev/ninesliced/commands/bettermap/BetterMapCommand."<init>":()V
+       301: invokevirtual #213                // Method com/hypixel/hytale/server/core/command/system/CommandRegistry.registerCommand:(Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+       304: pop
+       305: aload_0
+       306: invokevirtual #206                // Method getCommandRegistry:()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+       309: new           #219                // class dev/ninesliced/commands/waypoint/WaypointCommand
+       312: dup
+       313: invokespecial #221                // Method dev/ninesliced/commands/waypoint/WaypointCommand."<init>":()V
+       316: invokevirtual #213                // Method com/hypixel/hytale/server/core/command/system/CommandRegistry.registerCommand:(Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+       319: pop
+       320: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       323: ldc           #222                // String Mod Command: REGISTERED
+       325: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       328: aload_0
+       329: new           #224                // class dev/ninesliced/providers/LocationHudProvider
+       332: dup
+       333: invokespecial #226                // Method dev/ninesliced/providers/LocationHudProvider."<init>":()V
+       336: putfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+       339: aload_0
+       340: invokevirtual #44                 // Method getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+       343: new           #227                // class dev/ninesliced/systems/LocationSystem
+       346: dup
+       347: invokespecial #229                // Method dev/ninesliced/systems/LocationSystem."<init>":()V
+       350: invokevirtual #69                 // Method com/hypixel/hytale/component/ComponentRegistryProxy.registerSystem:(Lcom/hypixel/hytale/component/system/ISystem;)V
+       353: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       356: ldc           #230                // String Location Display: INITIALIZED
+       358: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       361: invokestatic  #232                // Method dev/ninesliced/managers/PlayerRadarManager.getInstance:()Ldev/ninesliced/managers/PlayerRadarManager;
+       364: pop
+       365: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       368: ldc           #237                // String Player Radar: INITIALIZED
+       370: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       373: invokestatic  #239                // Method dev/ninesliced/managers/WorldBorderManager.getInstance:()Ldev/ninesliced/managers/WorldBorderManager;
+       376: pop
+       377: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       380: ldc           #244                // String World Border Manager: INITIALIZED
+       382: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       385: invokestatic  #246                // Method dev/ninesliced/managers/MapAnchorManager.getInstance:()Ldev/ninesliced/managers/MapAnchorManager;
+       388: invokevirtual #251                // Method dev/ninesliced/managers/MapAnchorManager.initialize:()V
+       391: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       394: ldc           #252                // String Map Anchor Manager: INITIALIZED (Anchor UI on MapServerContent)
+       396: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       399: aload_0
+       400: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       403: ldc_w         #258                // class com/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent
+       406: invokedynamic #260,  0            // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       411: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       414: pop
+       415: aload_0
+       416: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       419: ldc_w         #270                // class com/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent
+       422: invokedynamic #272,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       427: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       430: pop
+       431: aload_0
+       432: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       435: ldc_w         #273                // class com/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent
+       438: invokedynamic #275,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+       443: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       446: pop
+       447: aload_0
+       448: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       451: ldc_w         #276                // class com/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent
+       454: invokedynamic #278,  0            // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+       459: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       462: pop
+       463: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       466: ldc_w         #279                // String Exploration Events: REGISTERED
+       469: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       472: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       475: ldc           #34                 // String ========================================
+       477: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       480: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       483: ldc_w         #281                // String Plugin Setup Complete!
+       486: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       489: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       492: ldc_w         #283                // String Players will now have persistent
+       495: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       498: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       501: ldc_w         #285                // String exploration tracking on the world map
+       504: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       507: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       510: ldc           #34                 // String ========================================
+       512: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       515: goto          550
+       518: astore_1
+       519: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       522: aload_1
+       523: invokevirtual #289                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+       526: invokedynamic #293,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       531: invokevirtual #297                // Method java/util/logging/Logger.severe:(Ljava/lang/String;)V
+       534: aload_1
+       535: invokevirtual #300                // Method java/lang/Exception.printStackTrace:()V
+       538: new           #303                // class java/lang/RuntimeException
+       541: dup
+       542: ldc_w         #305                // String Plugin initialization failed
+       545: aload_1
+       546: invokespecial #307                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       549: athrow
+       550: return
+      Exception table:
+         from    to  target type
+            40   515   518   Class java/lang/Exception
+      LineNumberTable:
+        line 91: 0
+        line 92: 4
+        line 93: 16
+        line 94: 24
+        line 95: 32
+        line 98: 40
+        line 99: 52
+        line 100: 58
+        line 102: 66
+        line 103: 80
+        line 105: 88
+        line 106: 108
+        line 108: 115
+        line 109: 121
+        line 107: 127
+        line 112: 130
+        line 113: 148
+        line 115: 156
+        line 116: 162
+        line 118: 170
+        line 119: 176
+        line 121: 184
+        line 122: 190
+        line 124: 198
+        line 125: 204
+        line 127: 212
+        line 128: 219
+        line 129: 223
+        line 131: 239
+        line 132: 243
+        line 134: 251
+        line 135: 256
+        line 136: 261
+        line 137: 264
+        line 139: 268
+        line 141: 276
+        line 142: 282
+        line 144: 290
+        line 145: 305
+        line 146: 320
+        line 148: 328
+        line 149: 339
+        line 150: 353
+        line 152: 361
+        line 153: 365
+        line 155: 373
+        line 156: 377
+        line 158: 385
+        line 159: 391
+        line 161: 399
+        line 162: 415
+        line 164: 431
+        line 166: 447
+        line 167: 463
+        line 169: 472
+        line 170: 480
+        line 171: 489
+        line 172: 498
+        line 173: 507
+        line 179: 515
+        line 175: 518
+        line 176: 519
+        line 177: 534
+        line 178: 538
+        line 180: 550
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          108     407     1 serverRoot   Ljava/nio/file/Path;
+          219     296     2 configDir   Ljava/nio/file/Path;
+          519      31     1     e   Ljava/lang/Exception;
+            0     551     0  this   Ldev/ninesliced/BetterMap;
+      StackMapTable: number_of_entries = 3
+        frame_type = 253 /* append */
+          offset_delta = 239
+          locals = [ class java/nio/file/Path, class java/nio/file/Path ]
+        frame_type = 255 /* full_frame */
+          offset_delta = 278
+          locals = [ class dev/ninesliced/BetterMap ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 31 /* same */
+
+  protected void shutdown();
+    descriptor: ()V
+    flags: (0x0004) ACC_PROTECTED
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+         3: ldc_w         #310                // String Shutting down BetterMap plugin...
+         6: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+         9: invokestatic  #196                // Method dev/ninesliced/exploration/ExplorationTicker.getInstance:()Ldev/ninesliced/exploration/ExplorationTicker;
+        12: invokevirtual #312                // Method dev/ninesliced/exploration/ExplorationTicker.stop:()V
+        15: invokestatic  #315                // Method dev/ninesliced/managers/ExplorationManager.getInstance:()Ldev/ninesliced/managers/ExplorationManager;
+        18: invokevirtual #317                // Method dev/ninesliced/managers/ExplorationManager.shutdown:()V
+        21: aload_0
+        22: getfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+        25: ifnull        35
+        28: aload_0
+        29: getfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+        32: invokevirtual #320                // Method dev/ninesliced/providers/LocationHudProvider.cleanup:()V
+        35: invokestatic  #232                // Method dev/ninesliced/managers/PlayerRadarManager.getInstance:()Ldev/ninesliced/managers/PlayerRadarManager;
+        38: invokevirtual #323                // Method dev/ninesliced/managers/PlayerRadarManager.cleanup:()V
+        41: invokestatic  #239                // Method dev/ninesliced/managers/WorldBorderManager.getInstance:()Ldev/ninesliced/managers/WorldBorderManager;
+        44: invokevirtual #324                // Method dev/ninesliced/managers/WorldBorderManager.cleanup:()V
+        47: invokestatic  #246                // Method dev/ninesliced/managers/MapAnchorManager.getInstance:()Ldev/ninesliced/managers/MapAnchorManager;
+        50: invokevirtual #325                // Method dev/ninesliced/managers/MapAnchorManager.cleanup:()V
+        53: invokestatic  #326                // Method dev/ninesliced/managers/ChunkStreamingManager.getInstance:()Ldev/ninesliced/managers/ChunkStreamingManager;
+        56: invokevirtual #331                // Method dev/ninesliced/managers/ChunkStreamingManager.cleanup:()V
+        59: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        62: ldc_w         #332                // String BetterMap plugin shutdown complete.
+        65: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        68: aload_0
+        69: invokespecial #334                // Method com/hypixel/hytale/server/core/plugin/JavaPlugin.shutdown:()V
+        72: return
+      LineNumberTable:
+        line 184: 0
+        line 186: 9
+        line 188: 15
+        line 190: 21
+        line 191: 28
+        line 194: 35
+        line 195: 41
+        line 196: 47
+        line 197: 53
+        line 199: 59
+        line 200: 68
+        line 201: 72
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      73     0  this   Ldev/ninesliced/BetterMap;
+      StackMapTable: number_of_entries = 1
+        frame_type = 35 /* same */
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: ldc           #8                  // class dev/ninesliced/BetterMap
+         2: invokevirtual #335                // Method java/lang/Class.getName:()Ljava/lang/String;
+         5: invokestatic  #340                // Method java/util/logging/Logger.getLogger:(Ljava/lang/String;)Ljava/util/logging/Logger;
+         8: putstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        11: return
+      LineNumberTable:
+        line 44: 0
+}
+SourceFile: "BetterMap.java"
+BootstrapMethods:
+  0: #401 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #371 (Ljava/lang/Object;)V
+      #373 REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerReady:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+      #380 (Lcom/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent;)V
+  1: #401 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #371 (Ljava/lang/Object;)V
+      #381 REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerQuit:(Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+      #386 (Lcom/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent;)V
+  2: #401 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #371 (Ljava/lang/Object;)V
+      #387 REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerJoinWorld:(Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+      #392 (Lcom/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent;)V
+  3: #401 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #371 (Ljava/lang/Object;)V
+      #393 REF_invokeStatic dev/ninesliced/listeners/ExplorationListener.onPlayerLeaveWorld:(Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+      #398 (Lcom/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent;)V
+  4: #408 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #399 Failed to setup Exploration Plugin: \u0001
+InnerClasses:
+  public static #415= #179 of #172;       // ConfigBuilder=class dev/ninesliced/managers/ExplorationManager$ConfigBuilder of class dev/ninesliced/managers/ExplorationManager
+  public static final #420= #416 of #418; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles

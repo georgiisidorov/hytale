@@ -1,0 +1,15 @@
+{
+  "Group": "Custom",
+  "Name": "NoInteraction",
+  "Version": "1.0.5",
+  "Authors": [
+    {
+      "Name": "Sergey"
+    }
+  ],
+  "Website": "",
+  "Main": "com.nointeraction.NoInteractionPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "/nointeraction — блок в декор-сущность без взаимодействия (алиас /ni).",
+  "IncludesAssetPack": false
+}

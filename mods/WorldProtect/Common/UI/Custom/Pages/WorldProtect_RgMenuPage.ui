@@ -1,0 +1,1361 @@
+$W = "WorldProtect_Common.ui";
+$C = "../Common.ui";
+
+Group #RgMenuRoot {
+  Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+  LayoutMode: Center;
+
+  Group #RgMenuCard {
+    Anchor: (Width: 720, Height: 520);
+    Background: (Color: #1a1a2eee);
+    LayoutMode: Top;
+    OutlineColor: #3a4a6a;
+    OutlineSize: 1;
+
+    // === Header ===
+    Group #Header {
+      LayoutMode: Left;
+      Background: (Color: #0f1525);
+      Padding: (Top: 12, Bottom: 12, Left: 16, Right: 16);
+      Anchor: (Height: 48);
+
+      TextButton #BackButton {
+        Text: "<";
+        Style: $W.@WpButtonStyle;
+        Anchor: (Width: 28, Height: 28, Right: 8, Vertical: 0);
+        Visible: false;
+      }
+
+      Label #Title {
+        Text: "Region menu";
+        Style: (FontSize: 18, TextColor: #FFD700, RenderBold: true);
+        Anchor: (Vertical: 0);
+        FlexWeight: 1;
+      }
+
+      TextButton #CloseButton {
+        Text: "X";
+        Style: $W.@WpButtonRedStyle;
+        Anchor: (Width: 28, Height: 28, Vertical: 0);
+      }
+    }
+
+    // === Body ===
+    Group #Body {
+      LayoutMode: Top;
+      Padding: (Top: 2, Left: 16, Right: 16, Bottom: 16);
+      FlexWeight: 1;
+
+      // === Main View ===
+      Group #MainView {
+        LayoutMode: Top;
+        FlexWeight: 1;
+
+        // Search + filters
+        Group #FilterBar {
+          LayoutMode: Top;
+          Anchor: (Bottom: 6);
+
+          // Search
+          Group #SearchBar {
+            LayoutMode: Top;
+            Anchor: (Bottom: 8);
+
+            Label {
+              Text: "Search";
+              Style: (FontSize: 11, TextColor: #aaaaaa);
+              Anchor: (Bottom: 4);
+            }
+
+            Group #RegionSearchBox {
+              Background: (Color: #0f1525);
+              Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+              Anchor: (Height: 28);
+              OutlineColor: #3a4a6a;
+              OutlineSize: 1;
+
+              TextField #RegionSearch {
+                Style: (FontSize: 13, TextColor: #ffffff);
+                FlexWeight: 1;
+              }
+            }
+          }
+
+          // Filter row
+          Group #FilterRow {
+            LayoutMode: Left;
+            Anchor: (Height: 28);
+
+            Group #WorldFilter {
+              LayoutMode: Left;
+              Anchor: (Right: 12);
+
+              Label { Text: "World:"; Style: (FontSize: 11, TextColor: #888888); Anchor: (Vertical: 0, Right: 6); }
+              Group #WorldAllSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 56, Height: 24, Vertical: 0, Right: 6);
+
+                TextButton #WorldAllButton {
+                  Text: "All";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 56, Height: 24);
+
+                  Visible: true;
+                }
+
+                TextButton #WorldAllButtonOff {
+                  Text: "All";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 56, Height: 24);
+
+                  Visible: false;
+                }
+              }
+              Group #WorldCurrentSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 76, Height: 24, Vertical: 0);
+
+                TextButton #WorldCurrentButton {
+                  Text: "Current";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 76, Height: 24);
+
+                  Visible: false;
+                }
+
+                TextButton #WorldCurrentButtonOff {
+                  Text: "Current";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 76, Height: 24);
+
+                  Visible: true;
+                }
+              }
+            }
+
+
+            Group #RoleFilter {
+              LayoutMode: Left;
+              Anchor: (Right: 12);
+
+              Label { Text: "Role:"; Style: (FontSize: 11, TextColor: #888888); Anchor: (Vertical: 0, Right: 6); }
+              Group #RoleAllSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 56, Height: 24, Vertical: 0, Right: 6);
+
+                TextButton #RoleAllButton {
+                  Text: "All";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 56, Height: 24);
+
+                  Visible: true;
+                }
+
+                TextButton #RoleAllButtonOff {
+                  Text: "All";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 56, Height: 24);
+
+                  Visible: false;
+                }
+              }
+              Group #RoleOwnerSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 64, Height: 24, Vertical: 0, Right: 6);
+
+                TextButton #RoleOwnerButton {
+                  Text: "Owner";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 64, Height: 24);
+
+                  Visible: false;
+                }
+
+                TextButton #RoleOwnerButtonOff {
+                  Text: "Owner";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 64, Height: 24);
+
+                  Visible: true;
+                }
+              }
+              Group #RoleMemberSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 78, Height: 24, Vertical: 0);
+
+                TextButton #RoleMemberButton {
+                  Text: "Member";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 78, Height: 24);
+
+                  Visible: false;
+                }
+
+                TextButton #RoleMemberButtonOff {
+                  Text: "Member";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 78, Height: 24);
+
+                  Visible: true;
+                }
+              }
+            }
+
+            // Spacer to push create buttons to the right
+            Label { FlexWeight: 1; }
+
+
+            Group #CreateControls {
+              LayoutMode: Left;
+
+              TextButton #CreateRegionButton {
+                Text: "Auto Claim";
+                Style: $W.@WpButtonStyle;
+                Anchor: (Width: 140, Height: 24, Vertical: 0, Right: 6);
+              }
+
+              TextButton #ClaimModeGearButton {
+                Text: "•";
+                Style: $W.@WpButtonUnselectedStyle;
+                Anchor: (Width: 24, Height: 24, Vertical: 0);
+              }
+            }
+          }
+          // Claim mode popup (opened via .)
+          Group #ClaimModePopup {
+            LayoutMode: Top;
+            Background: (Color: #0f1525);
+            Padding: (Top: 8, Bottom: 8, Left: 12, Right: 12);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+            Anchor: (Height: 64, Top: 8);
+            Visible: false;
+
+            Label {
+              Text: "Claim mode";
+              Style: (FontSize: 11, TextColor: #aaaaaa);
+              Anchor: (Bottom: 6);
+            }
+
+            Group #ClaimModeButtons {
+              LayoutMode: Left;
+              Anchor: (Height: 24);
+
+              Group #ClaimModeManualSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 96, Height: 24, Vertical: 0, Right: 6);
+
+                TextButton #ClaimModeManualOn {
+                  Text: "Manual";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 96, Height: 24);
+                  Visible: true;
+                }
+
+                TextButton #ClaimModeManualOff {
+                  Text: "Manual";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 96, Height: 24);
+                  Visible: false;
+                }
+              }
+
+              Group #ClaimModeAutoSlot {
+                LayoutMode: Center;
+                Anchor: (Width: 80, Height: 24, Vertical: 0);
+
+                TextButton #ClaimModeAutoOn {
+                  Text: "Auto";
+                  Style: $W.@WpButtonSelectedStyle;
+                  Anchor: (Width: 80, Height: 24);
+                  Visible: false;
+                }
+
+                TextButton #ClaimModeAutoOff {
+                  Text: "Auto";
+                  Style: $W.@WpButtonUnselectedStyle;
+                  Anchor: (Width: 80, Height: 24);
+                  Visible: true;
+                }
+              }
+            }
+          }
+
+        }
+        // Stats card
+        Group #StatsCard {
+          LayoutMode: Top;
+          Background: (Color: #0f1525);
+          Padding: (Top: 4, Bottom: 4, Left: 12, Right: 12);
+          Anchor: (Bottom: 6);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          Group {
+            LayoutMode: Left;
+            Anchor: (Height: 14, Bottom: 2);
+
+            Label { Text: "Owned:"; Style: (FontSize: 10, TextColor: #888888); }
+            Label #StatOwnedValue { Text: "0 / 0"; Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true); Anchor: (Left: 6); }
+
+            Label { FlexWeight: 1; }
+
+            Label { Text: "Member:"; Style: (FontSize: 10, TextColor: #888888); }
+            Label #StatMemberValue { Text: "0"; Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true); Anchor: (Left: 6); }
+
+            Label { FlexWeight: 1; }
+
+            Label { Text: "Total:"; Style: (FontSize: 10, TextColor: #888888); }
+            Label #StatTotalValue { Text: "0"; Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true); Anchor: (Left: 6); }
+
+            Label { FlexWeight: 1; }
+
+            Label { Text: "Showing:"; Style: (FontSize: 10, TextColor: #888888); }
+            Label #StatShowingValue { Text: "0"; Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true); Anchor: (Left: 6); }
+          }
+
+          Group {
+            LayoutMode: Left;
+            Anchor: (Height: 14);
+
+            Label { Text: "Group:"; Style: (FontSize: 10, TextColor: #888888); }
+            Label #StatGroupValue { Text: "default"; Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true); Anchor: (Left: 6); }
+
+            Label { FlexWeight: 1; }
+
+            Label { Text: "Max volume:"; Style: (FontSize: 10, TextColor: #888888); }
+            Label #StatVolumeValue { Text: "0"; Style: (FontSize: 10, TextColor: #ffffff, RenderBold: true); Anchor: (Left: 6); }
+          }
+        }
+
+        // Region list (scrollable)
+        Group #RegionListContainer {
+          LayoutMode: Left;
+          Background: (Color: #0f1525);
+          FlexWeight: 1;
+          Padding: (Top: 5, Bottom: 5, Left: 10, Right: 10);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          // Scrollable content
+          Group #RegionScroll {
+            LayoutMode: TopScrolling;
+            FlexWeight: 1;
+            Anchor: (Top: 0, Bottom: 0);
+            // Keep content away from the native scrollbar.
+            Padding: (Right: 18);
+            MouseWheelScrollBehaviour: VerticalOnly;
+            // One scrollbar (native) that is always visible and draggable.
+            ScrollbarStyle: (
+              Size: 18,
+              Spacing: 2,
+              OnlyVisibleWhenHovered: false,
+              Background: (Color: #0b1220),
+              Handle: (Color: #2b3f66),
+              HoveredHandle: (Color: #35507f),
+              DraggedHandle: (Color: #4b78ff)
+            );
+
+            Group #RegionList {
+              LayoutMode: Top;
+            }
+          }
+        }
+
+      }
+
+      // === Region View ===
+            Group #RegionView {
+        LayoutMode: Top;
+        FlexWeight: 1;
+        Visible: false;
+
+        Group #RegionCard {
+          LayoutMode: Top;
+          Background: (Color: #0f1525);
+          Padding: (Top: 12, Bottom: 12, Left: 12, Right: 12);
+          FlexWeight: 1;
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          // === Top Fields (like the screenshot, but /rg menu style) ===
+          Group #RegionInfo {
+            LayoutMode: Top;
+            Anchor: (Bottom: 10);
+          }
+
+          Group #FieldNameRow { LayoutMode: Left; Anchor: (Height: 30, Bottom: 6);
+            Label { Text: "Name:"; Style: (FontSize: 11, TextColor: #888888); Anchor: (Width: 56, Vertical: 0, Right: 6); }
+
+            Group #FieldNameBox {
+              LayoutMode: Left;
+              Background: (Color: #0e1525);
+              Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+              OutlineColor: #3a4a6a;
+              OutlineSize: 1;
+              FlexWeight: 1;
+              Anchor: (Height: 24, Vertical: 0, Right: 8);
+              Label #RegionNameValue { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Vertical: 0); FlexWeight: 1; }
+            }
+
+            Label { Text: "Priority:"; Style: (FontSize: 11, TextColor: #888888); Anchor: (Width: 52, Vertical: 0, Right: 6); }
+
+            Group #FieldPriorityBox {
+              LayoutMode: Left;
+              Background: (Color: #0e1525);
+              Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+              OutlineColor: #3a4a6a;
+              OutlineSize: 1;
+              Anchor: (Width: 166, Height: 24, Vertical: 0);
+
+              TextField #RegionPriorityText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Visible: true; }
+              Label #RegionPriorityPreview { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center); FlexWeight: 1; Visible: false; }
+              TextButton #RegionPrioritySaveButton { Text: "Save"; Style: $W.@WpButtonStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+            }
+          }
+
+          Group #FieldOwnerRow {
+            LayoutMode: Top;
+            Anchor: (Bottom: 6);
+
+            Group { LayoutMode: Left; Anchor: (Height: 28, Bottom: 4);
+              Label { Text: "Owner:"; Style: (FontSize: 11, TextColor: #888888); Anchor: (Width: 56, Vertical: 0, Right: 6); }
+              Group #FieldOwnerBox {
+                LayoutMode: Left;
+                Background: (Color: #0e1525);
+                Padding: (Left: 6, Right: 6, Top: 3, Bottom: 3);
+                OutlineColor: #3a4a6a;
+                OutlineSize: 1;
+                FlexWeight: 1;
+                Anchor: (Height: 24, Vertical: 0);
+
+                Group #OwnerSlotsRow1 { LayoutMode: Left; FlexWeight: 1; Anchor: (Height: 20, Vertical: 0, Right: 6);
+                  Group #OwnerSlot1 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName1 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove1 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #OwnerSlot2 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName2 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove2 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #OwnerSlot3 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName3 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove3 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #OwnerSlot4 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName4 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove4 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Label #RegionOwnerValue { Text: "-"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Vertical: 0); FlexWeight: 1; Visible: true; }
+                }
+                TextButton #OwnerPanelToggleButton { Text: "Add"; Style: $W.@WpButtonStyle; Anchor: (Width: 58, Height: 20, Vertical: 0); Visible: true; }
+              }
+            }
+
+            Group #OwnerSlotsRow2 { LayoutMode: Left; Anchor: (Height: 24, Left: 62, Bottom: 4); Visible: false;
+              Group #OwnerSlot5 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName5 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove5 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #OwnerSlot6 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName6 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove6 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #OwnerSlot7 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #OwnerSlotName7 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove7 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #OwnerSlot8 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 98, Height: 20, Vertical: 0); Visible: false; Label #OwnerSlotName8 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #OwnerSlotRemove8 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+            }
+            Label #OwnerMoreHint { Text: ""; Style: (FontSize: 10, TextColor: #888888); Anchor: (Left: 62, Height: 14, Bottom: 4); Visible: false; }
+            Label #OwnerReadOnly { Text: "Read-only"; Style: (FontSize: 10, TextColor: #888888); Anchor: (Left: 62, Height: 14, Bottom: 4); Visible: false; }
+          }
+
+          Group #FieldMembersRow {
+            LayoutMode: Top;
+            Anchor: (Bottom: 8);
+
+            Group { LayoutMode: Left; Anchor: (Height: 28, Bottom: 4);
+              Label { Text: "Members:"; Style: (FontSize: 11, TextColor: #888888); Anchor: (Width: 56, Vertical: 0, Right: 6); }
+              Group #FieldMembersBox {
+                LayoutMode: Left;
+                Background: (Color: #0e1525);
+                Padding: (Left: 6, Right: 6, Top: 3, Bottom: 3);
+                OutlineColor: #3a4a6a;
+                OutlineSize: 1;
+                FlexWeight: 1;
+                Anchor: (Height: 24, Vertical: 0);
+
+                Group #MemberSlotsRow1 { LayoutMode: Left; FlexWeight: 1; Anchor: (Height: 20, Vertical: 0, Right: 6);
+                  Group #MemberSlot1 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName1 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove1 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #MemberSlot2 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName2 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove2 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #MemberSlot3 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName3 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove3 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #MemberSlot4 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName4 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove4 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Group #MemberSlot5 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName5 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove5 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+                  Label #RegionMembersValue { Text: "-"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Vertical: 0); FlexWeight: 1; Visible: true; }
+                }
+                TextButton #MemberPanelToggleButton { Text: "Add"; Style: $W.@WpButtonStyle; Anchor: (Width: 58, Height: 20, Vertical: 0); Visible: true; }
+              }
+            }
+
+            Group #MemberSlotsRow2 { LayoutMode: Left; Anchor: (Height: 24, Left: 62, Bottom: 4); Visible: false;
+              Group #MemberSlot6 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName6 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove6 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #MemberSlot7 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName7 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove7 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #MemberSlot8 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName8 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove8 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #MemberSlot9 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0, Right: 4); Visible: false; Label #MemberSlotName9 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove9 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+              Group #MemberSlot10 { LayoutMode: Left; Background: (Color: #13203a); Padding: (Left: 6, Right: 4, Top: 1, Bottom: 1); OutlineColor: #3a4a6a; OutlineSize: 1; Anchor: (Width: 86, Height: 20, Vertical: 0); Visible: false; Label #MemberSlotName10 { Text: ""; Style: (FontSize: 11, TextColor: #ffffff); FlexWeight: 1; Anchor: (Vertical: 0); } TextButton #MemberSlotRemove10 { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 20, Height: 18, Vertical: 0, Left: 4); Visible: true; } }
+            }
+            Label #MemberMoreHint { Text: ""; Style: (FontSize: 10, TextColor: #888888); Anchor: (Left: 62, Height: 14, Bottom: 4); Visible: false; }
+            Label #MemberReadOnly { Text: "Read-only"; Style: (FontSize: 10, TextColor: #888888); Anchor: (Left: 62, Height: 14, Bottom: 4); Visible: false; }
+          }
+
+          // Section header row (Flags / Color) + divider line
+          Group #SectionHeaderRow { LayoutMode: Left; Anchor: (Height: 18, Bottom: 8, Top: 20);
+            Label { Text: "Flags"; Style: (FontSize: 12, TextColor: #FFD700, RenderBold: true); FlexWeight: 1; Anchor: (Vertical: 0); }
+            Label { Text: "Color"; Style: (FontSize: 12, TextColor: #FFD700, RenderBold: true); Anchor: (Width: 220, Vertical: 0); }
+          }
+
+          Group #SectionLine {
+            Anchor: (Height: 1, Bottom: 24);
+            Background: (Color: #3a4a6a);
+          }
+
+          // === Two Columns ===
+          Group #RegionTwoCols {
+            LayoutMode: Left;
+            FlexWeight: 1;
+            Anchor: (Height: 280, Bottom: 10);
+            // Flags panel
+          Group #FlagsPanel {
+  LayoutMode: Top;
+  Anchor: (Height: 280, Vertical: 0, Right: 12);
+  Background: (Color: #0e1525);
+  Padding: (Top: 10, Bottom: 10, Left: 10, Right: 10);
+  OutlineColor: #3a4a6a;
+  OutlineSize: 1;
+  FlexWeight: 1;
+
+  // Scrollable list of flags (mouse wheel + draggable native scrollbar)
+  Group #FlagsScroll {
+    LayoutMode: TopScrolling;
+    FlexWeight: 1;
+    Anchor: (Vertical: 0);
+    // Give the rightmost buttons a bit more breathing room from the scrollbar.
+    Padding: (Right: 14);
+    MouseWheelScrollBehaviour: VerticalOnly;
+
+    ScrollbarStyle: (
+      Size: 12,
+      Spacing: 2,
+      OnlyVisibleWhenHovered: false,
+      Background: (Color: #0b1220),
+      Handle: (Color: #2b3f66),
+      HoveredHandle: (Color: #35507f),
+      DraggedHandle: (Color: #4b78ff)
+    );
+
+    Group #FlagsList {
+      LayoutMode: Top;
+
+      // PvP row
+      Group #PvpRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "PvP"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #PvpToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #PvpAllowSlot {
+            LayoutMode: Center;
+            Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+
+            TextButton #PvpAllowOn {
+              Text: "Allow";
+              Style: $W.@WpButtonSelectedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: true;
+            }
+            TextButton #PvpAllowOff {
+              Text: "Allow";
+              Style: $W.@WpButtonUnselectedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: false;
+            }
+          }
+
+          Group #PvpDenySlot {
+            LayoutMode: Center;
+            Anchor: (Width: 86, Height: 24, Vertical: 0);
+
+            TextButton #PvpDenyOn {
+              Text: "Deny";
+              Style: $W.@WpButtonRedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: false;
+            }
+            TextButton #PvpDenyOff {
+              Text: "Deny";
+              Style: $W.@WpButtonUnselectedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: true;
+            }
+          }
+        }
+      }
+
+      // Entry row
+      Group #EntryRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Entry"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #EntryToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #EntryAllowSlot {
+            LayoutMode: Center;
+            Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+
+            TextButton #EntryAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #EntryAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #EntryDenySlot {
+            LayoutMode: Center;
+            Anchor: (Width: 86, Height: 24, Vertical: 0);
+
+            TextButton #EntryDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #EntryDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Build row (3-state)
+      Group #BuildRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Build"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #BuildToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #BuildDefaultSlot { LayoutMode: Center; Anchor: (Width: 72, Height: 24, Vertical: 0, Right: 6);
+            TextButton #BuildDefaultOn { Text: "Default"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 72, Height: 24); Visible: true; }
+            TextButton #BuildDefaultOff { Text: "Default"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 72, Height: 24); Visible: false; }
+          }
+
+          Group #BuildAllowSlot { LayoutMode: Center; Anchor: (Width: 62, Height: 24, Vertical: 0, Right: 6);
+            TextButton #BuildAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 62, Height: 24); Visible: false; }
+            TextButton #BuildAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 62, Height: 24); Visible: true; }
+          }
+
+          Group #BuildDenySlot { LayoutMode: Center; Anchor: (Width: 62, Height: 24, Vertical: 0);
+            TextButton #BuildDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 62, Height: 24); Visible: false; }
+            TextButton #BuildDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 62, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Chest access row
+      Group #ChestAccessRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Chest access"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #ChestAccessToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #ChestAccessAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #ChestAccessAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #ChestAccessAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+
+          Group #ChestAccessDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #ChestAccessDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #ChestAccessDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+        }
+      }
+
+      // Use row
+      Group #UseRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Use"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #UseToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #UseAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #UseAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #UseAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+
+          Group #UseDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #UseDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #UseDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+        }
+      }
+
+      // Door access row
+      Group #DoorAccessRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Door access"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #DoorAccessToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #DoorAccessAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #DoorAccessAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #DoorAccessAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+
+          Group #DoorAccessDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #DoorAccessDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #DoorAccessDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+        }
+      }
+
+      // Light access row
+      Group #LightAccessRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Light access"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #LightAccessToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #LightAccessAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #LightAccessAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #LightAccessAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+
+          Group #LightAccessDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #LightAccessDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #LightAccessDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+        }
+      }
+
+
+      // Fire spread row
+      Group #FireSpreadRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Fire spread"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #FireSpreadToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #FireSpreadAllowSlot {
+            LayoutMode: Center;
+            Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+
+            TextButton #FireSpreadAllowOn {
+              Text: "Allow";
+              Style: $W.@WpButtonSelectedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: true;
+            }
+            TextButton #FireSpreadAllowOff {
+              Text: "Allow";
+              Style: $W.@WpButtonUnselectedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: false;
+            }
+          }
+
+          Group #FireSpreadDenySlot {
+            LayoutMode: Center;
+            Anchor: (Width: 86, Height: 24, Vertical: 0);
+
+            TextButton #FireSpreadDenyOn {
+              Text: "Deny";
+              Style: $W.@WpButtonRedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: false;
+            }
+            TextButton #FireSpreadDenyOff {
+              Text: "Deny";
+              Style: $W.@WpButtonUnselectedStyle;
+              Anchor: (Width: 86, Height: 24);
+              Visible: true;
+            }
+          }
+        }
+      }
+
+      // Item pickup row
+      Group #ItemPickupRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Item pickup"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #ItemPickupToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #ItemPickupAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #ItemPickupAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #ItemPickupAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+
+          Group #ItemPickupDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #ItemPickupDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #ItemPickupDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+        }
+      }
+
+      // Manual/interactive pickup row (default keybind: F)
+      Group #ItemGrabRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Manual pickup (F)"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #ItemGrabToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #ItemGrabAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #ItemGrabAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #ItemGrabAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+
+          Group #ItemGrabDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #ItemGrabDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #ItemGrabDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+        }
+      }
+
+      // Item drop row
+      Group #ItemDropRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Item drop"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #ItemDropToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #ItemDropAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #ItemDropAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #ItemDropAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #ItemDropDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #ItemDropDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #ItemDropDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Fall damage row
+      Group #FallDamageRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Fall damage"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #FallDamageToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #FallDamageAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #FallDamageAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #FallDamageAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #FallDamageDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #FallDamageDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #FallDamageDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Mob damage row
+      Group #MobDamageRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Mob damage"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #MobDamageToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #MobDamageAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #MobDamageAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #MobDamageAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #MobDamageDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #MobDamageDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #MobDamageDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Mob spawning row
+      Group #MobSpawningRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Mob spawning"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #MobSpawningToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #MobSpawningAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #MobSpawningAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #MobSpawningAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #MobSpawningDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #MobSpawningDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #MobSpawningDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Notify titles row
+      Group #NotifyRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Notify"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #NotifyToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #NotifyOnSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #NotifyOnOn { Text: "On"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #NotifyOnOff { Text: "On"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #NotifyOffSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #NotifyOffOn { Text: "Off"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #NotifyOffOff { Text: "Off"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Particles row
+      Group #ParticlesRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 8);
+
+        Label { Text: "Particles"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #ParticlesToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #ParticlesAllowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #ParticlesAllowOn { Text: "Allow"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #ParticlesAllowOff { Text: "Allow"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #ParticlesDenySlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #ParticlesDenyOn { Text: "Deny"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #ParticlesDenyOff { Text: "Deny"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // Map overlay row
+      Group #MapRow {
+        LayoutMode: Left;
+        Anchor: (Height: 30, Bottom: 10);
+
+        Label { Text: "Map overlay"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Width: 140, Vertical: 0, Right: 6); }
+        Label { FlexWeight: 1; }
+
+        Group #MapToggle {
+          LayoutMode: Left;
+          Anchor: (Vertical: 0, Right: 14);
+
+          Group #MapShowSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0, Right: 6);
+            TextButton #MapShowOn { Text: "Show"; Style: $W.@WpButtonSelectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+            TextButton #MapShowOff { Text: "Show"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+          }
+
+          Group #MapHideSlot { LayoutMode: Center; Anchor: (Width: 86, Height: 24, Vertical: 0);
+            TextButton #MapHideOn { Text: "Hide"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 86, Height: 24); Visible: false; }
+            TextButton #MapHideOff { Text: "Hide"; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 86, Height: 24); Visible: true; }
+          }
+        }
+      }
+
+      // ---- Text flags ----
+
+      Group #GreetingRow {
+        LayoutMode: Top;
+        Anchor: (Bottom: 10);
+
+        Label { Text: "Greeting text"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Height: 14, Bottom: 4); }
+
+        Group #GreetingBox {
+          LayoutMode: Left;
+          Anchor: (Height: 30);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          // Editable input (visible only when the player can edit this field)
+          TextField #GreetingText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Visible: true; }
+          // Read-only preview (used when the player cannot edit)
+          Label #GreetingPreview { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center); FlexWeight: 1; Visible: false; }
+
+          TextButton #GreetingSaveButton { Text: "Save"; Style: $W.@WpButtonStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+          TextButton #GreetingClearButton { Text: "Clear"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+        }
+      }
+
+      Group #FarewellRow {
+        LayoutMode: Top;
+        Anchor: (Bottom: 10);
+
+        Label { Text: "Farewell text"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Height: 14, Bottom: 4); }
+
+        Group #FarewellBox {
+          LayoutMode: Left;
+          Anchor: (Height: 30);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          TextField #FarewellText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Visible: true; }
+          Label #FarewellPreview { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center); FlexWeight: 1; Visible: false; }
+
+          TextButton #FarewellSaveButton { Text: "Save"; Style: $W.@WpButtonStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+          TextButton #FarewellClearButton { Text: "Clear"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+        }
+      }
+
+      Group #PlayerEnterCommandRow {
+        LayoutMode: Top;
+        Anchor: (Bottom: 10);
+
+        Label { Text: "Player enter command"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Height: 14, Bottom: 4); }
+
+        Group #PlayerEnterCommandBox {
+          LayoutMode: Left;
+          Anchor: (Height: 30);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          TextField #PlayerEnterCommandText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Visible: true; }
+          Label #PlayerEnterCommandPreview { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center); FlexWeight: 1; Visible: false; }
+
+          TextButton #PlayerEnterCommandSaveButton { Text: "Save"; Style: $W.@WpButtonStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+          TextButton #PlayerEnterCommandClearButton { Text: "Clear"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+        }
+
+        Label { Text: "Use commas for multiple commands. Placeholders: {player}, {region}, {comma}"; Style: (FontSize: 10, TextColor: #666666); Anchor: (Height: 14, Top: 4); }
+      }
+
+      Group #ServerEnterCommandRow {
+        LayoutMode: Top;
+        Anchor: (Bottom: 10);
+
+        Label { Text: "Server enter command"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Height: 14, Bottom: 4); }
+
+        Group #ServerEnterCommandBox {
+          LayoutMode: Left;
+          Anchor: (Height: 30);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          TextField #ServerEnterCommandText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Visible: true; }
+          Label #ServerEnterCommandPreview { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center); FlexWeight: 1; Visible: false; }
+
+          TextButton #ServerEnterCommandSaveButton { Text: "Save"; Style: $W.@WpButtonStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+          TextButton #ServerEnterCommandClearButton { Text: "Clear"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+        }
+
+        Label { Text: "Dangerous: runs as server. Keep permissions tight."; Style: (FontSize: 10, TextColor: #aa6666); Anchor: (Height: 14, Top: 4); }
+      }
+
+      Group #BlockedCommandsRow {
+        LayoutMode: Top;
+        Anchor: (Bottom: 0);
+
+        Label { Text: "Blocked commands"; Style: (FontSize: 12, TextColor: #ffffff, RenderBold: true); Anchor: (Height: 14, Bottom: 4); }
+
+        Group #BlockedCommandsBox {
+          LayoutMode: Left;
+          Anchor: (Height: 30);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          TextField #BlockedCommandsText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Visible: true; }
+          Label #BlockedCommandsPreview { Text: ""; Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center); FlexWeight: 1; Visible: false; }
+
+          TextButton #BlockedCommandsSaveButton { Text: "Save"; Style: $W.@WpButtonStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+          TextButton #BlockedCommandsClearButton { Text: "Clear"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 60, Height: 24, Vertical: 0, Left: 6); Visible: true; }
+        }
+
+        Label { Text: "Comma-separated. Example: /spawn,/warp,/msg"; Style: (FontSize: 10, TextColor: #666666); Anchor: (Height: 14, Top: 4); }
+      }
+    }
+  }
+}
+// Color panel (visual only for now)
+          Group #ColorPanel {
+            LayoutMode: Top;
+            Anchor: (Width: 220, Height: 280, Vertical: 0);
+            Background: (Color: #0e1525);
+            Padding: (Top: 10, Bottom: 10, Left: 10, Right: 10);
+            OutlineColor: #3a4a6a;
+            OutlineSize: 1;
+
+            
+
+            // Compact ColorPicker (same control/style as SimpleClaims).
+            // NOTE: Region color is applied only when the player presses Save.
+            ColorPicker #RegionColorPicker {
+              FlexWeight: 1;
+              // IMPORTANT:
+              // In some client builds the ColorPicker's bottom slider (percentage bar)
+              // does not respond unless the control has a full anchor box like the
+              // stock UI (and DisplayTextField is enabled). This matches SimpleClaims.
+              Anchor: (Left: 0, Top: 0, Bottom: 8, Right: 0);
+              DisplayTextField: true;
+              Style: $C.@DefaultColorPickerStyle;
+            }
+
+            Group #ColorActionRow {
+              LayoutMode: Left;
+              Anchor: (Height: 24, Bottom: 8);
+
+              TextButton #ColorAutoButton {
+                Text: "Auto";
+                Style: $W.@WpButtonUnselectedStyle;
+                Anchor: (Width: 60, Height: 24, Vertical: 0, Right: 6);
+              }
+
+              TextButton #ColorSaveButton {
+                Text: "Save";
+                Style: $W.@WpButtonSelectedStyle;
+                Anchor: (Width: 60, Height: 24, Vertical: 0);
+              }
+
+              Label { FlexWeight: 1; }
+            }
+
+            Group #RegionStatsBox {
+              LayoutMode: Top;
+              Anchor: (Top: 0);
+              Background: (Color: #0f1525);
+              Padding: (Top: 6, Bottom: 6, Left: 6, Right: 6);
+              OutlineColor: #3a4a6a;
+              OutlineSize: 1;
+
+              Label #RegionBoundsInfo { Text: ""; Style: (FontSize: 10, TextColor: #aaaaaa); Anchor: (Bottom: 2); }
+              Label #RegionSizeInfo   { Text: ""; Style: (FontSize: 10, TextColor: #aaaaaa); Anchor: (Bottom: 2); }
+              Label #RegionVolumeInfo { Text: ""; Style: (FontSize: 10, TextColor: #aaaaaa); }
+            }
+
+          }
+
+          }
+
+          Label #RegionHint {
+            Text: "";
+            Style: (FontSize: 11, TextColor: #aaaaaa);
+          }
+        }
+      }
+    }
+  }
+
+
+  Group #OwnerAddPanel {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    Visible: false;
+    LayoutMode: Center;
+
+    Group #OwnerAddBounds {
+      Anchor: (Width: 720, Height: 520);
+
+      Group #OwnerAddDialog {
+        Anchor: (Width: 340, Height: 286, Left: 24, Top: 36);
+        LayoutMode: Top;
+        Background: (Color: #0f1525f6);
+        Padding: (Top: 12, Bottom: 12, Left: 12, Right: 12);
+        OutlineColor: #4c5f86;
+        OutlineSize: 1;
+
+        Group { LayoutMode: Left; Anchor: (Height: 24, Bottom: 8);
+          Label {
+            Text: "Add/remove owners";
+            Style: (FontSize: 14, TextColor: #FFD700, RenderBold: true);
+            Anchor: (Vertical: 0);
+            FlexWeight: 1;
+          }
+          TextButton #OwnerPanelCloseButtonTop { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 24, Height: 24, Vertical: 0); }
+        }
+
+        Label {
+          Text: "Type a player name to add directly or filter the online list.";
+          Style: (FontSize: 10, TextColor: #9aa7c4);
+          Anchor: (Height: 14, Bottom: 8);
+        }
+
+        Label {
+          Text: "Player name";
+          Style: (FontSize: 10, TextColor: #888888);
+          Anchor: (Height: 14, Bottom: 4);
+        }
+
+        Group #OwnerAddInputBox {
+          LayoutMode: Left;
+          Anchor: (Height: 28, Bottom: 10);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          TextField #OwnerAddText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Anchor: (Height: 20, Vertical: 0, Right: 6); Visible: true; }
+          TextButton #OwnerAddButton { Text: "Add"; Style: $W.@WpButtonStyle; Anchor: (Width: 62, Height: 20, Vertical: 0); Visible: true; }
+        }
+
+        Group #OwnerAddRow { LayoutMode: Left; Anchor: (Height: 0, Bottom: 0); Visible: false;
+          TextButton #OwnerPanelCloseButton { Text: ""; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 0, Height: 0, Vertical: 0); Visible: false; }
+        }
+
+        Group #OwnerQuickRow { LayoutMode: Top; FlexWeight: 1;
+          Label { Text: "Online players"; Style: (FontSize: 10, TextColor: #888888); Anchor: (Height: 14, Bottom: 6); }
+          Group #OwnerQuickRow1 { LayoutMode: Left; Anchor: (Height: 24, Bottom: 4);
+            TextButton #OwnerQuick1 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick2 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick3 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick4 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0); Visible: false; }
+          }
+          Group #OwnerQuickRow2 { LayoutMode: Left; Anchor: (Height: 24, Bottom: 4);
+            TextButton #OwnerQuick5 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick6 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick7 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick8 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0); Visible: false; }
+          }
+          Group #OwnerQuickRow3 { LayoutMode: Left; Anchor: (Height: 24, Bottom: 4);
+            TextButton #OwnerQuick9 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick10 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick11 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #OwnerQuick12 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0); Visible: false; }
+          }
+        }
+      }
+    }
+  }
+
+  Group #MemberAddPanel {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    Visible: false;
+    LayoutMode: Center;
+
+    Group #MemberAddBounds {
+      Anchor: (Width: 720, Height: 520);
+
+      Group #MemberAddDialog {
+        Anchor: (Width: 340, Height: 286, Left: 24, Top: 68);
+        LayoutMode: Top;
+        Background: (Color: #0f1525f6);
+        Padding: (Top: 12, Bottom: 12, Left: 12, Right: 12);
+        OutlineColor: #4c5f86;
+        OutlineSize: 1;
+
+        Group { LayoutMode: Left; Anchor: (Height: 24, Bottom: 8);
+          Label {
+            Text: "Add/remove members";
+            Style: (FontSize: 14, TextColor: #FFD700, RenderBold: true);
+            Anchor: (Vertical: 0);
+            FlexWeight: 1;
+          }
+          TextButton #MemberPanelCloseButtonTop { Text: "X"; Style: $W.@WpButtonRedStyle; Anchor: (Width: 24, Height: 24, Vertical: 0); }
+        }
+
+        Label {
+          Text: "Type a player name to add directly or filter the online list.";
+          Style: (FontSize: 10, TextColor: #9aa7c4);
+          Anchor: (Height: 14, Bottom: 8);
+        }
+
+        Label {
+          Text: "Player name";
+          Style: (FontSize: 10, TextColor: #888888);
+          Anchor: (Height: 14, Bottom: 4);
+        }
+
+        Group #MemberAddInputBox {
+          LayoutMode: Left;
+          Anchor: (Height: 28, Bottom: 10);
+          Background: (Color: #0b1220);
+          Padding: (Left: 8, Right: 8, Top: 4, Bottom: 4);
+          OutlineColor: #3a4a6a;
+          OutlineSize: 1;
+
+          TextField #MemberAddText { Style: (FontSize: 12, TextColor: #ffffff); FlexWeight: 1; Anchor: (Height: 20, Vertical: 0, Right: 6); Visible: true; }
+          TextButton #MemberAddButton { Text: "Add"; Style: $W.@WpButtonStyle; Anchor: (Width: 62, Height: 20, Vertical: 0); Visible: true; }
+        }
+
+        Group #MemberAddRow { LayoutMode: Left; Anchor: (Height: 0, Bottom: 0); Visible: false;
+          TextButton #MemberPanelCloseButton { Text: ""; Style: $W.@WpButtonUnselectedStyle; Anchor: (Width: 0, Height: 0, Vertical: 0); Visible: false; }
+        }
+
+        Group #MemberQuickRow { LayoutMode: Top; FlexWeight: 1;
+          Label { Text: "Online players"; Style: (FontSize: 10, TextColor: #888888); Anchor: (Height: 14, Bottom: 6); }
+          Group #MemberQuickRow1 { LayoutMode: Left; Anchor: (Height: 24, Bottom: 4);
+            TextButton #MemberQuick1 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick2 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick3 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick4 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0); Visible: false; }
+          }
+          Group #MemberQuickRow2 { LayoutMode: Left; Anchor: (Height: 24, Bottom: 4);
+            TextButton #MemberQuick5 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick6 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick7 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick8 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0); Visible: false; }
+          }
+          Group #MemberQuickRow3 { LayoutMode: Left; Anchor: (Height: 24, Bottom: 4);
+            TextButton #MemberQuick9 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick10 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick11 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0, Right: 4); Visible: false; }
+            TextButton #MemberQuick12 { Text: "+"; Style: $W.@WpButtonStyle; Anchor: (Width: 68, Height: 22, Vertical: 0); Visible: false; }
+          }
+        }
+      }
+    }
+  }
+
+}

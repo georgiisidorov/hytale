@@ -1,0 +1,27 @@
+services:
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    container_name: hytale-prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.enable-lifecycle'
+    # Можно открыть наружу для отладки, но админке это не нужно (она ходит по сети docker)
+    # ports:
+    #   - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prom_data:/prometheus
+    restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  default:
+    name: hytale-network
+    external: true
+
+volumes:
+  prom_data:
+    name: hytale_prometheus_data
+

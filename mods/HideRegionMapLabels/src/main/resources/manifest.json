@@ -1,0 +1,19 @@
+{
+  "Group": "Custom",
+  "Name": "HideRegionMapLabels",
+  "Version": "1.0.0",
+  "Description": "Патч WorldProtect: не рисовать подписи на карте для регионов spawn и countryside (заливка зон без изменений).",
+  "Authors": [
+    {
+      "Name": "Custom"
+    }
+  ],
+  "ServerVersion": "=0.5.5",
+  "Dependencies": {
+    "dev.worldprotect:WorldProtect": "*"
+  },
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "Main": "com.github.hideregionmaplabels.HideRegionMapLabelsPlugin"
+}

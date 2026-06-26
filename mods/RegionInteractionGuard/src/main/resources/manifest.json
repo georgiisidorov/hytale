@@ -1,0 +1,19 @@
+{
+  "Group": "Custom",
+  "Name": "RegionInteractionGuard",
+  "Version": "1.0.31",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.regionguard.RegionInteractionGuardPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Blocks pickup of placed items and BlockEntity decor in selected WorldProtect regions (not loose drops).",
+  "Dependencies": {
+    "Custom:BlockToEntity": "*"
+  },
+  "IncludesAssetPack": false
+}

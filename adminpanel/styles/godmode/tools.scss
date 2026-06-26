@@ -1,0 +1,37 @@
+/* Tools Panel Component */
+.tools-panel {
+  background: var(--godmode-bg-secondary);
+  border: 2px solid var(--godmode-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tools-header {
+  padding: 15px 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tools-header h3 {
+  margin: 0;
+  color: var(--godmode-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .icon-green svg,
+  .icon-green img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+}
+
+.tools-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+

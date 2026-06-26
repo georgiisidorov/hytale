@@ -1,0 +1,139 @@
+.devices-content {
+  display: grid !important; /* Принудительно применяем grid */
+  grid-template-columns: calc(25% - 10px) calc(20% - 8px) calc(55% - 22px) !important; /* Учитываем 2 gap по 20px: 20% - 8px, 20% - 8px, 60% - 24px */
+  grid-template-rows: 1fr !important;
+  gap: 20px !important;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0; /* Позволяет grid сжиматься */
+}
+
+.devices-list-container,
+.commands-panel-container,
+.device-info-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.devices-list-container .device-list,
+.commands-panel-container .command-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.device-info-card {
+  background: var(--godmode-bg-secondary);
+  border: 2px solid var(--godmode-border);
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+  /* Скрываем скроллбар, но оставляем прокрутку */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE и Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  h3 {
+    margin: 0 0 20px 0;
+    color: var(--godmode-text-primary);
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .icon-green svg,
+    .icon-green img {
+      filter: brightness(0) saturate(100%) invert(100%);
+    }
+  }
+}
+
+.device-info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-section {
+  h4 {
+    margin: 0 0 15px 0;
+    color: var(--godmode-text-primary);
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.14);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.info-label {
+  color: var(--godmode-text-secondary);
+  font-size: 14px;
+}
+
+.info-value {
+  color: var(--godmode-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  
+  &.online {
+    color: var(--godmode-accent);
+  }
+  
+  &.offline {
+    color: #ff4444;
+  }
+}
+
+.device-info-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #ffffff;
+  
+  p {
+    margin: 0;
+    font-style: normal;
+    font-size: 16px;
+  }
+}
+

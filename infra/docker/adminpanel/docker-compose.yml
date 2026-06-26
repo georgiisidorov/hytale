@@ -1,0 +1,98 @@
+services:
+  admin-db:
+    image: postgres:16-alpine
+    container_name: hytale-admin-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${ADMIN_DB_NAME:-hytale_admin}
+      POSTGRES_USER: ${ADMIN_DB_USER:-hytale}
+      POSTGRES_PASSWORD: ${ADMIN_DB_PASSWORD:-hytale}
+      TZ: Europe/Moscow
+    ports:
+      - "${ADMIN_DB_PORT:-5432}:5432"
+    volumes:
+      - admin_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+      start_period: 5s
+    networks:
+      - hytale-network
+
+  # Миграции: образ из infra/docker/alembic/Dockerfile. После правок ревизий — docker compose build alembic-migrate
+  alembic-migrate:
+    build:
+      context: ../alembic
+      dockerfile: Dockerfile
+    image: hytale-alembic:latest
+    container_name: hytale-alembic-migrate
+    restart: "no"
+    environment:
+      DATABASE_URL: postgresql://${ADMIN_DB_USER:-hytale}:${ADMIN_DB_PASSWORD:-hytale}@admin-db:5432/${ADMIN_DB_NAME:-hytale_admin}
+    depends_on:
+      admin-db:
+        condition: service_healthy
+    networks:
+      - hytale-network
+
+  adminpanel:
+    build:
+      context: ../../..
+      dockerfile: infra/docker/adminpanel/Dockerfile
+    container_name: hytale-adminpanel
+    restart: unless-stopped
+    depends_on:
+      admin-db:
+        condition: service_healthy
+      alembic-migrate:
+        condition: service_completed_successfully
+    environment:
+      NODE_ENV: production
+      TZ: Europe/Moscow
+      # Auth
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-change_me}
+      ADMIN_USERS_JSON: ${ADMIN_USERS_JSON:-[]}
+      # DB
+      DATABASE_URL: postgresql://${ADMIN_DB_USER:-hytale}:${ADMIN_DB_PASSWORD:-hytale}@admin-db:5432/${ADMIN_DB_NAME:-hytale_admin}
+      # Онлайн: прямой опрос HTTP экспортера плагина (обходит пустой TSDB)
+      HYTALE_PLAYER_METRICS_URL: ${HYTALE_PLAYER_METRICS_URL:-http://hytale-server-dev:9105/metrics}
+      PROMETHEUS_URL: ${PROMETHEUS_URL:-}
+      DOCKER_SOCKET_PATH: ${DOCKER_SOCKET_PATH:-/var/run/docker.sock}
+      # Внутри контейнера приложение читает файлы сервера по этому пути (должен совпадать с правой частью volume ниже).
+      HYTALE_SERVER_DEV_DIR: ${HYTALE_SERVER_DEV_DIR:-/servers/dev}
+      HYTALE_SERVER_PROD_DIR: ${HYTALE_SERVER_PROD_DIR:-/servers/prod}
+      HYTALE_DEFAULT_SERVER: ${HYTALE_DEFAULT_SERVER:-dev}
+      HYTALE_ASSETS_ZIP: ${HYTALE_ASSETS_ZIP:-/assets/Assets.zip}
+      MARKET_CATALOG_API_KEY: ${MARKET_CATALOG_API_KEY:-}
+      MARKET_COINS_PER_RUB: ${MARKET_COINS_PER_RUB:-100}
+      MARKET_CRYSTALS_PER_RUB: ${MARKET_CRYSTALS_PER_RUB:-1}
+      MARKET_WHEEL_SPIN_CRYSTALS: ${MARKET_WHEEL_SPIN_CRYSTALS:-150}
+      YOOKASSA_SHOP_ID: ${YOOKASSA_PROD_SHOP_ID:-${YOOKASSA_SHOP_ID:-}}
+      YOOKASSA_SECRET_KEY: ${YOOKASSA_PROD_SECRET_KEY:-}
+    expose:
+      - "3001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Dev + prod: permissions.json, universe/ (источник истины для игроков)
+      - ${HYTALE_SERVER_DEV_HOST:-/home/hytale/server-dev}:/servers/dev
+      - ${HYTALE_SERVER_PROD_HOST:-/home/hytale/server-prod}:/servers/prod
+      # Иконки предметов для /api/hytale/market/item-icon (только чтение)
+      - ${HYTALE_ASSETS_ZIP_HOST:-/home/hytale/server-dev/Assets.zip}:/assets/Assets.zip:ro
+      # Загруженные изображения постов (persist between deploys)
+      - adminpanel_uploads:/app/adminpanel/public/uploads
+    group_add:
+      - "${DOCKER_GID:-999}"
+    networks:
+      - hytale-network
+
+volumes:
+  admin_pgdata:
+  adminpanel_uploads:
+
+networks:
+  hytale-network:
+    external: true
+    name: hytale-network
+

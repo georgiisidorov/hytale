@@ -1,0 +1,128 @@
+/* Доп. стили для страниц Target Ads (поверх шаблона godmode) */
+
+.targetads-page-title {
+	margin: 0 0 8px 0;
+	font-size: 24px;
+	font-weight: 500;
+	color: #000000;
+	font-family: inherit;
+}
+
+.targetads-page-desc {
+	margin: 0 0 20px 0;
+	font-size: 14px;
+	color: #333333;
+	font-family: inherit;
+}
+
+.targetads-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 20px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.targetads-section-title {
+	margin: 28px 0 12px 0;
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--godmode-text-primary);
+	font-family: inherit;
+}
+
+.targetads-ok {
+	color: #3FD9D1;
+	font-weight: 500;
+}
+
+.targetads-bad {
+	color: #ff6b6b;
+	font-weight: 500;
+}
+
+/* Controls for container logs card */
+.tg-logs-control {
+	height: 41px;
+	padding: 0 34px 0 10px;
+	background: var(--godmode-bg-secondary);
+	color: var(--godmode-text-primary);
+	border: 2px solid var(--godmode-border);
+	border-radius: 8px;
+	outline: none;
+	font-size: 16px;
+	line-height: 1;
+}
+
+.tg-logs-control:focus,
+.tg-logs-control:focus-visible {
+	border-color: var(--godmode-accent);
+	outline: none;
+	box-shadow: none;
+}
+
+select.tg-logs-control {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+input.tg-logs-control[type='number'] {
+	-moz-appearance: textfield;
+	padding-right: 28px;
+}
+
+input.tg-logs-control[type='number']::-webkit-outer-spin-button,
+input.tg-logs-control[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.tg-logs-refresh {
+	height: 41px;
+	width: 41px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	border: none;
+	background: transparent;
+	color: var(--godmode-accent);
+	padding: 0;
+	cursor: pointer;
+	transition:
+		color 120ms ease,
+		transform 80ms ease;
+}
+
+.tg-logs-refresh:hover:not(:disabled) {
+	color: color-mix(in srgb, var(--godmode-accent) 70%, #ffffff 30%);
+}
+
+.tg-logs-refresh:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.tg-logs-refresh:active:not(:disabled) {
+	color: #ffffff;
+	transform: translateY(1px);
+}
+
+.tg-logs-refresh:focus-visible {
+	outline: none;
+}
+
+/* Force onyx SVG icons to follow currentColor — only inside logs panel */
+.tg-logs-panel .icon-wrapper svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.tg-logs-panel .icon-wrapper svg * {
+	fill: currentColor !important;
+	stroke: currentColor !important;
+}

@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "AutoRankNickname",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.autorank.AutoRankNicknamePlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Sets HeroChat nickname color based on LuckPerms rank.* permissions",
+  "IncludesAssetPack": false
+}

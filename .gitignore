@@ -1,0 +1,59 @@
+# Python
+env/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# JDK
+jdk-*/
+.jdk*/
+
+# Java build artifacts
+mods/*/build/
+mods/*/gradle/
+mods/*/libs/
+mods/*/tools/
+
+# Maven/Gradle dependency cache (extracted into mods/)
+mods/com/
+mods/it/
+mods/ch/
+mods/aix/
+mods/darwin/
+mods/freebsd/
+mods/google/
+mods/io/
+mods/javax/
+mods/joptsimple/
+mods/linux/
+mods/manifests.json
+
+# Native libs
+mods/*.so
+mods/*.jnilib
+mods/*.dll
+
+# Game server binary (too large)
+HytaleServer.jar
+server.jar
+no-interaction-mod-*.jar
+roulette-atomic-*.jar
+
+# Node.js
+adminpanel/node_modules/
+adminpanel/.next/
+adminpanel/.env
+adminpanel/.env.local
+
+# Secrets
+.env
+!.env.example
+!infra/.env.example
+*.session
+
+# Misc
+.DS_Store
+*.log
+images/
+archive/

@@ -1,0 +1,37 @@
+$C = "../../Common.ui";
+
+Group #YooKassaRoot {
+  Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+  LayoutMode: Center;
+
+  Group #Card {
+    Anchor: (Width: 520, Height: 220);
+    Background: (Color: #10161f);
+    LayoutMode: Top;
+    Padding: (Full: 16);
+
+    Label #Title {
+      Text: "YooKassaPayments (smoke)";
+      Style: (FontSize: 16, TextColor: #ffffff, RenderBold: true);
+      Anchor: (Height: 24, Bottom: 10);
+    }
+
+    Label #Body {
+      Text: "Smoke UI loaded.";
+      Style: (FontSize: 12, TextColor: #d6e2f0, Wrap: true);
+      FlexWeight: 1;
+      Anchor: (Bottom: 12);
+    }
+
+    TextButton #CloseButton {
+      Text: "OK";
+      Anchor: (Height: 36);
+      Background: #2b4161;
+      Style: TextButtonStyle(
+        Default: (LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+        Sounds: $C.@ButtonSounds,
+      );
+    }
+  }
+}
+

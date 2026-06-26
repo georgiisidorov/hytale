@@ -1,0 +1,4 @@
+{
+  "_comment_suppressJoin": "Сообщения 'X присоединился к миру' управляются сервером Hytale, не этим плагином. Проверьте Server/config.json или настройки мира в папке сервера.",
+  "welcomeFilePath": "welcome.txt"
+}

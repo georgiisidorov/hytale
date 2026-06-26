@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "HytaleMetricsExporter",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "HytaleProject",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.hytale.metrics.HytaleMetricsExporterPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Prometheus /metrics exporter (online players via Universe.getPlayerCount).",
+  "IncludesAssetPack": false
+}

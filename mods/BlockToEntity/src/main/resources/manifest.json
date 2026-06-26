@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "BlockToEntity",
+  "Version": "1.4.5",
+  "Authors": [
+    {
+      "Name": "HytaleProject",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.blocktoentity.BlockToEntityPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "/blocktoentity — декор без подбора: сущность или замороженный блок (люки/двери).",
+  "IncludesAssetPack": false
+}

@@ -1,0 +1,135 @@
+/* Global styles to remove white margins */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* GodMode Layout */
+.godmode-layout {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #000E0F 0%, #050f10 60%, #030d0e 100%);
+  color: var(--godmode-text-primary);
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Content Styles */
+.godmode-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Позволяет контенту сжиматься */
+}
+
+.godmode-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+.godmode-main-content-area {
+  flex: 1;
+  padding: 20px;
+  overflow: auto; /* Прокрутка для всех страниц */
+  min-height: 0;
+  
+  /* Скрываем скроллбар, но оставляем прокрутку */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE и Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /* Убираем курсив из всех параграфов */
+  p {
+    font-style: normal;
+  }
+}
+
+/* Прокрутка со скрытым скроллбаром только на дашборде */
+.godmode-main-content-area.dashboard-main-content-area {
+  padding: 0;
+  /* Хедер имеет фиксированную высоту 60px (см. header.scss) */
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  min-height: 0;
+}
+
+
+/* GodMode Container */
+.godmode-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto; /* Прокрутка для всех страниц */
+  
+  /* Прокрутка со скрытым скроллбаром только на дашборде */
+  &.dashboard-page {
+    overflow: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+    
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  }
+}
+
+.godmode-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.5fr 4fr;
+  grid-template-rows: 1fr 1.35fr;
+  gap: 20px;
+  align-items: stretch;
+  overflow: auto; /* Прокрутка для всех страниц */
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Для страницы устройств переопределяем grid */
+.devices-page .godmode-content {
+  display: flex; /* Используем flex вместо grid */
+  flex-direction: column;
+  gap: 0;
+  overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* На дашборде используем flex для нового макета */
+.dashboard-page .godmode-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: auto; 
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE и Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+.godmode-sidebar {
+  display: contents;
+}
+
+.godmode-main {
+  display: contents;
+}
+

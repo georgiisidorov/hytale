@@ -1,0 +1,74 @@
+$C = "../../Common.ui";
+
+@NavButtonStyle = TextButtonStyle(
+  Default: (Background: $C.@DefaultSquareButtonDefaultBackground, LabelStyle: (FontSize: 13, TextColor: #bfcdd5, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: $C.@DefaultSquareButtonHoveredBackground, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: $C.@DefaultSquareButtonPressedBackground, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds
+);
+
+$C.@PageOverlay {
+  $C.@DecoratedContainer {
+    Anchor: (Width: 600, Height: 600);
+
+    #Title {
+      $C.@Title {
+        @Text = "Waypoint Manager";
+      }
+      TextButton #CloseButton {
+          Anchor: (Left: 12, Top: 4, Width: 64, Height: 24);
+          Padding: (Left: 8, Top: 2);
+          Text: "Close";
+          Style: TextButtonStyle(
+            Default: (LabelStyle: (FontSize: 14, TextColor: #93844c, RenderBold: true)),
+            Sounds: $C.@ButtonSounds,
+          );
+          Background: #000000(0.13);
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 10);
+
+      Group #ButtonRow {
+        LayoutMode: Left;
+        Anchor: (Height: 40);
+        Padding: (Bottom: 10);
+        
+        TextButton #CreateButton {
+            FlexWeight: 1;
+            Anchor: (Height: 32);
+            Text: "ADD WAYPOINT";
+            Style: @NavButtonStyle;
+        }
+        
+        Group #AdminConfigSpacer { Anchor: (Width: 10); Visible: false; }
+        
+        TextButton #ConfigButton {
+            FlexWeight: 1;
+            Anchor: (Height: 32);
+            Text: "BETTERMAP CONFIG";
+            Style: @NavButtonStyle;
+        }
+
+        Group { Anchor: (Width: 10); }
+
+        TextButton #AdminConfigButton {
+          FlexWeight: 1;
+          Anchor: (Height: 32);
+          Text: "ADMIN CONFIG";
+          Style: @NavButtonStyle;
+          Visible: false;
+        }
+      }
+
+      Group #WaypointListContainer {
+        FlexWeight: 1;
+        LayoutMode: TopScrolling;
+        ScrollbarStyle: $C.@DefaultScrollbarStyle;
+        Padding: (Right: 10);
+      }
+    }
+  }
+}

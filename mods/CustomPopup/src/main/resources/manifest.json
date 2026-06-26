@@ -1,0 +1,15 @@
+{
+  "Group": "Custom",
+  "Name": "CustomPopup",
+  "Version": "1.4.0",
+  "Authors": [
+    {
+      "Name": "HytaleProject",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Main": "com.github.custompopup.CustomPopupPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "In-game popup (Custom UI): карточка поверх игры, кнопки, ссылки через чат.",
+  "IncludesAssetPack": true
+}

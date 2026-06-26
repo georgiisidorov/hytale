@@ -1,0 +1,82 @@
+# Игровой QUIC/UDP не идёт через Caddy — только DNS у регистратора домена.
+# Пример: A-запись hytale.botcalendary.ru → IP сервера + порт на хосте ниже (по умолчанию 5520).
+# Prod на другом внешнем порту: второе имя (например hytale-prod.botcalendary.ru) → тот же IP; в клиенте указать host:5521.
+services:
+  # Dev: каталог на хосте — HYTALE_SERVER_HOST_PATH (по умолчанию ../../../server-dev)
+  hytale-server-dev:
+    build:
+      context: ../../..
+      dockerfile: infra/docker/hytale/Dockerfile
+    container_name: hytale-server-dev
+    restart: unless-stopped
+    ports:
+      - "${HYTALE_SERVER_UDP_PORT:-5520}:5520/udp"
+      - "${YOOKASSA_WIDGET_PORT:-8765}:${YOOKASSA_WIDGET_PORT:-8765}/tcp"
+    expose:
+      - "9105"
+    volumes:
+      - ${HYTALE_SERVER_HOST_PATH:-../../../server-dev}:/home/hytale/server
+      - /etc/machine-id:/etc/machine-id:ro
+    environment:
+      - TZ=Europe/Moscow
+      # false = без AOT; auto = AOT только если есть HytaleServer.aot
+      - HYTALE_USE_AOT=${HYTALE_USE_AOT:-false}
+      - HYTALE_METRICS_HOST=0.0.0.0
+      - HYTALE_METRICS_PORT=9105
+      - YOOKASSA_SHOP_ID=${YOOKASSA_SHOP_ID:-}
+      - YOOKASSA_SECRET_KEY=${YOOKASSA_SECRET_KEY:-}
+      - YOOKASSA_RETURN_URL=${YOOKASSA_RETURN_URL:-}
+      - YOOKASSA_WIDGET_BASE_URL=${YOOKASSA_WIDGET_BASE_URL:-}
+      - YOOKASSA_WIDGET_BIND=${YOOKASSA_WIDGET_BIND:-0.0.0.0}
+      - YOOKASSA_WIDGET_PORT=${YOOKASSA_WIDGET_PORT:-8765}
+      - YOOKASSA_MARKET_CATALOG_URL=${YOOKASSA_MARKET_CATALOG_URL:-http://hytale-adminpanel:3001}
+      - YOOKASSA_MARKET_CATALOG_KEY=${MARKET_CATALOG_API_KEY:-}
+      - MARKET_COINS_PER_RUB=${MARKET_COINS_PER_RUB:-100}
+      - MARKET_CRYSTALS_PER_RUB=${MARKET_CRYSTALS_PER_RUB:-1}
+      - MARKET_WHEEL_SPIN_CRYSTALS=${MARKET_WHEEL_SPIN_CRYSTALS:-150}
+    stdin_open: true
+    tty: true
+    networks:
+      - hytale-network
+
+  # Prod: каталог server-prod на хосте; mods/ — из server-prod/mods (см. deploy-map-mods-to-prod.sh).
+  # Внутри контейнера порт игры 5520; с хоста — HYTALE_SERVER_2_HOST_UDP_PORT (5521).
+  hytale-server-prod:
+    build:
+      context: ../../..
+      dockerfile: infra/docker/hytale/Dockerfile
+    container_name: hytale-server-prod
+    restart: unless-stopped
+    ports:
+      - "${HYTALE_SERVER_2_HOST_UDP_PORT:-5521}:5520/udp"
+      - "${YOOKASSA_PROD_WIDGET_PORT:-8767}:${YOOKASSA_PROD_WIDGET_PORT:-8767}/tcp"
+    volumes:
+      - ${HYTALE_SERVER_2_HOST_PATH:-../../../server-prod}:/home/hytale/server
+      - /etc/machine-id:/etc/machine-id:ro
+    environment:
+      - TZ=Europe/Moscow
+      # false = без AOT; auto = AOT только если есть HytaleServer.aot
+      - HYTALE_USE_AOT=${HYTALE_USE_AOT:-false}
+      # config.json Defaults.GameMode перед JVM (значения enum: Adventure | Creative)
+      - HYTALE_DEFAULT_GAMEMODE=${HYTALE_PROD_DEFAULT_GAMEMODE:-Creative}
+      - YOOKASSA_SHOP_ID=${YOOKASSA_PROD_SHOP_ID:-${YOOKASSA_SHOP_ID:-}}
+      - YOOKASSA_SECRET_KEY=${YOOKASSA_PROD_SECRET_KEY:-}
+      - YOOKASSA_RETURN_URL=${YOOKASSA_PROD_RETURN_URL:-${YOOKASSA_RETURN_URL:-}}
+      - YOOKASSA_WIDGET_BASE_URL=${YOOKASSA_PROD_WIDGET_BASE_URL:-${YOOKASSA_WIDGET_BASE_URL:-}}
+      - YOOKASSA_WIDGET_BIND=${YOOKASSA_WIDGET_BIND:-0.0.0.0}
+      - YOOKASSA_WIDGET_PORT=${YOOKASSA_PROD_WIDGET_PORT:-8767}
+      - YOOKASSA_MARKET_CATALOG_URL=${YOOKASSA_MARKET_CATALOG_URL:-http://hytale-adminpanel:3001}
+      - YOOKASSA_MARKET_CATALOG_KEY=${MARKET_CATALOG_API_KEY:-}
+      - MARKET_COINS_PER_RUB=${MARKET_COINS_PER_RUB:-100}
+      - MARKET_CRYSTALS_PER_RUB=${MARKET_CRYSTALS_PER_RUB:-1}
+      - MARKET_WHEEL_SPIN_CRYSTALS=${MARKET_WHEEL_SPIN_CRYSTALS:-150}
+    stdin_open: true
+    tty: true
+    networks:
+      - hytale-network
+
+networks:
+  hytale-network:
+    external: true
+    name: hytale-network
+

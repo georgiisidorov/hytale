@@ -1,0 +1,24 @@
+services:
+  node_exporter:
+    image: prom/node-exporter:v1.8.2
+    container_name: hytale-node-exporter
+    restart: unless-stopped
+    expose:
+      - '9100'
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
+      - '--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run|var/lib/docker/.+|var/lib/containerd/.+)($|/)'
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    networks:
+      - default
+
+networks:
+  default:
+    name: hytale-network
+    external: true
+

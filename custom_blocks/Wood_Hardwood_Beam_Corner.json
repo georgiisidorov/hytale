@@ -1,0 +1,50 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Wood_Hardwood_Beam_Corner.name"
+  },
+  "Icon": "Icons/ItemsGenerated/Wood_Hardwood_Beam_Corner.png",
+  "ItemLevel": 15,
+  "MaxStack": 100,
+  "Categories": ["Blocks.Wood"],
+  "SubCategory": "BlockSets",
+  "PlayerAnimationsId": "Item",
+  "Interactions": {
+    "Primary": "Block_Primary",
+    "Secondary": "Block_Secondary"
+  },
+  "Set": "Wood_Hardwood_Planks",
+  "Recipe": {
+    "Input": [{"ResourceTypeId": "Wood_Hardwood", "Quantity": 1}],
+    "BenchRequirement": [{"Id": "Builders", "Type": "StructuralCrafting", "Categories": ["Beam"]}],
+    "OutputQuantity": 2
+  },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Structures/Tubes/Wood_Hardwood_Beam_Corner.blockymodel",
+    "CustomModelTexture": [{"Texture": "Blocks/Custom/Wood_Hardwood_Beam_Corner.png", "Weight": 1}],
+    "Group": "Wood",
+    "HitboxType": "Branch_Corner",
+    "Flags": {},
+    "Gathering": {"Breaking": {"GatherType": "Woods"}},
+    "VariantRotation": "UpDownNESW",
+    "FlipType": "Orthogonal",
+    "BlockParticleSetId": "Wood",
+    "ParticleColor": "#693e2a",
+    "BlockSoundSetId": "Branch",
+    "PhysicalMaterialId": "Wood",
+    "TextureComputedColor": "#572F1D",
+    "Supporting": {
+      "Up": [{"FaceType": "Wood_Beam"}],
+      "North": [{"FaceType": "Wood_Beam"}]
+    }
+  },
+  "Tags": {"Type": ["Wood"], "Family": ["Hardwood"]},
+  "ItemSoundSetId": "ISS_Blocks_Wood",
+  "IconProperties": {
+    "Scale": 0.58823,
+    "Rotation": [22.5, 45, 22.5],
+    "Translation": [0, -13.5]
+  }
+}

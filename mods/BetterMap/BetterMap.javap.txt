@@ -1,0 +1,294 @@
+Compiled from "BetterMap.java"
+public class dev.ninesliced.BetterMap extends com.hypixel.hytale.server.core.plugin.JavaPlugin {
+  private static final java.util.logging.Logger LOGGER;
+
+  private static dev.ninesliced.BetterMap instance;
+
+  private com.hypixel.hytale.component.ComponentType<com.hypixel.hytale.server.core.universe.world.storage.EntityStore, dev.ninesliced.components.ExplorationComponent> explorationComponentType;
+
+  private dev.ninesliced.providers.LocationHudProvider locationHudProvider;
+
+  public dev.ninesliced.BetterMap(com.hypixel.hytale.server.core.plugin.JavaPluginInit);
+    Code:
+         0: aload_0
+         1: aload_1
+         2: invokespecial #1                  // Method com/hypixel/hytale/server/core/plugin/JavaPlugin."<init>":(Lcom/hypixel/hytale/server/core/plugin/JavaPluginInit;)V
+         5: return
+
+  public static dev.ninesliced.BetterMap get();
+    Code:
+         0: getstatic     #7                  // Field instance:Ldev/ninesliced/BetterMap;
+         3: areturn
+
+  public dev.ninesliced.providers.LocationHudProvider getLocationHudProvider();
+    Code:
+         0: aload_0
+         1: getfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+         4: areturn
+
+  public com.hypixel.hytale.component.ComponentType<com.hypixel.hytale.server.core.universe.world.storage.EntityStore, dev.ninesliced.components.ExplorationComponent> getExplorationComponentType();
+    Code:
+         0: aload_0
+         1: getfield      #17                 // Field explorationComponentType:Lcom/hypixel/hytale/component/ComponentType;
+         4: areturn
+
+  protected void setup();
+    Code:
+         0: aload_0
+         1: putstatic     #7                  // Field instance:Ldev/ninesliced/BetterMap;
+         4: new           #21                 // class dev/ninesliced/hstats/HStats
+         7: dup
+         8: ldc           #23                 // String 80d0e1dd-0f46-4c12-8f71-f9cae6e9f0f4
+        10: ldc           #25                 // String 1.3.3
+        12: invokespecial #27                 // Method dev/ninesliced/hstats/HStats."<init>":(Ljava/lang/String;Ljava/lang/String;)V
+        15: pop
+        16: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        19: ldc           #34                 // String ========================================
+        21: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        24: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        27: ldc           #42                 // String Setting up Persistent Map Exploration Mod
+        29: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        32: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        35: ldc           #34                 // String ========================================
+        37: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        40: aload_0
+        41: aload_0
+        42: invokevirtual #44                 // Method getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+        45: ldc           #48                 // class dev/ninesliced/components/ExplorationComponent
+        47: ldc           #50                 // String ExplorationData
+        49: getstatic     #52                 // Field dev/ninesliced/components/ExplorationComponent.CODEC:Lcom/hypixel/hytale/codec/builder/BuilderCodec;
+        52: invokevirtual #56                 // Method com/hypixel/hytale/component/ComponentRegistryProxy.registerComponent:(Ljava/lang/Class;Ljava/lang/String;Lcom/hypixel/hytale/codec/builder/BuilderCodec;)Lcom/hypixel/hytale/component/ComponentType;
+        55: putfield      #17                 // Field explorationComponentType:Lcom/hypixel/hytale/component/ComponentType;
+        58: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        61: ldc           #62                 // String Exploration Component: REGISTERED
+        63: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        66: aload_0
+        67: invokevirtual #44                 // Method getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+        70: new           #64                 // class dev/ninesliced/exploration/ExplorationPlayerSetupSystem
+        73: dup
+        74: invokespecial #66                 // Method dev/ninesliced/exploration/ExplorationPlayerSetupSystem."<init>":()V
+        77: invokevirtual #69                 // Method com/hypixel/hytale/component/ComponentRegistryProxy.registerSystem:(Lcom/hypixel/hytale/component/system/ISystem;)V
+        80: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        83: ldc           #73                 // String Exploration Setup System: REGISTERED
+        85: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        88: ldc           #75                 // String .
+        90: iconst_0
+        91: anewarray     #77                 // class java/lang/String
+        94: invokestatic  #79                 // Method java/nio/file/Paths.get:(Ljava/lang/String;[Ljava/lang/String;)Ljava/nio/file/Path;
+        97: invokeinterface #85,  1           // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+       102: invokeinterface #91,  1           // InterfaceMethod java/nio/file/Path.normalize:()Ljava/nio/file/Path;
+       107: astore_1
+       108: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       111: aload_1
+       112: invokevirtual #100                // Method dev/ninesliced/configs/ModConfig.initialize:(Ljava/nio/file/Path;)V
+       115: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       118: invokevirtual #104                // Method dev/ninesliced/configs/ModConfig.getMaxPersonalMarkersPerPlayer:()I
+       121: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       124: invokevirtual #108                // Method dev/ninesliced/configs/ModConfig.getMaxSharedMarkersPerPlayer:()I
+       127: invokestatic  #111                // Method dev/ninesliced/utils/WaypointLimitUtil.applyOverridesToAllWorlds:(II)V
+       130: aload_1
+       131: ldc           #117                // String mods
+       133: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       138: ldc           #123                // String BetterMap
+       140: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       145: invokestatic  #125                // Method dev/ninesliced/managers/PlayerConfigManager.initialize:(Ljava/nio/file/Path;)V
+       148: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       151: ldc           #128                // String Player Config Manager: INITIALIZED
+       153: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       156: invokestatic  #130                // Method dev/ninesliced/managers/MapPrivacyManager.getInstance:()Ldev/ninesliced/managers/MapPrivacyManager;
+       159: invokevirtual #135                // Method dev/ninesliced/managers/MapPrivacyManager.initialize:()V
+       162: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       165: ldc           #137                // String MapPrivacyManager: INITIALIZED
+       167: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       170: invokestatic  #139                // Method dev/ninesliced/managers/WarpPrivacyManager.getInstance:()Ldev/ninesliced/managers/WarpPrivacyManager;
+       173: invokevirtual #144                // Method dev/ninesliced/managers/WarpPrivacyManager.initialize:()V
+       176: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       179: ldc           #145                // String WarpPrivacyManager: INITIALIZED
+       181: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       184: invokestatic  #147                // Method dev/ninesliced/managers/PoiPrivacyManager.getInstance:()Ldev/ninesliced/managers/PoiPrivacyManager;
+       187: invokevirtual #152                // Method dev/ninesliced/managers/PoiPrivacyManager.initialize:()V
+       190: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       193: ldc           #153                // String PoiPrivacyManager: INITIALIZED
+       195: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       198: invokestatic  #155                // Method dev/ninesliced/managers/UserMarkerProviderManager.getInstance:()Ldev/ninesliced/managers/UserMarkerProviderManager;
+       201: invokevirtual #160                // Method dev/ninesliced/managers/UserMarkerProviderManager.initialize:()V
+       204: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       207: ldc           #161                // String UserMarkerProviderManager: INITIALIZED
+       209: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       212: invokestatic  #94                 // Method dev/ninesliced/configs/ModConfig.getInstance:()Ldev/ninesliced/configs/ModConfig;
+       215: invokevirtual #163                // Method dev/ninesliced/configs/ModConfig.getConfigDirectory:()Ljava/nio/file/Path;
+       218: astore_2
+       219: aload_2
+       220: ifnonnull     239
+       223: aload_1
+       224: ldc           #117                // String mods
+       226: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       231: ldc           #123                // String BetterMap
+       233: invokeinterface #119,  2          // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+       238: astore_2
+       239: aload_2
+       240: invokestatic  #166                // Method dev/ninesliced/managers/WaypointManager.initialize:(Ljava/nio/file/Path;)V
+       243: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       246: ldc           #169                // String Waypoint Persistence: INITIALIZED
+       248: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       251: invokestatic  #171                // Method dev/ninesliced/managers/ExplorationManager.config:()Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+       254: ldc           #177                // float 0.5f
+       256: invokevirtual #178                // Method dev/ninesliced/managers/ExplorationManager$ConfigBuilder.updateRate:(F)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+       259: ldc           #184                // String exploration_data
+       261: invokevirtual #186                // Method dev/ninesliced/managers/ExplorationManager$ConfigBuilder.enablePersistence:(Ljava/lang/String;)Ldev/ninesliced/managers/ExplorationManager$ConfigBuilder;
+       264: invokevirtual #190                // Method dev/ninesliced/managers/ExplorationManager$ConfigBuilder.build:()Ldev/ninesliced/managers/ExplorationManager;
+       267: pop
+       268: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       271: ldc           #194                // String Exploration Manager: INITIALIZED
+       273: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       276: invokestatic  #196                // Method dev/ninesliced/exploration/ExplorationTicker.getInstance:()Ldev/ninesliced/exploration/ExplorationTicker;
+       279: invokevirtual #201                // Method dev/ninesliced/exploration/ExplorationTicker.start:()V
+       282: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       285: ldc           #204                // String Exploration Ticker: STARTED
+       287: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       290: aload_0
+       291: invokevirtual #206                // Method getCommandRegistry:()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+       294: new           #210                // class dev/ninesliced/commands/bettermap/BetterMapCommand
+       297: dup
+       298: invokespecial #212                // Method dev/ninesliced/commands/bettermap/BetterMapCommand."<init>":()V
+       301: invokevirtual #213                // Method com/hypixel/hytale/server/core/command/system/CommandRegistry.registerCommand:(Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+       304: pop
+       305: aload_0
+       306: invokevirtual #206                // Method getCommandRegistry:()Lcom/hypixel/hytale/server/core/command/system/CommandRegistry;
+       309: new           #219                // class dev/ninesliced/commands/waypoint/WaypointCommand
+       312: dup
+       313: invokespecial #221                // Method dev/ninesliced/commands/waypoint/WaypointCommand."<init>":()V
+       316: invokevirtual #213                // Method com/hypixel/hytale/server/core/command/system/CommandRegistry.registerCommand:(Lcom/hypixel/hytale/server/core/command/system/AbstractCommand;)Lcom/hypixel/hytale/server/core/command/system/CommandRegistration;
+       319: pop
+       320: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       323: ldc           #222                // String Mod Command: REGISTERED
+       325: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       328: aload_0
+       329: new           #224                // class dev/ninesliced/providers/LocationHudProvider
+       332: dup
+       333: invokespecial #226                // Method dev/ninesliced/providers/LocationHudProvider."<init>":()V
+       336: putfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+       339: aload_0
+       340: invokevirtual #44                 // Method getEntityStoreRegistry:()Lcom/hypixel/hytale/component/ComponentRegistryProxy;
+       343: new           #227                // class dev/ninesliced/systems/LocationSystem
+       346: dup
+       347: invokespecial #229                // Method dev/ninesliced/systems/LocationSystem."<init>":()V
+       350: invokevirtual #69                 // Method com/hypixel/hytale/component/ComponentRegistryProxy.registerSystem:(Lcom/hypixel/hytale/component/system/ISystem;)V
+       353: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       356: ldc           #230                // String Location Display: INITIALIZED
+       358: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       361: invokestatic  #232                // Method dev/ninesliced/managers/PlayerRadarManager.getInstance:()Ldev/ninesliced/managers/PlayerRadarManager;
+       364: pop
+       365: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       368: ldc           #237                // String Player Radar: INITIALIZED
+       370: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       373: invokestatic  #239                // Method dev/ninesliced/managers/WorldBorderManager.getInstance:()Ldev/ninesliced/managers/WorldBorderManager;
+       376: pop
+       377: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       380: ldc           #244                // String World Border Manager: INITIALIZED
+       382: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       385: invokestatic  #246                // Method dev/ninesliced/managers/MapAnchorManager.getInstance:()Ldev/ninesliced/managers/MapAnchorManager;
+       388: invokevirtual #251                // Method dev/ninesliced/managers/MapAnchorManager.initialize:()V
+       391: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       394: ldc           #252                // String Map Anchor Manager: INITIALIZED (Anchor UI on MapServerContent)
+       396: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       399: aload_0
+       400: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       403: ldc_w         #258                // class com/hypixel/hytale/server/core/event/events/player/PlayerReadyEvent
+       406: invokedynamic #260,  0            // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+       411: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       414: pop
+       415: aload_0
+       416: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       419: ldc_w         #270                // class com/hypixel/hytale/server/core/event/events/player/PlayerDisconnectEvent
+       422: invokedynamic #272,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+       427: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       430: pop
+       431: aload_0
+       432: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       435: ldc_w         #273                // class com/hypixel/hytale/server/core/event/events/player/AddPlayerToWorldEvent
+       438: invokedynamic #275,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+       443: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       446: pop
+       447: aload_0
+       448: invokevirtual #254                // Method getEventRegistry:()Lcom/hypixel/hytale/event/EventRegistry;
+       451: ldc_w         #276                // class com/hypixel/hytale/server/core/event/events/player/DrainPlayerFromWorldEvent
+       454: invokedynamic #278,  0            // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+       459: invokevirtual #264                // Method com/hypixel/hytale/event/EventRegistry.registerGlobal:(Ljava/lang/Class;Ljava/util/function/Consumer;)Lcom/hypixel/hytale/event/EventRegistration;
+       462: pop
+       463: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       466: ldc_w         #279                // String Exploration Events: REGISTERED
+       469: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       472: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       475: ldc           #34                 // String ========================================
+       477: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       480: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       483: ldc_w         #281                // String Plugin Setup Complete!
+       486: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       489: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       492: ldc_w         #283                // String Players will now have persistent
+       495: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       498: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       501: ldc_w         #285                // String exploration tracking on the world map
+       504: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       507: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       510: ldc           #34                 // String ========================================
+       512: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+       515: goto          550
+       518: astore_1
+       519: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+       522: aload_1
+       523: invokevirtual #289                // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+       526: invokedynamic #293,  0            // InvokeDynamic #4:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       531: invokevirtual #297                // Method java/util/logging/Logger.severe:(Ljava/lang/String;)V
+       534: aload_1
+       535: invokevirtual #300                // Method java/lang/Exception.printStackTrace:()V
+       538: new           #303                // class java/lang/RuntimeException
+       541: dup
+       542: ldc_w         #305                // String Plugin initialization failed
+       545: aload_1
+       546: invokespecial #307                // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;Ljava/lang/Throwable;)V
+       549: athrow
+       550: return
+      Exception table:
+         from    to  target type
+            40   515   518   Class java/lang/Exception
+
+  protected void shutdown();
+    Code:
+         0: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+         3: ldc_w         #310                // String Shutting down BetterMap plugin...
+         6: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+         9: invokestatic  #196                // Method dev/ninesliced/exploration/ExplorationTicker.getInstance:()Ldev/ninesliced/exploration/ExplorationTicker;
+        12: invokevirtual #312                // Method dev/ninesliced/exploration/ExplorationTicker.stop:()V
+        15: invokestatic  #315                // Method dev/ninesliced/managers/ExplorationManager.getInstance:()Ldev/ninesliced/managers/ExplorationManager;
+        18: invokevirtual #317                // Method dev/ninesliced/managers/ExplorationManager.shutdown:()V
+        21: aload_0
+        22: getfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+        25: ifnull        35
+        28: aload_0
+        29: getfield      #13                 // Field locationHudProvider:Ldev/ninesliced/providers/LocationHudProvider;
+        32: invokevirtual #320                // Method dev/ninesliced/providers/LocationHudProvider.cleanup:()V
+        35: invokestatic  #232                // Method dev/ninesliced/managers/PlayerRadarManager.getInstance:()Ldev/ninesliced/managers/PlayerRadarManager;
+        38: invokevirtual #323                // Method dev/ninesliced/managers/PlayerRadarManager.cleanup:()V
+        41: invokestatic  #239                // Method dev/ninesliced/managers/WorldBorderManager.getInstance:()Ldev/ninesliced/managers/WorldBorderManager;
+        44: invokevirtual #324                // Method dev/ninesliced/managers/WorldBorderManager.cleanup:()V
+        47: invokestatic  #246                // Method dev/ninesliced/managers/MapAnchorManager.getInstance:()Ldev/ninesliced/managers/MapAnchorManager;
+        50: invokevirtual #325                // Method dev/ninesliced/managers/MapAnchorManager.cleanup:()V
+        53: invokestatic  #326                // Method dev/ninesliced/managers/ChunkStreamingManager.getInstance:()Ldev/ninesliced/managers/ChunkStreamingManager;
+        56: invokevirtual #331                // Method dev/ninesliced/managers/ChunkStreamingManager.cleanup:()V
+        59: getstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        62: ldc_w         #332                // String BetterMap plugin shutdown complete.
+        65: invokevirtual #36                 // Method java/util/logging/Logger.info:(Ljava/lang/String;)V
+        68: aload_0
+        69: invokespecial #334                // Method com/hypixel/hytale/server/core/plugin/JavaPlugin.shutdown:()V
+        72: return
+
+  static {};
+    Code:
+         0: ldc           #8                  // class dev/ninesliced/BetterMap
+         2: invokevirtual #335                // Method java/lang/Class.getName:()Ljava/lang/String;
+         5: invokestatic  #340                // Method java/util/logging/Logger.getLogger:(Ljava/lang/String;)Ljava/util/logging/Logger;
+         8: putstatic     #30                 // Field LOGGER:Ljava/util/logging/Logger;
+        11: return
+}

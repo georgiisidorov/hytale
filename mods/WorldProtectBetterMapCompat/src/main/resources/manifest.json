@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "WorldProtectBetterMapCompat",
+  "Version": "1.0.8",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.wpmapcompat.WorldProtectBetterMapCompatPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "BetterMap + WorldProtect без патча jar: рельеф, зоны, подписи (кроме spawn/countryside).",
+  "IncludesAssetPack": false
+}

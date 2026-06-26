@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "ServerWelcome",
+  "Version": "1.1.1",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.serverwelcome.ServerWelcomePlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Правила и приветствие в popup при входе (/rules), текст из welcome.txt",
+  "IncludesAssetPack": true
+}

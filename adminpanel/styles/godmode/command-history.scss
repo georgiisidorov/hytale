@@ -1,0 +1,242 @@
+/* Command History Component */
+.command-history {
+  background: var(--godmode-bg-secondary);
+  border: 2px solid var(--godmode-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.history-header {
+  padding: 15px 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-header h3 {
+  margin: 0;
+  color: var(--godmode-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .icon-green svg,
+  .icon-green img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+}
+
+.history-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.history-filters button {
+  background: rgba(21, 154, 171, 0.10);
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+  padding: 6px 10px;
+  color: var(--godmode-text-primary);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.history-filters button.active {
+  background: rgba(21, 154, 171, 0.16);
+  border-color: rgba(21, 154, 171, 0.65);
+  color: var(--godmode-text-primary);
+}
+
+.history-filters button:hover {
+  background: rgba(21, 154, 171, 0.13);
+}
+
+.history-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.no-history,
+.no-matching-history {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--godmode-text-muted);
+  font-style: italic;
+}
+
+.history-item {
+  border: 2px solid rgba(255, 255, 255, 0.10);
+  border-radius: 5px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.history-item.success {
+  border-left: 3px solid var(--godmode-accent);
+}
+
+.history-item.failed {
+  border-left: 3px solid #ff4444;
+}
+
+.history-item.expanded {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.item-header {
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.command-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.command-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  
+  .icon-green svg,
+  .icon-green img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+}
+
+.command-name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  
+  .icon-green svg,
+  .icon-green img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+  
+  .icon-red svg,
+  .icon-red img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7471%) hue-rotate(350deg) brightness(100%) contrast(100%);
+  }
+}
+
+.status-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  
+  .icon-green svg,
+  .icon-green img {
+    filter: brightness(0) saturate(100%) invert(100%);
+  }
+  
+  .icon-red svg,
+  .icon-red img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(100%) saturate(7471%) hue-rotate(350deg) brightness(100%) contrast(100%);
+  }
+}
+
+.command-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.execution-time,
+.timestamp {
+  white-space: nowrap;
+}
+
+.silent-mode {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.expand-icon {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.item-details {
+  padding: 15px;
+  border-top: 2px solid var(--godmode-border);
+  background: #5a0220;
+}
+
+.detail-section {
+  margin-bottom: 15px;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section h4 {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.command-data,
+.result-data {
+  background: #5a0220;
+  border: 2px solid var(--godmode-border);
+  border-radius: 3px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #ffffff;
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.execution-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.execution-details span {
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 3px;
+}
+
+.history-footer {
+  padding: 15px 20px;
+  border-top: 2px solid var(--godmode-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.history-count,
+.device-filter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+

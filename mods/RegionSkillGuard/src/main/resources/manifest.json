@@ -1,0 +1,16 @@
+{
+  "Group": "Custom",
+  "Name": "RegionSkillGuard",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "CursorAuto",
+      "Url": "https://github.com/"
+    }
+  ],
+  "Website": "https://github.com/",
+  "Main": "com.github.regionskillguard.RegionSkillGuardPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "Cancels RPGLeveling XP gain for players standing on WorldProtect regions they don't own.",
+  "IncludesAssetPack": false
+}
