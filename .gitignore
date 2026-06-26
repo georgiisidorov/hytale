@@ -34,11 +34,13 @@ mods/*.so
 mods/*.jnilib
 mods/*.dll
 
-# Game server binary (too large)
+# Game server binary / large files
 HytaleServer.jar
 server.jar
 no-interaction-mod-*.jar
 roulette-atomic-*.jar
+OpenJDK25.tar.gz
+mods/MazeSlots/maze.prefab.json
 
 # Node.js
 adminpanel/node_modules/
