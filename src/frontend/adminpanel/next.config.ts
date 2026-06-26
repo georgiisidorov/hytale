@@ -21,10 +21,7 @@ const nextConfig: NextConfig = {
 	outputFileTracingRoot: repoRoot,
 	async headers() {
 		return [
-			{ source: '/api/posts', headers: CORS_HEADERS },
-			{ source: '/api/posts/:id', headers: CORS_HEADERS },
-			{ source: '/api/hytale/market/packs/voucher', headers: CORS_HEADERS },
-			{ source: '/api/hytale/players', headers: CORS_HEADERS },
+			{ source: '/api/:path*', headers: CORS_HEADERS },
 		];
 	},
 };
