@@ -12,7 +12,10 @@ RUN npm ci
 COPY src/frontend/adminpanel/ ./
 
 RUN npm run build && \
-    find .next/standalone -name 'server.js' -not -path '*/node_modules/*' | head -1 | xargs dirname | xargs -I{} ln -sfn /app/adminpanel/public {}/public
+    find .next/standalone -name 'server.js' -not -path '*/node_modules/*' | head -1 | xargs dirname | xargs -I{} sh -c '\
+      ln -sfn /app/adminpanel/public {}/public && \
+      mkdir -p {}/.next && \
+      ln -sfn /app/adminpanel/.next/static {}/.next/static'
 
 EXPOSE 3001
 
