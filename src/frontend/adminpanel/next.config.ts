@@ -8,11 +8,25 @@ const frontendDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(frontendDir, '..', '..');
 loadEnvConfig(repoRoot);
 
+const CORS_HEADERS = [
+	{ key: 'Access-Control-Allow-Origin', value: '*' },
+	{ key: 'Access-Control-Allow-Methods', value: 'GET, POST, OPTIONS' },
+	{ key: 'Access-Control-Allow-Headers', value: 'Content-Type' },
+];
+
 const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	output: 'standalone',
 	// Монорепо: корректный трейсинг зависимостей для standalone-образа
 	outputFileTracingRoot: repoRoot,
+	async headers() {
+		return [
+			{ source: '/api/posts', headers: CORS_HEADERS },
+			{ source: '/api/posts/:id', headers: CORS_HEADERS },
+			{ source: '/api/hytale/market/packs/voucher', headers: CORS_HEADERS },
+			{ source: '/api/hytale/players', headers: CORS_HEADERS },
+		];
+	},
 };
 
 export default nextConfig;
