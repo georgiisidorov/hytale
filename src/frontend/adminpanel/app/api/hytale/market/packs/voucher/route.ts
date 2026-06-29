@@ -123,3 +123,14 @@ export async function POST(req: Request) {
 		return NextResponse.json({ ok: false, error: msg }, { status: 500 });
 	}
 }
+
+export function OPTIONS() {
+	return new Response(null, {
+		status: 204,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'POST, OPTIONS',
+			'Access-Control-Allow-Headers': 'Content-Type',
+		},
+	});
+}
