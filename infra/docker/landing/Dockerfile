@@ -2,8 +2,8 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-COPY src/frontend/landing/package.json src/frontend/landing/package-lock.json* ./
-RUN npm ci
+COPY src/frontend/landing/package.json ./
+RUN npm install
 
 COPY src/frontend/landing/ ./
 
