@@ -1,0 +1,18 @@
+services:
+  landing:
+    build:
+      context: ../../..
+      dockerfile: infra/docker/landing/Dockerfile
+      args:
+        VITE_API_BASE_URL: https://adminpanel.botcalendary.ru
+    container_name: hytale-landing
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      - hytale-network
+
+networks:
+  hytale-network:
+    external: true
+    name: hytale-network
