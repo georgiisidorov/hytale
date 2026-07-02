@@ -1,17 +1,114 @@
-# Публичное API adminpanel — для сайта
+# Публичное API — для сайта hytale.botcalendary.ru
 
-Base URL: `https://adminpanel.botcalendary.ru`
+Base URL: `https://adminpanel.botcalendary.ru`  
+Все эндпоинты публичные (CORS открыт), аутентификация не нужна.
 
 ---
 
-## 1. Создать ваучер лут-пака
+## Флоу оплаты лут-пака
 
-Вызывается браузером после редиректа с YooKassa. Ключ не нужен — платёж верифицируется через YooKassa API на стороне сервера.
+```
+1. Лендинг вызывает POST /api/hytale/market/packs/payment
+   → adminpanel создаёт платёж в YooKassa
+   ← { paymentId, confirmationUrl }
+
+2. Лендинг сохраняет paymentId в sessionStorage
+   и делает window.location.href = confirmationUrl
+
+3. Пользователь оплачивает на странице YooKassa
+
+4. YooKassa редиректит на returnUrl (страница лендинга)
+   Лендинг читает paymentId из sessionStorage
+
+5. Лендинг вызывает POST /api/hytale/market/packs/voucher
+   → adminpanel верифицирует платёж через YooKassa API
+   ← { ok: true, code: "FVSB-PR7N-W53W" }
+
+6. Показываем юзеру код ваучера — он вводит его в игре
+```
+
+> **Идемпотентность**: повторный вызов `/voucher` с тем же `paymentId` всегда вернёт тот же код — безопасно вызывать несколько раз (например, при перезагрузке страницы).
+
+---
+
+## 1. Создать платёж
+
+Вызывается при клике «Купить». Создаёт платёж в YooKassa и возвращает ссылку для редиректа.
+
+```
+POST /api/hytale/market/packs/payment
+Content-Type: application/json
+```
+
+**Тело запроса:**
+
+```json
+{
+  "packId": "pack_pet_utility",
+  "playerUuid": "550e8400-e29b-41d4-a716-446655440000",
+  "returnUrl": "https://hytale.botcalendary.ru/payment-result?packId=pack_pet_utility"
+}
+```
+
+| Поле | Обязательно | Описание |
+|---|---|---|
+| `packId` | **да** | ID лут-пака (см. таблицу ниже) |
+| `returnUrl` | **да** | URL, куда YooKassa вернёт пользователя после оплаты |
+| `playerUuid` | нет | UUID игрока. Если передан — ваучер привязывается к нему |
+
+**Ответ:**
+
+```json
+{
+  "ok": true,
+  "paymentId": "2e5cb1c6-000f-5000-8000-1fbde24a03de",
+  "confirmationUrl": "https://yoomoney.ru/checkout/payments/v2/contract?orderId=..."
+}
+```
+
+**Ошибки:**
+
+| HTTP | Причина |
+|---|---|
+| 404 | Несуществующий `packId` |
+| 503 | Не настроены ключи YooKassa на сервере |
+| 502 | Ошибка на стороне YooKassa |
+
+**Пример:**
+
+```typescript
+// При клике «Купить»
+const packId = 'pack_pet_utility'
+const playerUuid = '...' // UUID игрока, если известен
+
+const res = await fetch('https://adminpanel.botcalendary.ru/api/hytale/market/packs/payment', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    packId,
+    playerUuid,
+    returnUrl: `https://hytale.botcalendary.ru/payment-result?packId=${packId}&playerUuid=${playerUuid}`,
+  }),
+})
+const { paymentId, confirmationUrl } = await res.json()
+
+// Сохраняем перед редиректом
+sessionStorage.setItem('pendingPaymentId', paymentId)
+window.location.href = confirmationUrl
+```
+
+---
+
+## 2. Получить ваучер (после оплаты)
+
+Вызывается на странице `returnUrl` после редиректа с YooKassa. Верифицирует платёж на стороне сервера и выдаёт код.
 
 ```
 POST /api/hytale/market/packs/voucher
 Content-Type: application/json
 ```
+
+**Тело запроса:**
 
 ```json
 {
@@ -23,21 +120,11 @@ Content-Type: application/json
 
 | Поле | Обязательно | Описание |
 |---|---|---|
-| `paymentId` | **да** | ID платежа из YooKassa. Повторный вызов с тем же `paymentId` вернёт тот же код. |
-| `packId` | **да** | ID лут-пака (см. таблицу ниже). Сверяется с metadata платежа. |
-| `playerUuid` | нет | UUID игрока. Если передан — ваучер привязывается к нему и другой активировать не сможет. |
+| `paymentId` | **да** | ID из шага 1 (сохранён в sessionStorage) |
+| `packId` | **да** | Тот же `packId` что при создании платежа |
+| `playerUuid` | нет | UUID игрока (если передавался при создании) |
 
-**Доступные `packId`:**
-
-| `packId` | Название |
-|---|---|
-| `pack_pet_utility` | Pet Utility Pack |
-| `pack_iron_adventurer` | Iron Adventurer Pack |
-| `pack_alchemist_premium` | Alchemist Premium Pack |
-| `pack_builder_premium` | Builder Premium Pack |
-| `pack_royal_decor` | Royal Decor Pack |
-
-**Ответ — успех:**
+**Ответ:**
 
 ```json
 { "ok": true, "code": "FVSB-PR7N-W53W" }
@@ -47,30 +134,55 @@ Content-Type: application/json
 
 | HTTP | Причина |
 |---|---|
-| 402 | Платёж не найден в YooKassa или не завершён (`succeeded`) |
+| 402 | Платёж не найден в YooKassa или статус не `succeeded` |
 | 403 | `packId` или `playerUuid` не совпадает с данными платежа |
 | 404 | Несуществующий `packId` |
 
-**Пример:**
+**Пример (страница payment-result):**
 
 ```typescript
+// Читаем параметры из URL и sessionStorage
+const params = new URLSearchParams(window.location.search)
+const packId = params.get('packId')!
+const playerUuid = params.get('playerUuid') ?? undefined
+const paymentId = sessionStorage.getItem('pendingPaymentId')!
+
 const res = await fetch('https://adminpanel.botcalendary.ru/api/hytale/market/packs/voucher', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ paymentId, packId, playerUuid }),
-});
-const { ok, code, error } = await res.json();
+})
+const { ok, code, error } = await res.json()
+
+if (ok) {
+  sessionStorage.removeItem('pendingPaymentId')
+  // показать код пользователю
+}
 ```
 
 ---
 
-## 2. Игроки онлайн
+## Доступные лут-паки
+
+| `packId` | Название | Цена |
+|---|---|---|
+| `pack_pet_utility` | Набор питомца | 499 ₽ |
+| `pack_iron_adventurer` | Набор авантюриста | 599 ₽ |
+| `pack_alchemist_premium` | Набор алхимика | 449 ₽ |
+| `pack_builder_premium` | Набор строителя | 499 ₽ |
+| `pack_royal_decor` | Набор декора | 899 ₽ |
+
+> Цены хранятся в БД (таблица `hytale_market_loot_pack_prices`) и могут меняться без передеплоя.
+
+---
+
+## 3. Игроки онлайн
 
 ```
 GET /api/hytale/analytics?server=prod
 ```
 
-Без аутентификации. Не кешировать.
+Не кешировать. Рекомендуемый интервал поллинга — 30 с.
 
 **Ответ:**
 
@@ -84,46 +196,42 @@ GET /api/hytale/analytics?server=prod
 
 | Поле | Описание |
 |---|---|
-| `onlinePlayers` | Игроков онлайн прямо сейчас. `null` если сервер недоступен. |
-| `registeredPlayers` | Всего зарегистрированных игроков. |
+| `onlinePlayers` | Игроков онлайн прямо сейчас. `null` если сервер недоступен |
+| `registeredPlayers` | Всего зарегистрированных игроков |
 
-**Polling-хук (React):**
+**React-хук:**
 
 ```typescript
-function useServerStats(intervalMs = 10_000) {
-  const [stats, setStats] = useState<{ onlinePlayers: number | null; registeredPlayers: number | null }>({
-    onlinePlayers: null, registeredPlayers: null,
-  });
-
+function useServerStats(intervalMs = 30_000) {
+  const [stats, setStats] = useState<{ online: number | null; registered: number | null }>({
+    online: null, registered: null,
+  })
   useEffect(() => {
-    let cancelled = false;
-    async function tick() {
+    let active = true
+    const tick = async () => {
       try {
-        const res = await fetch('/api/hytale/analytics?server=prod', { cache: 'no-store' });
-        const data = await res.json();
-        if (!cancelled && data.ok) setStats({ onlinePlayers: data.onlinePlayers, registeredPlayers: data.registeredPlayers });
+        const data = await fetch('https://adminpanel.botcalendary.ru/api/hytale/analytics?server=prod',
+          { cache: 'no-store' }).then(r => r.json())
+        if (active && data.ok) setStats({ online: data.onlinePlayers, registered: data.registeredPlayers })
       } catch {}
     }
-    tick();
-    const id = setInterval(tick, intervalMs);
-    return () => { cancelled = true; clearInterval(id); };
-  }, [intervalMs]);
-
-  return stats;
+    tick()
+    const id = setInterval(tick, intervalMs)
+    return () => { active = false; clearInterval(id) }
+  }, [intervalMs])
+  return stats
 }
 ```
 
-Рекомендуемые интервалы: лендинг — 30 с, страница сервера — 10 с.
-
 ---
 
-## 3. Список постов
+## 4. Список постов
 
 ```
 GET /api/posts?limit=20&offset=0
 ```
 
-Без аутентификации. Возвращает только опубликованные посты — без контента, только мета для списка/превью.
+Возвращает только опубликованные посты — без контента, только мета.
 
 | Параметр | Default | Описание |
 |---|---|---|
@@ -149,17 +257,17 @@ GET /api/posts?limit=20&offset=0
 }
 ```
 
+`preview_url` — относительный путь, добавляй `https://adminpanel.botcalendary.ru` + `preview_url`.
+
 ---
 
-## 4. Пост по ID
+## 5. Пост по ID
 
 ```
 GET /api/posts/{id}
 ```
 
-Возвращает полные данные конкретного поста, включая HTML-контент.
-
-**Ответ — успех:**
+**Ответ:**
 
 ```json
 {
@@ -176,11 +284,6 @@ GET /api/posts/{id}
 }
 ```
 
-**Ошибки:**
-
 | HTTP | Причина |
 |---|---|
-| 400 | Некорректный `id` |
 | 404 | Пост не найден или не опубликован |
-
-`preview_url` — относительный путь, подставляй base URL: `https://adminpanel.botcalendary.ru` + `preview_url`.
