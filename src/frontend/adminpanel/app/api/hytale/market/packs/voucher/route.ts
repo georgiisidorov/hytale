@@ -86,7 +86,16 @@ export async function POST(req: Request) {
 		if (!packRow.rows.length) {
 			return NextResponse.json({ ok: false, error: `Пак '${packId}' не найден` }, { status: 404 });
 		}
-		const amountRub = parseFloat(payment.amount?.value ?? packRow.rows[0]!.price_rub);
+		const expectedRub = parseFloat(packRow.rows[0]!.price_rub);
+		const paidRub = parseFloat(payment.amount?.value ?? '0');
+		// Допускаем оплату больше ожидаемой (округление), но не меньше
+		if (paidRub < expectedRub - 0.01) {
+			return NextResponse.json(
+				{ ok: false, error: `Сумма платежа (${paidRub} ₽) меньше стоимости пака (${expectedRub} ₽)` },
+				{ status: 402 },
+			);
+		}
+		const amountRub = paidRub;
 
 		// Генерируем уникальный код
 		let code = '';
