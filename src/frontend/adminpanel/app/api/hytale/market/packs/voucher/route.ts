@@ -19,6 +19,7 @@ type YooKassaPayment = {
 	id: string;
 	status: string;
 	paid: boolean;
+	amount?: { value: string };
 	metadata?: Record<string, string>;
 };
 
@@ -50,6 +51,17 @@ export async function POST(req: Request) {
 
 		const playerUuid = typeof body.playerUuid === 'string' ? body.playerUuid.trim() : null;
 
+		const pool = getPool();
+
+		// Идемпотентность: если покупка уже зафиксирована — сразу возвращаем код
+		const existing = await pool.query<{ voucher_code: string }>(
+			`SELECT voucher_code FROM hytale_loot_pack_purchases WHERE payment_id = $1`,
+			[paymentId],
+		);
+		if (existing.rows.length) {
+			return NextResponse.json({ ok: true, code: existing.rows[0]!.voucher_code });
+		}
+
 		// Верифицируем платёж через YooKassa API
 		const payment = await verifyYooKassaPayment(paymentId);
 		if (!payment) {
@@ -58,64 +70,60 @@ export async function POST(req: Request) {
 		if (payment.status !== 'succeeded' || !payment.paid) {
 			return NextResponse.json({ ok: false, error: 'Платёж не завершён' }, { status: 402 });
 		}
-		// Проверяем что paymentId действительно создавался для этого пака
 		if (payment.metadata?.pack_id && payment.metadata.pack_id !== packId) {
 			return NextResponse.json({ ok: false, error: 'Платёж не соответствует паку' }, { status: 403 });
 		}
-		// Проверяем привязку к игроку (если есть в metadata)
 		if (playerUuid && payment.metadata?.player_uuid &&
 			payment.metadata.player_uuid.toLowerCase() !== playerUuid.toLowerCase()) {
 			return NextResponse.json({ ok: false, error: 'Платёж привязан к другому игроку' }, { status: 403 });
 		}
 
-		const pool = getPool();
-
-		// Проверяем, что пак существует
-		const packCheck = await pool.query(
-			`SELECT pack_id FROM hytale_market_item_pack_contents WHERE pack_id = $1 LIMIT 1`,
+		// Проверяем что пак существует и получаем цену
+		const packRow = await pool.query<{ price_rub: string }>(
+			`SELECT price_rub FROM hytale_market_loot_pack_prices WHERE pack_id = $1 AND is_active = TRUE`,
 			[packId],
 		);
-		if (!packCheck.rows.length) {
+		if (!packRow.rows.length) {
 			return NextResponse.json({ ok: false, error: `Пак '${packId}' не найден` }, { status: 404 });
 		}
-
-		// Идемпотентность по paymentId — если уже создан, возвращаем тот же код
-		const existing = await pool.query<{ code: string }>(
-			`SELECT code FROM hytale_promocodes
-			 WHERE payload->>'payment_id' = $1 AND payload->>'type' = 'pack_voucher'
-			 LIMIT 1`,
-			[paymentId],
-		);
-		if (existing.rows.length) {
-			return NextResponse.json({ ok: true, code: existing.rows[0]!.code });
-		}
+		const amountRub = parseFloat(payment.amount?.value ?? packRow.rows[0]!.price_rub);
 
 		// Генерируем уникальный код
 		let code = '';
 		for (let attempt = 0; attempt < 10; attempt++) {
 			const candidate = generateCode();
 			const conflict = await pool.query(`SELECT 1 FROM hytale_promocodes WHERE code = $1`, [candidate]);
-			if (!conflict.rows.length) {
-				code = candidate;
-				break;
-			}
+			if (!conflict.rows.length) { code = candidate; break; }
 		}
 		if (!code) {
 			return NextResponse.json({ ok: false, error: 'Не удалось сгенерировать код' }, { status: 500 });
 		}
 
-		const payload: Record<string, string> = {
+		const promoPayload: Record<string, string> = {
 			type: 'pack_voucher',
 			pack_id: packId,
 			payment_id: paymentId,
 		};
-		if (playerUuid) payload.target_uuid = playerUuid;
+		if (playerUuid) promoPayload.target_uuid = playerUuid;
 
-		await pool.query(
-			`INSERT INTO hytale_promocodes (code, payload, is_multi_use, max_uses, is_active)
-			 VALUES ($1, $2::jsonb, false, 1, true)`,
-			[code, JSON.stringify(payload)],
-		);
+		// Фиксируем покупку и создаём промокод в одной транзакции
+		await pool.query('BEGIN');
+		try {
+			await pool.query(
+				`INSERT INTO hytale_loot_pack_purchases (payment_id, pack_id, player_uuid, amount_rub, voucher_code)
+				 VALUES ($1, $2, $3, $4, $5)`,
+				[paymentId, packId, playerUuid ?? null, amountRub, code],
+			);
+			await pool.query(
+				`INSERT INTO hytale_promocodes (code, payload, is_multi_use, max_uses, is_active)
+				 VALUES ($1, $2::jsonb, false, 1, true)`,
+				[code, JSON.stringify(promoPayload)],
+			);
+			await pool.query('COMMIT');
+		} catch (e) {
+			await pool.query('ROLLBACK');
+			throw e;
+		}
 
 		return NextResponse.json({ ok: true, code });
 	} catch (e) {
