@@ -21,13 +21,20 @@ Base URL: `https://adminpanel.botcalendary.ru`
    Лендинг читает paymentId из sessionStorage
 
 5. Лендинг вызывает POST /api/hytale/market/packs/voucher
-   → adminpanel верифицирует платёж через YooKassa API
+   → adminpanel верифицирует платёж через YooKassa API (status = succeeded)
+   → фиксирует покупку в БД (hytale_loot_pack_purchases)
    ← { ok: true, code: "FVSB-PR7N-W53W" }
 
 6. Показываем юзеру код ваучера — он вводит его в игре
+
+7. Java-сервер вызывает POST /api/hytale/market/packs/claim (X-Market-Key)
+   → проверяет код, выдаёт предметы игроку
+   → помечает ваучер использованным (activated_at = NOW())
 ```
 
 > **Идемпотентность**: повторный вызов `/voucher` с тем же `paymentId` всегда вернёт тот же код — безопасно вызывать несколько раз (например, при перезагрузке страницы).
+
+> **Одноразовость**: каждый ваучер можно активировать в игре только один раз. Повторная попытка вернёт ошибку `409 Ваучер уже был активирован`.
 
 ---
 

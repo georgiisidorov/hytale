@@ -104,6 +104,12 @@ export async function POST(req: Request) {
 
 			await client.query('COMMIT');
 
+			// Фиксируем активацию в таблице покупок
+			await pool.query(
+				`UPDATE hytale_loot_pack_purchases SET activated_at = NOW() WHERE voucher_code = $1`,
+				[code],
+			);
+
 			// Имя пака из первой строки
 			const packNameRes = await pool.query<{ pack_name: string }>(
 				`SELECT pack_name FROM hytale_market_item_pack_contents WHERE pack_id = $1 LIMIT 1`,
