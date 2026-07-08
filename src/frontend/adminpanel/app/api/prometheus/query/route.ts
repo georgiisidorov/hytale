@@ -1,4 +1,13 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { decodeSessionToken } from '@/lib/auth';
+import { SESSION_COOKIE } from '@/lib/auth-constants';
+
+async function requireAdmin(): Promise<boolean> {
+	const token = (await cookies()).get(SESSION_COOKIE)?.value;
+	if (!token) return false;
+	return (await decodeSessionToken(token)) != null;
+}
 
 type PromVector = {
 	resultType: 'vector';
@@ -17,6 +26,10 @@ function promUrl(): string {
 }
 
 export async function GET(req: Request) {
+	if (!(await requireAdmin())) {
+		return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+	}
+
 	const { searchParams } = new URL(req.url);
 	const query = (searchParams.get('query') || '').trim();
 	if (!query) {

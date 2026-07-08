@@ -1,9 +1,22 @@
 import { randomUUID } from 'node:crypto';
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 
 import { getPool } from '@/lib/db';
+import { decodeSessionToken } from '@/lib/auth';
+import { SESSION_COOKIE } from '@/lib/auth-constants';
+
+async function requireAdmin(): Promise<boolean> {
+	const token = (await cookies()).get(SESSION_COOKIE)?.value;
+	if (!token) return false;
+	return (await decodeSessionToken(token)) != null;
+}
 
 export async function POST(req: Request) {
+	if (!(await requireAdmin())) {
+		return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+	}
+
 	const body = await req.json().catch(() => null);
 	if (!body) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
 
