@@ -1,3 +1,5 @@
+name: adminpanel
+
 services:
   admin-db:
     image: postgres:16-alpine
