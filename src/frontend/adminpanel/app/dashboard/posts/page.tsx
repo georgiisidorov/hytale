@@ -352,6 +352,17 @@ export default function PostsPage() {
 			const j = (await r.json()) as { ok: boolean; url?: string; error?: string };
 			if (j.ok && j.url) {
 				setPreviewUrl(j.url);
+				// Auto-save preview URL for existing posts so the user doesn't have to click Save manually
+				if (!isNew && selected) {
+					try {
+						await fetch(`/api/hytale/posts/${selected.id}`, {
+							method: 'PATCH',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify({ previewUrl: j.url }),
+						});
+						await loadList();
+					} catch {}
+				}
 				flash('Изображение загружено', true);
 			} else {
 				flash(j.error ?? 'Ошибка загрузки', false);
