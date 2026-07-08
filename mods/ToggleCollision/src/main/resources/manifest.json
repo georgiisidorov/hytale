@@ -1,0 +1,15 @@
+{
+  "Group": "Custom",
+  "Name": "ToggleCollision",
+  "Version": "1.0.0",
+  "Authors": [
+    {
+      "Name": "Sergey"
+    }
+  ],
+  "Website": "",
+  "Main": "com.togglecollision.ToggleCollisionPlugin",
+  "ServerVersion": "=0.5.5",
+  "Description": "/togglecollision (/tc) — переключает коллизию таргет-сущности: жёсткая ↔ отсутствует.",
+  "IncludesAssetPack": false
+}

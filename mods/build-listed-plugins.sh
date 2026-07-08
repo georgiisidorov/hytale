@@ -72,6 +72,7 @@ build_manual() {
 
 build_manual BlockToEntity 1.4.5 'src/main/java/com/github/blocktoentity/*.java'
 build_manual NoInteraction 1.0.5 'src/main/java/com/nointeraction/*.java'
+build_manual ToggleCollision 1.0.0 'src/main/java/com/togglecollision/*.java'
 build_manual TeleporterCrashFix 1.0.0 'src/main/java/com/github/teleportercrashfix/*.java'
 build_manual RegionInteractionGuard 1.0.31 'src/main/java/com/github/regionguard/*.java'
 build_manual RegionSizeGuard 1.0.0 'src/main/java/com/github/regionsizeguard/*.java' 'WorldProtect/WorldProtect-1.0.12.jar'
@@ -101,6 +102,7 @@ if [[ -f "$SET_VER" ]]; then
     "$ROOT/TeleporterCrashFix/TeleporterCrashFix-1.0.0.jar" \
     "$ROOT/RegionInteractionGuard/RegionInteractionGuard-1.0.31.jar" \
     "$ROOT/NoInteraction/NoInteraction-1.0.5.jar" \
+    "$ROOT/ToggleCollision/ToggleCollision-1.0.0.jar" \
     "$ROOT/MazeSlots/MazeSlots-1.0.0.jar" \
     "$ROOT/RegionSizeGuard/RegionSizeGuard-1.0.0.jar" 2>/dev/null || true
 fi
