@@ -12,7 +12,9 @@ export const OnlineAside = () => {
             <OnlineBadge className="justify-center" />
 
             <p className="text-gold-grad mt-8 text-center font-cinzel text-big-number-mobile font-black desktop:text-big-number">
-                {onlinePlayers === null ? '—' : onlinePlayers.toLocaleString('ru-RU')}
+                {onlinePlayers === null || onlinePlayers === undefined
+                    ? '—'
+                    : onlinePlayers.toLocaleString('ru-RU')}
             </p>
 
             <p className="mt-2 text-center font-outfit text-[13px] tracking-[0.78px] text-ink-muted">
@@ -22,7 +24,7 @@ export const OnlineAside = () => {
             <div className="mt-6 grid grid-cols-2 border-t border-gold/20 pt-5">
                 <div className="text-center">
                     <p className="font-cinzel text-stat-sm font-bold text-accent">
-                        {registeredPlayers === null
+                        {registeredPlayers === null || registeredPlayers === undefined
                             ? '—'
                             : registeredPlayers.toLocaleString('ru-RU')}
                     </p>

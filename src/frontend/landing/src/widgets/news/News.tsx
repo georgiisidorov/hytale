@@ -24,9 +24,9 @@ export const News = () => {
                 </SectionTitle>
 
                 <div className="mt-12 grid grid-cols-1 gap-card-pad desktop:grid-cols-2">
-                    {posts.map((item) => (
-                        <NewsCard key={item.id} item={item} />
-                    ))}
+                    {Array.isArray(posts)
+                        ? posts.map((item) => <NewsCard key={item.id} item={item} />)
+                        : null}
                 </div>
 
                 <p className="mt-8 text-center font-outfit text-[13px] text-ink-dim">

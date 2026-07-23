@@ -25,6 +25,12 @@ export const AnchorLink = ({ to, onClick, ...rest }: AnchorLinkProps) => {
 
     const target = parseHash(to)
 
+    const isExternal = to.startsWith('http') || /\.(pdf|doc|docx|zip|rar|png|jpg|jpeg)$/i.test(to)
+
+    if (isExternal) {
+        return <a href={to} {...rest} />
+    }
+
     const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
         onClick?.(event)
         if (!target || event.defaultPrevented) return

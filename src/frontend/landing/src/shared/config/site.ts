@@ -51,8 +51,8 @@ export const FOOTER_COLUMNS = [
 ] as const
 
 export const LEGAL_LINKS = [
-    { label: 'Политика конфиденциальности', href: '#' },
-    { label: 'Условия использования', href: '#' }
+    { label: 'Политика конфиденциальности', href: '/documents/policy_hytale.docx' },
+    { label: 'Оферта', href: '/documents/oferta_222334141771_ред.docx' }
 ] as const
 
 export const FOOTER_DESCRIPTION =

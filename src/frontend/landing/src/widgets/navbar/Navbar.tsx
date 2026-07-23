@@ -38,7 +38,9 @@ export const Navbar = () => {
                         </span>
                     </div>
                     <span className="font-outfit text-[12px] font-semibold tracking-[1.2px] text-ink">
-                        {onlinePlayers === null ? '—' : onlinePlayers.toLocaleString('ru-RU')}
+                        {onlinePlayers === null || onlinePlayers === undefined
+                            ? '—'
+                            : onlinePlayers.toLocaleString('ru-RU')}
                     </span>
                 </div>
 
