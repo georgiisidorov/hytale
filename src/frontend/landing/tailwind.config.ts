@@ -36,6 +36,21 @@ const config: Config = {
                     border: '#8ec7ff',
                     dark: '#061224'
                 },
+                violet: {
+                    DEFAULT: '#FFD6FF',
+                    bright: "#75559A",
+                    border: "#6D4D9E"
+                },
+                lazure: {
+                    DEFAULT: '#BFE8FF',
+                    bright: '#7FA9D3',
+                    border: '#3F5A74',
+                },
+                green: {
+                    DEFAULT: '#8CB547',
+                    bright: '#B8E86A',
+                    border: '#5F812D',
+                },
                 online: '#4ade80'
             },
             fontFamily: {
@@ -92,6 +107,9 @@ const config: Config = {
                 'online-glow': '0px 0px 12px 0px #4ade80',
                 'badge-glow': '0px 0px 9px 0px rgba(201,168,76,0.4)',
                 'btn-blue': '0px 0px 12px 0px rgba(74,158,255,0.35)',
+                'btn-violet': '0px 0px 12px 0px rgba(133, 100, 171, 1)',
+                'btn-lazure': '0px 0px 12px 0px rgba(127, 169, 211, 0.8)',
+                'btn-green': '0px 0px 12px 0px rgba(168, 216, 92, 0.8)',
                 'btn-blue-inset': 'inset 0px 1px 0px 0px rgba(255,255,255,0.3)'
             },
             backgroundImage: {
@@ -99,6 +117,9 @@ const config: Config = {
                 'btn-gold':
                     'linear-gradient(180deg, #d8b558 0%, #b48f37 50%, #7d5f1a 100%)',
                 'btn-blue': 'linear-gradient(180deg, #5fb0ff 0%, #3a7dd1 100%)',
+                'btn-violet': 'linear-gradient(180deg, #A87FE0 0%, #6D4D9E 100%)',
+                'btn-lazure': 'linear-gradient(180deg, #91D4FF 0%, #57718A 100%)',
+                'btn-green': 'linear-gradient(180deg, #B8E86A 0%, #8CB547 100%)',
                 'currency-gold': 'linear-gradient(180deg, #d8b558 0%, #b48f37 50%, #7d5f1a 100%)',
                 'icon-box': 'linear-gradient(180deg, #232539 0%, #0f1018 100%)',
                 'panel-glass':
@@ -114,7 +135,13 @@ const config: Config = {
                 'divider-gold-r':
                     'linear-gradient(90deg, rgba(201,168,76,0) 0%, #c9a84c 100%)',
                 'divider-blue':
-                    'linear-gradient(90deg, rgba(74,158,255,0) 0%, #4a9eff 50%, rgba(74,158,255,0) 100%)'
+                    'linear-gradient(90deg, rgba(74,158,255,0) 0%, #4a9eff 50%, rgba(74,158,255,0) 100%)',
+                'divider-violet':
+                    'linear-gradient(90deg, rgba(74,158,255,0) 0%, #8564AB 50%, rgba(74,158,255,0) 100%)',
+                'divider-lazure':
+                    'linear-gradient(90deg, rgba(74,158,255,0) 0%, #BFE8FF 50%, rgba(74,158,255,0) 100%)',
+                'divider-green':
+                    'linear-gradient(90deg, rgba(184,232,106,0) 0%, #B8E86A 50%, rgba(184,232,106,0) 100%)',
             },
             backdropBlur: {
                 panel: '4px',

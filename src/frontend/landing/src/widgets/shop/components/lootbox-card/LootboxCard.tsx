@@ -14,10 +14,10 @@ interface LootboxCardProps {
 }
 
 export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
-    const [license, setLicense] = useState(false)
+    const [license] = useState(false)
 
     return (
-        <div className="relative flex flex-col rounded-card border border-gold/20 bg-card-feature p-card-pad-inner backdrop-blur-card">
+        <div className="relative flex min-h-[590px] flex-col rounded-card border border-gold/20 bg-card-feature p-card-pad-inner backdrop-blur-card">
             <div className="absolute inset-x-0 top-0 h-0.5 bg-divider-blue opacity-60" />
             <InfoIcon className="absolute right-4 top-3 size-[17.5px]" />
 
@@ -46,7 +46,7 @@ export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
                 ))}
             </div>
 
-            <ul className="mt-6 flex flex-col border-t border-gold/20">
+            <ul className="mt-6 flex flex-col">
                 {LOOTBOX.features.map((feature, i) => (
                     <li
                         key={feature.strong}
@@ -65,15 +65,17 @@ export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
                 ))}
             </ul>
 
-            <Button
-                variant="glass"
-                className="mt-6 h-[52px] w-full text-[13px]"
-                onClick={() => onBuy(license)}
-            >
-                {LOOTBOX.cta}
-            </Button>
+            <div className="mt-auto">
+                <Button
+                    variant="glass"
+                    className="mt-6 h-[52px] w-full text-[13px]"
+                    onClick={() => onBuy(license)}
+                >
+                    {LOOTBOX.cta}
+                </Button>
+            </div>
 
-            <button
+            {/* <button
                 type="button"
                 role="switch"
                 aria-checked={license}
@@ -89,7 +91,7 @@ export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
                     />
                 </span>
                 <span className="font-cinzel text-[16px] text-ink">лицензия</span>
-            </button>
+            </button> */}
         </div>
     )
 }

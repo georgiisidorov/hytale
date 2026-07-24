@@ -77,6 +77,7 @@ export const Shop = () => {
                                 price={tile.price}
                                 cta={tile.cta}
                                 variant={tile.variant}
+                                isLink={true}
                                 onBuy={() =>
                                     setTarget({
                                         kind: 'currency',

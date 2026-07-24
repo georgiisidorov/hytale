@@ -2,7 +2,7 @@ import { cn } from '@/shared/lib/cn'
 
 import type { ShopPlan } from '@/shared/data/content'
 
-import { Button, CornerBorders } from '@/shared/ui'
+import { Button, Chip, CornerBorders } from '@/shared/ui'
 
 import CheckIcon from '@/assets/icons/check.svg'
 import InfoIcon from '@/assets/icons/info.svg'
@@ -14,14 +14,15 @@ interface PlanCardProps {
 
 export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
     const blue = plan.accent === 'blue'
+    const violet = plan.accent === 'violet'
+    const lazure = plan.accent === 'lazure'
+    const green = plan.accent === 'green'
 
     return (
         <div
             className={cn(
                 'relative flex min-h-[590px] flex-col rounded-card border p-card-pad-inner backdrop-blur-card',
-                plan.popular
-                    ? 'border-gold/45 bg-card-popular desktop:-mt-3'
-                    : 'border-gold/20 bg-card-feature'
+                plan.popular ? 'border-gold/45 bg-card-popular' : 'border-gold/20 bg-card-feature'
             )}
         >
             {plan.popular ? (
@@ -31,6 +32,12 @@ export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
                 </>
             ) : blue ? (
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-divider-blue opacity-60" />
+            ) : violet ? (
+                <div className="bg-divider-violet absolute inset-x-0 top-0 h-0.5 opacity-60" />
+            ) : lazure ? (
+                <div className="bg-divider-lazure absolute inset-x-0 top-0 h-0.5 opacity-60" />
+            ) : green ? (
+                <div className="bg-divider-green absolute inset-x-0 top-0 h-0.5 opacity-60" />
             ) : null}
 
             <InfoIcon className="absolute right-4 top-3 size-[17.5px]" />
@@ -67,6 +74,16 @@ export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
                 {plan.note}
             </p>
 
+            {plan.chips && (
+                <div className="mt-5 flex flex-wrap gap-[6px] border-b border-gold/[0.18] pb-5">
+                    {plan.chips.map((chip) => (
+                        <Chip key={chip.label} variant={chip.variant}>
+                            {chip.label}
+                        </Chip>
+                    ))}
+                </div>
+            )}
+
             <ul className="mt-6 flex flex-col border-t border-gold/20">
                 {plan.features.map((feature, i) => (
                     <li
@@ -89,7 +106,9 @@ export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
             </ul>
 
             <Button
-                variant={blue ? 'blue' : 'gold'}
+                variant={
+                    blue ? 'blue' : violet ? 'violet' : lazure ? 'lazure' : green ? 'green' : 'gold'
+                }
                 className="mt-auto h-[52px] w-full text-[13px]"
                 onClick={() => onBuy(plan)}
             >

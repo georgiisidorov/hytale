@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom'
+
 import { cn } from '@/shared/lib/cn'
+
+import { ROUTES } from '@/shared/config/site'
 
 import { Button, IconBox } from '@/shared/ui'
 
@@ -12,9 +16,10 @@ interface CurrencyTileProps {
     cta: string
     variant: 'glass' | 'gold'
     onBuy: () => void
+    isLink?: boolean
 }
 
-export const CurrencyTile = ({ title, text, price, cta, variant, onBuy }: CurrencyTileProps) => {
+export const CurrencyTile = ({ title, cta, variant, onBuy, isLink }: CurrencyTileProps) => {
     const gold = variant === 'gold'
 
     return (
@@ -42,32 +47,42 @@ export const CurrencyTile = ({ title, text, price, cta, variant, onBuy }: Curren
                 <h4 className="font-cinzel text-[18px] uppercase tracking-[1.5px] text-ink">
                     {title}
                 </h4>
-                <p
+                {/* <p
                     className={cn(
                         'mt-1 max-w-[434px] font-outfit text-[14px]',
                         gold ? 'text-white' : 'text-ink-muted'
                     )}
                 >
                     {text}
-                </p>
+                </p> */}
             </div>
 
-            <p
+            {/* <p
                 className={cn(
                     'font-cinzel text-[28px] font-black',
                     gold ? 'text-white' : 'text-gold-grad'
                 )}
             >
                 {price}
-            </p>
-
-            <Button
-                variant={gold ? 'glass' : 'gold'}
-                className="h-[52px] w-[170.72px] text-[13px]"
-                onClick={onBuy}
-            >
-                {cta}
-            </Button>
+            </p> */}
+            {isLink ? (
+                <Button
+                    as={Link}
+                    to={ROUTES.howToConnect}
+                    variant={gold ? 'glass' : 'gold'}
+                    className="h-[52px] w-[170.72px] text-[13px]"
+                >
+                    {cta}
+                </Button>
+            ) : (
+                <Button
+                    variant={gold ? 'glass' : 'gold'}
+                    className="h-[52px] w-[170.72px] text-[13px]"
+                    onClick={onBuy}
+                >
+                    {cta}
+                </Button>
+            )}
         </div>
     )
 }

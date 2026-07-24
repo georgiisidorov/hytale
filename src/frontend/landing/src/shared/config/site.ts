@@ -37,7 +37,7 @@ export const FOOTER_COLUMNS = [
         links: [
             { label: 'Магазин', href: '/#shop' },
             { label: 'Новости', href: ROUTES.news },
-            { label: 'Правила', href: '#' }
+            { label: 'Правила', href: '/documents/server-rules.pdf' }
         ]
     },
     {
@@ -51,8 +51,8 @@ export const FOOTER_COLUMNS = [
 ] as const
 
 export const LEGAL_LINKS = [
-    { label: 'Политика конфиденциальности', href: '/documents/policy_hytale.docx' },
-    { label: 'Оферта', href: '/documents/oferta_222334141771_ред.docx' }
+    { label: 'Политика конфиденциальности', href: '/documents/policy_hytale.pdf' },
+    { label: 'Оферта', href: '/documents/oferta.pdf' }
 ] as const
 
 export const FOOTER_DESCRIPTION =

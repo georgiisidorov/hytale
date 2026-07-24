@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
 import { cn } from '@/shared/lib/cn'
 
-type ButtonVariant = 'gold' | 'glass' | 'blue'
+type ButtonVariant = 'gold' | 'glass' | 'blue' | 'violet' | 'lazure' | 'green'
 
 interface ButtonProps<T extends ElementType> {
     as?: T
@@ -23,6 +23,18 @@ const variants: Record<ButtonVariant, string> = {
     blue: cn(
         'bg-btn-blue border border-accent-border text-accent-dark shadow-btn-blue',
         'before:pointer-events-none before:absolute before:inset-0 before:rounded-btn before:shadow-btn-blue-inset'
+    ),
+    violet: cn(
+        'bg-btn-violet border border-violet-border text-accent-dark shadow-btn-violet',
+        'before:pointer-events-none before:absolute before:inset-0 before:rounded-btn before:shadow-btn-violet-inset'
+    ),
+    lazure: cn(
+        'bg-btn-lazure border border-lazure-border text-accent-dark shadow-btn-lazure',
+        'before:pointer-events-none before:absolute before:inset-0 before:rounded-btn before:shadow-btn-lazure-inset'
+    ),
+    green: cn(
+        'bg-btn-green border border-green-border text-accent-dark shadow-btn-green',
+        'before:pointer-events-none before:absolute before:inset-0 before:rounded-btn before:shadow-btn-green-inset'
     )
 }
 

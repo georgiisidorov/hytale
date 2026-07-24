@@ -49,6 +49,11 @@ export interface ShopFeature {
     rest?: string
 }
 
+export interface ShopChip {
+    label: string;
+    variant: "gold" | "blue" | "violet" | "lazure" | "green"
+}
+
 export interface ShopPlan {
     id: string
     eyebrow: string
@@ -60,66 +65,125 @@ export interface ShopPlan {
     cta: string
     popular?: boolean
     badge?: string
-    accent?: 'blue'
+    accent?: 'blue' | 'violet' | 'lazure' | 'green'
+    chips?: ShopChip[]
 }
 
 export const SHOP_PLANS: ShopPlan[] = [
     {
-        id: 'farmer',
+        id: 'landscape',
         eyebrow: 'Стартерпак',
-        title: 'Фермер',
-        price: '399 ₽',
-        period: '/мес',
-        note: 'для тех, кто любит развитие и крафт',
-        popular: true,
-        badge: 'Популярный выбор',
+        title: 'Landscape Pack',
+        price: '150 ₽',
+        period: '/ мес',
+        note: 'терраформинг и декор мира',
         cta: 'Купить',
+        accent: 'green',
+        chips: [
+            { label: 'Трава x 128', variant: 'gold' as const },
+            { label: 'Земля x 128', variant: 'gold' as const },
+            { label: 'Мох x 64', variant: 'green' as const },
+            { label: 'Листва × 64', variant: 'green' as const },
+            { label: 'Цветы x 32', variant: 'green' as const },
+            { label: 'еще 1 предмет', variant: 'green' as const }
+        ],
         features: [
-            { strong: '+5% к фармингу', rest: 'ресурсов' },
-            { strong: 'Личная локация', rest: 'в жилом квартале' },
-            { strong: 'Топор + Кирка', rest: 'сразу в инвентаре' },
-            { strong: 'Факелы × 20', rest: 'и Лестница × 10' },
-            { strong: 'Приоритетный заход', rest: 'на сервер' }
+            { strong: 'Природный набор', rest: 'озеленение с нуля' },
+            { strong: 'Терраформинг', rest: 'трава, мох, цветы' },
+            { strong: 'Можно открывать', rest: 'сразу после покупки' },
         ]
     },
     {
-        id: 'warrior',
+        id: 'farmer',
         eyebrow: 'Стартерпак',
-        title: 'Воин',
-        price: '399 ₽',
-        period: '/мес',
-        note: 'для тех, кто живёт в PvP',
+        title: 'Farmer Pack',
+        price: '180 ₽',
+        period: '/ мес',
+        note: 'старт собственной фермы',
         cta: 'Купить',
-        accent: 'blue',
+        popular: true,
+        badge: 'Популярный выбор',
+        chips: [
+            { label: 'Семена x 64', variant: 'gold' as const },
+            { label: 'Семена овощей x 32', variant: 'gold' as const },
+            { label: 'Удобрение × 16', variant: 'blue' as const },
+            { label: 'Семена ягод x 16', variant: 'blue' as const },
+            { label: 'Саженцы x 8', variant: 'blue' as const },
+            { label: 'еще 1 предмет', variant: 'blue' as const }
+        ],
         features: [
-            { strong: '+5% к прочности', rest: 'снаряжения' },
-            { strong: 'Личная локация', rest: 'в жилом квартале' },
-            { strong: 'Меч + Щит', rest: 'в стартовом наборе' },
-            { strong: 'Лечебное зелье × 5' },
-            { strong: 'Еда × 5', rest: 'на дорогу' }
+            { strong: 'Первый урожай', rest: 'уже в первый день' },
+            { strong: 'Полный цикл', rest: 'семена + удобрение' },
+            { strong: 'Можно открывать', rest: 'сразу после покупки' },
+        ]
+    },
+    {
+        id: 'farmer',
+        eyebrow: 'Стартерпак',
+        title: 'Alchemist Pack',
+        price: '250 ₽',
+        period: '/ мес',
+        note: 'для зельеваров и алхимиков',
+        cta: 'Купить',
+        accent: 'violet',
+        chips: [
+            { label: 'Бутылка x 32', variant: 'gold' as const },
+            { label: 'Волокно x 32', variant: 'gold' as const },
+            { label: 'Лепестки × 16', variant: 'violet' as const },
+            { label: 'Древесный сок x 16', variant: 'violet' as const },
+            { label: 'Эссенция жизни x 3', variant: 'violet' as const },
+            { label: 'еще 1 предмет', variant: 'violet' as const }
+        ],
+        features: [
+            { strong: 'Первый урожай', rest: 'уже в первый день' },
+            { strong: 'Полный цикл', rest: 'семена + удобрение' },
+            { strong: 'Можно открывать', rest: 'сразу после покупки' },
+        ]
+    },
+    {
+        id: 'adventurer',
+        eyebrow: 'Стартерпак',
+        title: 'Adventurer Pack',
+        price: '350 ₽',
+        period: '/ мес',
+        note: 'PvE-старт для приключений',
+        cta: 'Купить',
+        accent: 'lazure',
+        chips: [
+            { label: 'Железный меч × 1', variant: 'gold' as const },
+            { label: 'Стрелы × 64', variant: 'gold' as const },
+            { label: 'Зелье лечения × 3', variant: 'lazure' as const },
+            { label: 'Еда x 32', variant: 'lazure' as const },
+            { label: 'Факел x 32', variant: 'lazure' as const },
+            { label: 'еще 1 предмет', variant: 'lazure' as const }
+        ],
+        features: [
+            { strong: 'Готов к бою', rest: 'оружие сразу в руках' },
+            { strong: 'PvE-набор', rest: 'оружие и лечение' },
+            { strong: 'Можно открывать', rest: 'сразу после покупки' },
         ]
     }
 ]
 
 export const LOOTBOX = {
     eyebrow: 'Стартерпак',
-    title: 'Сундук Воина',
-    price: '399 ₽',
-    note: 'случайный набор предметов',
+    title: 'Builder Pack',
+    price: '120 ₽',
+    note: 'для тех, кто строит с размахом',
     chips: [
-        { label: 'Алмаз', variant: 'gold' as const },
-        { label: 'Меч', variant: 'blue' as const },
-        { label: 'Топор', variant: 'blue' as const },
-        { label: 'Кираса', variant: 'blue' as const },
-        { label: 'Золото × 100', variant: 'gold' as const },
-        { label: 'Земля × 20', variant: 'blue' as const }
+        { label: 'Земля x 128', variant: 'gold' as const },
+        { label: 'Камень x 128', variant: 'blue' as const },
+        { label: 'Бревно x 64', variant: 'blue' as const },
+        { label: 'Факел × 32', variant: 'gold' as const },
+        { label: 'Стекло x 32', variant: 'blue' as const },
+        { label: 'еще 1 предмет', variant: 'blue' as const }
     ],
     features: [
-        { strong: '6 предметов', rest: 'в каждом сундуке' },
-        { strong: 'Шанс легендарки', rest: 'в каждом 10-м' },
+        { strong: 'Блоки и опоры', rest: 'для первых построек' },
+        { strong: 'Быстрый старт', rest: 'всё для стройки' },
         { strong: 'Можно открывать', rest: 'сразу после покупки' }
     ],
-    cta: 'Открыть'
+    cta: 'Купить'
 }
 
 export interface CurrencyTileItem {
@@ -131,18 +195,18 @@ export interface CurrencyTileItem {
 }
 
 export const CURRENCY_TILES: CurrencyTileItem[] = [
+    // {
+    //     title: 'Игровая валюта',
+    //     text: 'Покупай предметы у NPC, торгуй с игроками и улучшай экипировку.',
+    //     price: 'от 49 ₽',
+    //     cta: 'Пополнить',
+    //     variant: 'glass'
+    // },
     {
-        title: 'Игровая валюта',
-        text: 'Покупай предметы у NPC, торгуй с игроками и улучшай экипировку.',
-        price: 'от 49 ₽',
-        cta: 'Пополнить',
-        variant: 'glass'
-    },
-    {
-        title: 'Купить лицензию',
+        title: 'Мы первые, кто сделал вход в Hytale свободным - скачивайте наш лаунчер бесплатно!',
         text: 'HYTALE',
         price: 'от 49 ₽',
-        cta: 'Купить',
+        cta: 'Начать играть',
         variant: 'gold'
     }
 ]
