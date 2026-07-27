@@ -7,8 +7,8 @@ export const ROUTES = {
 } as const
 
 export const SITE = {
-    name: 'CastleWar',
-    ip: 'play.castlewar.ru',
+    name: 'Eldheim',
+    ip: 'play.eldheim.ru',
     version: 'Hytale 1.0',
     foundedYear: 2025,
     copyrightYear: 2026

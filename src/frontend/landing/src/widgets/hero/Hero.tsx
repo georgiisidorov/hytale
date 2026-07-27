@@ -8,7 +8,7 @@ import bgHero from '@/assets/hero-bg.png'
 
 import { OnlineAside } from './components'
 
-const TAGS = ['PvE', 'PvP', 'Фарминг', 'Кланы', 'Квесты']
+const TAGS = ['Выживание', 'PvE', 'PvP', 'Деревни', 'Кланы', 'Ивенты']
 
 export const Hero = () => (
     <section className="hero-bg relative overflow-hidden pb-14 pt-[148px] desktop:pb-40 desktop:pt-[160px]">
@@ -24,7 +24,7 @@ export const Hero = () => (
             <div>
                 <div className="flex items-center gap-4">
                     <span className="h-px w-12 bg-divider-gold-r" />
-                    <Eyebrow>Hytale Server · с 2025</Eyebrow>
+                    <Eyebrow>Hytale Server · открытие - август 2026</Eyebrow>
                 </div>
 
                 <p className="mt-8 font-cinzel text-logo-mobile font-bold uppercase text-ink-muted desktop:text-logo">
@@ -32,11 +32,11 @@ export const Hero = () => (
                 </p>
 
                 <h1 className="mt-4 font-cinzel text-h1-mobile font-black uppercase leading-[1.05] desktop:text-h1">
-                    <span className="text-gold-grad">CastleWar</span>
+                    <span className="text-gold-grad">ЭЛЬДХЕЙМ</span>
                     <br />
-                    <span className="text-ink">Эпоха</span>
+                    <span className="text-ink">Твой дом</span>
                     <br />
-                    <span className="text-ink">битв</span>
+                    <span className="text-ink">в Hytale</span>
                 </h1>
 
                 <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-1 font-cinzel text-tag uppercase text-ink">
@@ -49,14 +49,15 @@ export const Hero = () => (
                 </div>
 
                 <p className="mt-7 max-w-[589px] font-outfit text-body text-ink-muted">
-                    Окунись в мир сражений и фарминга. Совместные локации, лабиринты, клановые войны
-                    и сотни квестов — всё на одном сервере. Создавайте игровое сообщество вместе с
-                    нами.
+                    Живой сервер Hytale с русской локализацией: деревни с приватом, тёплое комьюнити
+                    и ивенты каждую неделю. Свой дом и участок — уже в первый вечер, и никто не
+                    снесёт твою базу. А кто хочет борьбы — ждут клановые сезоны. Заходи — здесь тебе
+                    рады.
                 </p>
 
                 <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                    <Button as={Link} to="#" className="h-16 px-9 text-[14px]">
-                        Начать играть
+                    <Button as={Link} to={ROUTES.howToConnect} className="h-16 px-9 text-[14px]">
+                        Играть бесплатно
                     </Button>
                     <Button
                         variant="glass"

@@ -17,14 +17,14 @@ export const Join = () => {
                 <SectionLabel>Присоединяйся</SectionLabel>
 
                 <h2 className="mx-auto mt-6 font-cinzel text-[36px] font-bold uppercase leading-[39.6px] tracking-[1.44px] text-ink desktop:text-[64px] desktop:leading-[70.4px] desktop:tracking-[2.56px]">
-                    Создавайте игровое
+                    Место у огня
                     <br />
-                    сообщество <GoldText>вместе&nbsp;с&nbsp;нами</GoldText>
+                    <GoldText>уже готово</GoldText>
                 </h2>
 
                 <p className="mx-auto mt-6 max-w-[700px] font-outfit text-[18px] leading-[27.9px] text-ink-muted">
-                    Hytale CastleWar ждёт тебя прямо сейчас. Регистрация занимает меньше минуты, а
-                    первая локация уже разогрета.
+                    Эльдхейм открывается в августе. Регистрация — меньше минуты, а участок в деревне
+                    ждёт тебя с первого входа. Заходи, кем бы ты ни был и откуда бы ни играл.
                 </p>
 
                 <div className="mt-9 flex flex-col items-center justify-center gap-4 desktop:flex-row">
@@ -33,14 +33,16 @@ export const Join = () => {
                         to={ROUTES.howToConnect}
                         className="h-16 w-full px-0 text-[14px] desktop:w-auto desktop:px-7"
                     >
-                        Как подключиться к серверу ?
+                        Как подключиться ?
                     </Button>
                     <Button
                         variant="glass"
                         onClick={() => lenis?.scrollTo('#shop')}
+                        as={Link}
+                        to={ROUTES.howToConnect}
                         className="h-16 w-full px-7 text-[14px] desktop:w-auto"
                     >
-                        Купить лицензию&nbsp;&nbsp;<span className="normal-case">Hytale</span>
+                        НАЧАТЬ ИГРУ
                     </Button>
                 </div>
 

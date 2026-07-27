@@ -30,7 +30,7 @@ export const Shop = () => {
                     <GoldText>Твоего героя</GoldText>
                 </SectionTitle>
                 <p className="mt-4 text-center font-outfit text-body-sm text-ink-muted">
-                    Окунись в мир сражений с нужным бустом
+                    Стартовые наборы, чтобы быстрее освоиться
                 </p>
 
                 <div className="mt-16 grid grid-cols-1 items-start gap-card-pad desktop:grid-cols-3">

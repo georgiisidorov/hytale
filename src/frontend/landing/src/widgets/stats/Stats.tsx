@@ -15,7 +15,7 @@ export const Stats = () => {
     return (
         <section id="stats" className="py-20 desktop:py-24">
             <Container>
-                <SectionLabel>Цифры не врут</SectionLabel>
+                <SectionLabel>Живая статистика</SectionLabel>
                 <SectionTitle className="mt-5 text-center">
                     Сервер в <GoldText>цифрах</GoldText>
                 </SectionTitle>

@@ -21,8 +21,8 @@ export const Features = () => (
                 Что тебя <GoldText>ждёт</GoldText>
             </SectionTitle>
             <p className="mx-auto mt-4 max-w-[749px] text-center font-outfit text-body-sm text-ink-muted">
-                Полный набор механик MMO-сервера в одном клиенте Hytale: от мирного фарминга и
-                постройки дома до клановых войн за крепости.
+                Эльдхейм — это дом и деревня, живое комьюнити и ивенты. А кто хочет борьбы — честные
+                PvP-сезоны и кланы. Всё в одном клиенте Hytale.
             </p>
 
             <div className="mt-14 grid grid-cols-1 gap-card-pad sm:grid-cols-2 desktop:grid-cols-3">
