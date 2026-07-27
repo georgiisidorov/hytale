@@ -18,7 +18,7 @@ export const Logo = ({ className }: LogoProps) => (
             <SwordsIcon className="size-5" />
         </IconBox>
         <span className="font-cinzel text-[19px] font-black uppercase tracking-[3.42px] text-ink">
-            Castle<span className="text-gold">War</span>
+            Eld<span className="text-gold">Heim</span>
         </span>
     </Link>
 )

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { useLenis } from 'lenis/react'
 
@@ -8,6 +8,10 @@ import { Button, Container, GoldText, SectionLabel } from '@/shared/ui'
 
 export const Join = () => {
     const lenis = useLenis()
+    const { pathname } = useLocation()
+    const isHowToConnect = ROUTES.howToConnect === pathname
+
+    if (isHowToConnect) return null
 
     return (
         <section id="about" className="join-bg relative border-t border-gold/[0.18]">
