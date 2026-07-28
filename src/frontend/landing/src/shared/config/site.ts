@@ -43,9 +43,9 @@ export const FOOTER_COLUMNS = [
     {
         title: 'Связь',
         links: [
-            { label: 'Поддержка', href: '#' },
-            { label: 'Discord', href: '#' },
-            { label: 'Telegram', href: '#' }
+            { label: 'Поддержка', href: 'https://t.me/eldheim_support' },
+            { label: 'Discord', href: 'https://discord.gg/pEzc4ZRr7S' },
+            { label: 'Telegram', href: 'https://t.me/eldheim' }
         ]
     }
 ] as const
