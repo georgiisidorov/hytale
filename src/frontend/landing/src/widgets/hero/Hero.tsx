@@ -27,10 +27,6 @@ export const Hero = () => (
                     <Eyebrow>Hytale Server · открытие - август 2026</Eyebrow>
                 </div>
 
-                <p className="mt-8 font-cinzel text-logo-mobile font-bold uppercase text-ink-muted desktop:text-logo">
-                    Hytale
-                </p>
-
                 <h1 className="mt-4 font-cinzel text-h1-mobile font-black uppercase leading-[1.05] desktop:text-h1">
                     <span className="text-gold-grad">ЭЛЬДХЕЙМ</span>
                     <br />

@@ -38,8 +38,11 @@ export const NewsListCard = ({ item }: NewsListCardProps) => (
             <img
                 src={`${API_BASE_URL}${item.preview_url}`}
                 alt={item.title}
-                className="size-full object-cover"
+                className="size-full object-cover object-center"
             />
+
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent" />
+
             <span className="absolute right-2 top-[9px] inline-flex h-[29px] items-center rounded-badge border border-gold/[0.18] bg-[rgba(8,8,14,0.85)] px-3 font-outfit text-[11px] tracking-[1.1px] text-ink-muted">
                 {formatDate(item.created_at)}
             </span>

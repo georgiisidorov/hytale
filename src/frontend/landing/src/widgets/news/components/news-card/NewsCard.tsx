@@ -18,8 +18,10 @@ export const NewsCard = ({ item }: NewsCardProps) => (
             <img
                 src={`${API_BASE_URL}${item.preview_url}`}
                 alt={item.title}
-                className="size-full object-fill"
+                className="size-full object-cover object-center"
             />
+
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent" />
 
             <span className="absolute right-4 top-4 rounded-badge border border-gold/20 bg-[rgba(8,8,14,0.85)] px-3 py-1.5 font-outfit text-[11px] tracking-[1.1px] text-ink-muted">
                 {formatDate(item.created_at)}
