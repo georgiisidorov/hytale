@@ -13,7 +13,7 @@ export const Stats = () => {
     }
 
     return (
-        <section id="stats" className="py-20 desktop:py-24">
+        <section id="stats">
             <Container>
                 <SectionLabel>Живая статистика</SectionLabel>
                 <SectionTitle className="mt-5 text-center">

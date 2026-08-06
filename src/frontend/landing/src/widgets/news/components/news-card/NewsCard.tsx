@@ -14,7 +14,7 @@ interface NewsCardProps {
 
 export const NewsCard = ({ item }: NewsCardProps) => (
     <article className="relative flex flex-col overflow-hidden rounded-card border border-gold/20 bg-gradient-to-b from-[rgba(22,23,36,0.7)] to-[rgba(8,8,14,0.85)]">
-        <div className="relative h-[200px] border-b border-gold/20 desktop:h-[308px]">
+        <div className="relative h-fit border-b border-gold/20">
             <img
                 src={`${API_BASE_URL}${item.preview_url}`}
                 alt={item.title}

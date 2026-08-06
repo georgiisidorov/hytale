@@ -22,7 +22,7 @@ export const Shop = () => {
     const closeModal = useCallback(() => setTarget(null), [])
 
     return (
-        <section id="shop" className="py-20 desktop:py-24">
+        <section id="shop" className="pt-20">
             <Container>
                 <SectionLabel>Магазин</SectionLabel>
                 <SectionTitle className="mt-5 text-center font-bold">

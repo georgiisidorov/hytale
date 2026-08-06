@@ -8,7 +8,7 @@ export const OnlineAside = () => {
     const { onlinePlayers, registeredPlayers } = useServerStats(30_000)
 
     return (
-        <GlassPanel corners className="w-full max-w-[404px] px-8 py-9 shadow-panel-inset">
+        <GlassPanel corners className="w-full px-8 py-9 shadow-panel-inset desktop:max-w-[404px]">
             <OnlineBadge className="justify-center" />
 
             <p className="text-gold-grad mt-8 text-center font-cinzel text-big-number-mobile font-black desktop:text-big-number">

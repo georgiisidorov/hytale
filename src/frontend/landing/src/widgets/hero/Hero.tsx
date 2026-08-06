@@ -11,7 +11,7 @@ import { OnlineAside } from './components'
 const TAGS = ['Выживание', 'PvE', 'PvP', 'Деревни', 'Кланы', 'Ивенты']
 
 export const Hero = () => (
-    <section className="hero-bg relative overflow-hidden pb-14 pt-[148px] desktop:pb-40 desktop:pt-[160px]">
+    <section className="hero-bg relative overflow-hidden pb-14 pt-[148px] desktop:pb-14 desktop:pt-[160px]">
         <img
             src={bgHero}
             alt=""

@@ -25,20 +25,13 @@ export const NewsListCard = ({ item }: NewsListCardProps) => (
 
         <div className="flex items-center justify-between">
             <h3 className="font-outfit text-[19px] leading-[1.3] text-white">{item.title}</h3>
-            <Link
-                to={ROUTES.newsDetail(item.id)}
-                className="inline-flex items-center gap-3 font-cinzel text-[12px] uppercase tracking-[2.88px] text-gold transition-colors hover:text-gold-light"
-            >
-                Читать далее
-                <ArrowLongIcon className="h-3 w-[17px]" />
-            </Link>
         </div>
 
-        <div className="relative mt-[18px] h-[201px] overflow-hidden shadow-panel-inset backdrop-blur-panel">
+        <div className="relative mt-[18px] h-fit overflow-hidden shadow-panel-inset backdrop-blur-panel">
             <img
                 src={`${API_BASE_URL}${item.preview_url}`}
                 alt={item.title}
-                className="size-full object-cover object-center"
+                className="size-full object-fill"
             />
 
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent" />
@@ -46,6 +39,15 @@ export const NewsListCard = ({ item }: NewsListCardProps) => (
             <span className="absolute right-2 top-[9px] inline-flex h-[29px] items-center rounded-badge border border-gold/[0.18] bg-[rgba(8,8,14,0.85)] px-3 font-outfit text-[11px] tracking-[1.1px] text-ink-muted">
                 {formatDate(item.created_at)}
             </span>
+        </div>
+        <div className="mt-6 flex justify-end">
+            <Link
+                to={ROUTES.newsDetail(item.id)}
+                className="inline-flex items-center gap-3 font-cinzel text-[12px] uppercase tracking-[2.88px] text-gold transition-colors hover:text-gold-light"
+            >
+                Читать далее
+                <ArrowLongIcon className="h-3 w-[17px]" />
+            </Link>
         </div>
     </article>
 )

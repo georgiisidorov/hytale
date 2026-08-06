@@ -41,11 +41,11 @@ export const NewsDetailPage = () => {
                     </h1>
                 </div>
 
-                <div className="relative h-[201px] w-full overflow-hidden bg-[#23253f] shadow-panel-inset backdrop-blur-panel desktop:w-[457px]">
+                <div className="relative h-fit w-full overflow-hidden bg-[#23253f] shadow-panel-inset backdrop-blur-panel desktop:w-[457px]">
                     <img
                         src={`${API_BASE_URL}${post.preview_url}`}
                         alt={post.title}
-                        className="size-full object-cover"
+                        className="size-full object-fill"
                     />
                     <span className="absolute right-2 top-[9px] inline-flex h-[29px] items-center rounded-badge border border-gold/[0.18] bg-[rgba(8,8,14,0.85)] px-3 font-outfit text-[11px] tracking-[1.1px] text-ink-muted">
                         {formatDate(post.created_at)}
