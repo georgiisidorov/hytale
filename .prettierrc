@@ -1,0 +1,30 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "trailingComma": "none",
+  "printWidth": 100,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
+  "importOrder": [
+    "^react(.*)$",
+    "^react-dom(.*)$",
+    "^react-router-dom(.*)$",
+    "<THIRD_PARTY_MODULES>",
+    "^@/shared/ui/(.*)$",
+    "^@/shared/lib/(.*)$",
+    "^@/shared/data/(.*)$",
+    "^@/shared/config/(.*)$",
+    "^@/shared/(.*)$",
+    "^@/widgets/(.*)$",
+    "^@/pages/(.*)$",
+    "^@/layouts/(.*)$",
+    "^@/(.*)$",
+    "^\\.\\./(.*)",
+    "^\\./(.*)",
+    "^.+\\.css$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
