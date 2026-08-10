@@ -16,7 +16,7 @@ export const News = () => {
     }, [])
 
     return (
-        <section className="py-20">
+        <section className="py-12">
             <Container>
                 <SectionLabel>Журнал</SectionLabel>
                 <SectionTitle className="mt-5 text-center">

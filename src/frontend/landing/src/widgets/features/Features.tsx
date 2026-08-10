@@ -14,7 +14,7 @@ import { FeatureCard } from './components'
 const ICONS = [SwordIcon, FarmIcon, QuestIcon, ClanIcon, HomeIcon, TrophyIcon]
 
 export const Features = () => (
-    <section id="features" className="pb-20">
+    <section id="features" className="pb-12">
         <Container>
             <SectionLabel>Что внутри</SectionLabel>
             <SectionTitle className="mt-5 text-center">

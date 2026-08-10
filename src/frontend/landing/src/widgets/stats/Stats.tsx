@@ -35,7 +35,9 @@ export const Stats = () => {
 
                         return (
                             <div key={stat.label} className="px-6 py-12 text-center">
-                                <p className="text-gold-grad font-cinzel text-[40px] font-black leading-none desktop:text-stat">
+                                <p
+                                    className={`${value === 'SOON' ? 'text-accent' : 'text-gold-grad'} font-cinzel text-[40px] font-black leading-none desktop:text-stat`}
+                                >
                                     {value}
                                 </p>
                                 <p className="mt-5 font-cinzel text-label-sm uppercase text-ink-muted">

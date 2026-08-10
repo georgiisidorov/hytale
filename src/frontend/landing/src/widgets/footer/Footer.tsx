@@ -54,7 +54,7 @@ export const Footer = () => (
         <Container>
             <div className="flex flex-col items-center gap-4 border-t border-gold/[0.18] py-8 text-center desktop:flex-row desktop:justify-between desktop:text-left">
                 <p className="font-outfit text-[12px] tracking-[0.96px] text-ink-dim">
-                    © {SITE.copyrightYear} Hytale CastleWar. Все права защищены.
+                    © {SITE.copyrightYear} Hytale Eldheim. Все права защищены.
                 </p>
                 <div className="flex gap-8">
                     {LEGAL_LINKS.map((link) => (

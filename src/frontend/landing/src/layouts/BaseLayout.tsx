@@ -7,7 +7,7 @@ import { Join } from '@/widgets/join'
 import { Navbar } from '@/widgets/navbar'
 
 export const BaseLayout = () => (
-    <ReactLenis root options={{ lerp: 0.1, smoothWheel: true }}>
+    <ReactLenis root options={{ lerp: 0.3, smoothWheel: true }}>
         <div className="relative min-h-screen overflow-x-hidden">
             <Navbar />
             <main>

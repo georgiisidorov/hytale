@@ -44,7 +44,7 @@ export const CurrencyTile = ({ title, cta, variant, onBuy, isLink }: CurrencyTil
             </IconBox>
 
             <div className="flex-1">
-                <h4 className="font-cinzel text-[18px] uppercase tracking-[1.5px] text-ink">
+                <h4 className="font-cinzel text-[1rem] uppercase tracking-[1.5px] text-ink desktop:text-[18px]">
                     {title}
                 </h4>
                 {/* <p

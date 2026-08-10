@@ -141,17 +141,14 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
                                 <Divider />
                             </div>
 
-                            <div className="px-[56px]">
+                            <div className="px-[2rem] desktop:px-[3.5rem]">
                                 {data.kind === 'starterpack' ? (
-                                    <div className="flex items-start gap-[40px] pt-[44px]">
-                                        <div className={cn(previewBox, 'shrink-0')}>
-                                            <ImagePlaceholderIcon className="size-[40px]" />
-                                        </div>
+                                    <div className="flex items-start gap-[40px] pt-[1rem] desktop:pt-[2.75rem]">
                                         <div className="pt-[16px]">
                                             <p className="font-outfit text-[17px] uppercase tracking-[1.53px] text-ink-muted">
                                                 {data.eyebrow}
                                             </p>
-                                            <h3 className="mt-[8px] font-cinzel text-[45px] font-bold uppercase leading-[1.2] tracking-[2.25px] text-[#e8e6df]">
+                                            <h3 className="mt-[8px] font-cinzel text-[1.5rem] font-bold uppercase leading-[1.2] tracking-[2.25px] text-[#e8e6df] desktop:text-[2.8rem]">
                                                 {data.title}
                                             </h3>
                                             <p className="mt-[10px] font-outfit text-[16px] leading-[24.8px] text-ink-muted">
@@ -226,10 +223,10 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
 
                                 {data.kind === 'starterpack' && (
                                     <>
-                                        <div className="pt-[41px]">
+                                        <div className="pt-[1.5rem] desktop:pt-[41px]">
                                             <Divider />
                                         </div>
-                                        <div className="pt-[41px]">
+                                        <div className="pt-[1.5rem] desktop:pt-[41px]">
                                             <span className={sectionLabel}>сумма к оплате</span>
                                             <div className="mt-[19px] flex h-[71px] items-center gap-[6px] rounded-b-[4px] border border-gold/[0.18] bg-[#1e2031] px-[25px] backdrop-blur-card">
                                                 <span className="text-gold-grad font-cinzel text-[32px] font-bold">
@@ -244,9 +241,9 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
                                 )}
 
                                 {data.kind === 'currency' && (
-                                    <div className="pt-[41px]">
+                                    <div className="pt-[1.5rem] desktop:pt-[41px]">
                                         <Divider />
-                                        <div className="pt-[41px]">
+                                        <div className="pt-[1.5rem] desktop:pt-[41px]">
                                             <span className={sectionLabel}>Пароль в игре</span>
                                             <input
                                                 type="password"
@@ -262,11 +259,11 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
                                     </div>
                                 )}
 
-                                <div className="pt-[41px]">
+                                <div className="pt-[1.5rem] desktop:pt-[41px]">
                                     <Divider />
                                 </div>
 
-                                <div className="pb-[44px] pt-[41px]">
+                                <div className="pb-[44px] pt-[1.5rem] desktop:pt-[41px]">
                                     <span className={sectionLabel}>e-mail для чека</span>
                                     <input
                                         type="email"
@@ -283,11 +280,11 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
                                 </div>
                             </div>
 
-                            <div className="sticky bottom-0 border-t border-gold/[0.18] bg-[#0c0d15] px-[56px] pb-[40px] pt-[36px]">
+                            <div className="sticky bottom-0 border-t border-gold/[0.18] bg-[#0c0d15] px-[2rem] pb-[40px] pt-[36px] desktop:px-[3.5rem]">
                                 <Button
                                     disabled={!canPay}
                                     onClick={handleSubmit}
-                                    className="h-[84px] w-full text-[24px] tracking-[2.86px] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+                                    className="h-[84px] w-full text-[1.2rem] tracking-[2.86px] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 desktop:text-[2rem]"
                                 >
                                     оплатить {data.price} ₽
                                 </Button>
