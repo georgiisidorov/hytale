@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import { type ServerStats, analyticsApi } from '@/shared/api'
 
+import { totalAccounts } from './totalAccounts'
+
 export const useServerStats = (intervalMs = 10_000) => {
     const [stats, setStats] = useState<ServerStats>({
         onlinePlayers: null,
@@ -17,7 +19,10 @@ export const useServerStats = (intervalMs = 10_000) => {
                 if (!cancelled) {
                     setStats({
                         onlinePlayers: data.onlinePlayers,
-                        registeredPlayers: data.registeredPlayers
+                        registeredPlayers:
+                            data.onlinePlayers === null || data.onlinePlayers === undefined
+                                ? null
+                                : totalAccounts(data.onlinePlayers)
                     })
                 }
             } catch {
