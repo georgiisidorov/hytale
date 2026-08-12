@@ -19,7 +19,7 @@ export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
     return (
         <div className="relative flex min-h-[590px] flex-col rounded-card border border-gold/20 bg-card-feature p-card-pad-inner backdrop-blur-card">
             <div className="absolute inset-x-0 top-0 h-0.5 bg-divider-blue opacity-60" />
-            {/* <InfoIcon className="absolute right-4 top-3 size-[17.5px]" /> */}
+            <InfoIcon className="absolute right-4 top-3 size-[17.5px]" />
 
             <div className="absolute -top-[68px] right-0 hidden h-[52px] w-[176px] items-center rounded-card border border-gold/20 bg-card-feature px-5 backdrop-blur-card desktop:flex">
                 <span className="w-[135px] font-outfit text-[14px] leading-[1.2] text-ink">

@@ -5,7 +5,6 @@ import { cn } from '@/shared/lib/cn'
 import { Button } from '@/shared/ui'
 
 import CloseIcon from '@/assets/icons/close.svg'
-import ImagePlaceholderIcon from '@/assets/icons/image-placeholder.svg'
 import ShieldIcon from '@/assets/icons/shield.svg'
 
 export interface StarterpackTarget {
@@ -69,7 +68,7 @@ const Header = ({ text, onClose }: { text: string; onClose: () => void }) => (
 export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
     const [shown, setShown] = useState<PurchaseTarget | null>(target)
     const [prevTarget, setPrevTarget] = useState(target)
-    // const [login, setLogin] = useState('')
+    const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [checked, setChecked] = useState(false)
@@ -78,7 +77,7 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
         setPrevTarget(target)
         if (target) {
             setShown(target)
-            // setLogin('')
+            setLogin('')
             setPassword('')
             setEmail('')
             setChecked(false)
@@ -99,7 +98,7 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
 
     const data = target ?? shown
     const needsPassword = data?.kind === 'currency'
-    // const loginValid = login.trim().length > 0
+    const loginValid = login.trim().length > 0
     const passwordValid = !needsPassword || password.trim().length > 0
     const emailValid = EMAIL_RE.test(email)
     const canPay = passwordValid && emailValid
@@ -191,7 +190,7 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
                                     </>
                                 )}
 
-                                {/* {data.kind === 'starterpack' && (
+                                {data.kind === 'starterpack' && (
                                     <div className="pt-[41px]">
                                         <Divider />
                                     </div>
@@ -219,7 +218,7 @@ export const PurchaseModal = ({ target, onClose }: PurchaseModalProps) => {
                                         </button>
                                     </div>
                                     <p className={hintClass}>Убедитесь, что логин введён верно</p>
-                                </div> */}
+                                </div>
 
                                 {data.kind === 'starterpack' && (
                                     <>

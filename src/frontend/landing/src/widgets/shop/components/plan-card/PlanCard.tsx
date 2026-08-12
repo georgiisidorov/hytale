@@ -40,7 +40,7 @@ export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
                 <div className="absolute inset-x-0 top-0 h-0.5 bg-divider-green opacity-60" />
             ) : null}
 
-            {/* <InfoIcon className="absolute right-4 top-3 size-[17.5px]" /> */}
+            <InfoIcon className="absolute right-4 top-3 size-[17.5px]" />
 
             {plan.popular && (
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2">
