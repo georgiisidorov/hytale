@@ -21,7 +21,7 @@ export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
     return (
         <div
             className={cn(
-                'relative flex min-h-[590px] flex-col rounded-card border p-card-pad-inner backdrop-blur-card',
+                'relative flex min-h-full flex-col rounded-card border p-card-pad-inner backdrop-blur-card desktop:min-h-[620px]',
                 plan.popular ? 'border-gold/45 bg-card-popular' : 'border-gold/20 bg-card-feature'
             )}
         >
@@ -94,10 +94,12 @@ export const PlanCard = ({ plan, onBuy }: PlanCardProps) => {
                                 'border-b border-dashed border-gold/[0.08]'
                         )}
                     >
-                        <CheckIcon className="size-3.5 shrink-0 translate-y-0.5 text-gold/85" />
-                        <span className="font-outfit text-[14px] text-ink">{feature.strong}</span>
+                        <CheckIcon className="size-3 shrink-0 translate-y-0.5 text-gold/85 desktop:size-3.5" />
+                        <span className="font-outfit text-[11px] text-ink desktop:text-[14px]">
+                            {feature.strong}
+                        </span>
                         {feature.rest && (
-                            <span className="font-outfit text-[14px] text-ink-muted">
+                            <span className="font-outfit text-[11px] text-ink-muted desktop:text-[14px]">
                                 {feature.rest}
                             </span>
                         )}

@@ -17,7 +17,7 @@ export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
     const [license] = useState(false)
 
     return (
-        <div className="relative flex min-h-[590px] flex-col rounded-card border border-gold/20 bg-card-feature p-card-pad-inner backdrop-blur-card">
+        <div className="relative flex min-h-full flex-col rounded-card border border-gold/20 bg-card-feature p-card-pad-inner backdrop-blur-card desktop:min-h-[620px]">
             <div className="absolute inset-x-0 top-0 h-0.5 bg-divider-blue opacity-60" />
             {/* <InfoIcon className="absolute right-4 top-3 size-[17.5px]" /> */}
 
@@ -56,9 +56,11 @@ export const LootboxCard = ({ onBuy }: LootboxCardProps) => {
                                 'border-b border-dashed border-gold/[0.08]'
                         )}
                     >
-                        <CheckIcon className="size-3.5 shrink-0 translate-y-0.5 text-gold/85" />
-                        <span className="font-outfit text-[14px] text-ink">{feature.strong}</span>
-                        <span className="font-outfit text-[14px] text-ink-muted">
+                        <CheckIcon className="size-3 shrink-0 translate-y-0.5 text-gold/85 desktop:size-3.5" />
+                        <span className="font-outfit text-[11px] text-ink desktop:text-[14px]">
+                            {feature.strong}
+                        </span>
+                        <span className="font-outfit text-[11px] text-ink-muted desktop:text-[14px]">
                             {feature.rest}
                         </span>
                     </li>
